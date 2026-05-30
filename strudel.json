@@ -1,0 +1,73 @@
+{
+  "_base": "https://raw.githubusercontent.com/chadmadna/deadstrudel/main/",
+  "deadfx_harm": "deadfx/00-FX-Harmonics.wav",
+  "deadfx_wind": "deadfx/00-FX-Wind.wav",
+  "deadfx_noisedbl": [
+    "deadfx/00-FX-Noise-Dbl-1.wav",
+    "deadfx/00-FX-Noise-Dbl-2.wav"
+  ],
+  "deadfx_noise": [
+    "deadfx/00-FX-Noise-Hi.wav",
+    "deadfx/00-FX-Noise-HiMid.wav",
+    "deadfx/00-FX-Noise-Mid.wav"
+  ],
+  "01-otd_808": "01-otd/01-otd-808.wav",
+  "01-otd_bass_chorus": "01-otd/01-otd-bass-chorus.wav",
+  "01-otd_bass_outro": "01-otd/01-otd-bass-outro.wav",
+  "01-otd_bass_verse": "01-otd/01-otd-bass-verse.wav",
+  "01-otd_distgtr_chorus": "01-otd/01-otd-distgtr-chorus.wav",
+  "01-otd_distgtr_outro": [
+    "01-otd/01-otd-distgtr-outro1.wav",
+    "01-otd/01-otd-distgtr-outro2.wav"
+  ],
+  "01-otd_drums_chorus": "01-otd/01-otd-drums-chorus.wav",
+  "01-otd_drums_outro": "01-otd/01-otd-drums-outro.wav",
+  "01-otd_drums_verse": "01-otd/01-otd-drums-verse.wav",
+  "01-otd_synths_intro": "01-otd/01-otd-synths-intro.wav",
+  "01-otd_synths_outro": "01-otd/01-otd-synths-outro.wav",
+  "01-otd_synths_verse": "01-otd/01-otd-synths-verse.wav",
+  "02-tpk_bass_main": "02-tpk/02-tpk-bass-main.wav",
+  "02-tpk_bass_postverse": "02-tpk/02-tpk-bass-postverse.wav",
+  "02-tpk_bass_solo": "02-tpk/02-tpk-bass-solo.wav",
+  "02-tpk_bass_verse": "02-tpk/02-tpk-bass-verse.wav",
+  "02-tpk_drums_bridge": "02-tpk/02-tpk-drums-bridge.wav",
+  "02-tpk_drums_main": "02-tpk/02-tpk-drums-main.wav",
+  "02-tpk_drums_outro": "02-tpk/02-tpk-drums-outro.wav",
+  "02-tpk_gtrclav_bridge": "02-tpk/02-tpk-gtrclav-bridge.wav",
+  "02-tpk_gtrclav_postverse": "02-tpk/02-tpk-gtrclav-postverse.wav",
+  "02-tpk_gtrclav_solo": "02-tpk/02-tpk-gtrclav-solo.wav",
+  "02-tpk_gtrclav_verse": "02-tpk/02-tpk-gtrclav-verse.wav",
+  "02-tpk_synths_bridge": "02-tpk/02-tpk-synths-bridge.wav",
+  "02-tpk_synths_chorus": [
+    "02-tpk/02-tpk-synths-chorus1.wav",
+    "02-tpk/02-tpk-synths-chorus2.wav",
+    "02-tpk/02-tpk-synths-chorus3.wav"
+  ],
+  "02-tpk_synths_intro": "02-tpk/02-tpk-synths-intro.wav",
+  "02-tpk_synths_outro": "02-tpk/02-tpk-synths-outro.wav",
+  "02-tpk_synths_postverse": "02-tpk/02-tpk-synths-postverse.wav",
+  "03-gnh_bass_chorus": "03-gnh/03-gnh-bass-chorus.wav",
+  "03-gnh_bass_outro": "03-gnh/03-gnh-bass-outro.wav",
+  "03-gnh_bass_verse": "03-gnh/03-gnh-bass-verse.wav",
+  "03-gnh_drums_bridge": "03-gnh/03-gnh-drums-bridge.wav",
+  "03-gnh_drums_chorus": [
+    "03-gnh/03-gnh-drums-chorus1.wav",
+    "03-gnh/03-gnh-drums-chorus2.wav"
+  ],
+  "03-gnh_drums_outro1": "03-gnh/03-gnh-drums-outro1.wav",
+  "03-gnh_drums_outro4": "03-gnh/03-gnh-drums-outro4.wav",
+  "03-gnh_drums_verse": [
+    "03-gnh/03-gnh-drums-verse1.wav",
+    "03-gnh/03-gnh-drums-verse2.wav"
+  ],
+  "03-gnh_synths_bridge": "03-gnh/03-gnh-synths-bridge.wav",
+  "03-gnh_synths_chorus": "03-gnh/03-gnh-synths-chorus.wav",
+  "03-gnh_synths_intro": "03-gnh/03-gnh-synths-intro.wav",
+  "03-gnh_synths_outro": [
+    "03-gnh/03-gnh-synths-outro1.wav",
+    "03-gnh/03-gnh-synths-outro2.wav",
+    "03-gnh/03-gnh-synths-outro3.wav",
+    "03-gnh/03-gnh-synths-outro4.wav"
+  ],
+  "03-gnh_synths_verse2": "03-gnh/03-gnh-synths-verse2.wav"
+}
