@@ -1,5 +1,26 @@
 {
   "_base": "https://raw.githubusercontent.com/chadmadna/deadstrudel/main/",
+  "deadpad": {
+    "c1": "deadpad/deadpad_c1.wav",
+    "c2": "deadpad/deadpad_c2.wav",
+    "c3": "deadpad/deadpad_c3.wav",
+    "c4": "deadpad/deadpad_c4.wav",
+    "c5": "deadpad/deadpad_c5.wav"
+  },
+  "deadbrass": {
+    "c0": "deadbrass/deadbrass_c0.wav",
+    "c1": "deadbrass/deadbrass_c1.wav",
+    "c2": "deadbrass/deadbrass_c2.wav",
+    "c3": "deadbrass/deadbrass_c3.wav",
+    "c4": "deadbrass/deadbrass_c4.wav",
+    "c5": "deadbrass/deadbrass_c5.wav"
+  },
+  "deadbell": {
+    "c0": "deadbell/deadbell_c0.wav",
+    "c1": "deadbell/deadbell_c1.wav",
+    "c2": "deadbell/deadbell_c2.wav",
+    "c3": "deadbell/deadbell_c3.wav"
+  },
   "deadrums_bd": "deadrums/deadrums_bd.wav",
   "deadrums_808": "deadrums/deadrums_808.wav",
   "deadrums_sd": "deadrums/deadrums_sd.wav",
