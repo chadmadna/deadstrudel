@@ -1,5 +1,15 @@
 {
   "_base": "https://raw.githubusercontent.com/chadmadna/deadstrudel/main/",
+  "deadrums_bd": "deadrums/deadrums_bd.wav",
+  "deadrums_808": "deadrums/deadrums_808.wav",
+  "deadrums_sd": "deadrums/deadrums_sd.wav",
+  "deadrums_cr": "deadrums/deadrums_cr.wav",
+  "deadrums_hh": "deadrums/deadrums_hh.wav",
+  "deadrums_oh": "deadrums/deadrums_oh.wav",
+  "deadrums_ht": "deadrums/deadrums_ht.wav",
+  "deadrums_lt": "deadrums/deadrums_lt.wav",
+  "deadrums_scan": "deadrums/deadrums_scan.wav",
+  "deadrums_sear": "deadrums/deadrums_sear.wav",
   "deadfx_harm": "deadfx/00-FX-Harmonics.wav",
   "deadfx_wind": "deadfx/00-FX-Wind.wav",
   "deadfx_noisedbl": [
