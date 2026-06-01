@@ -1,104 +1,206 @@
 {
   "deadpad": {
-    "c1": "deadpad/deadpad_c1.wav",
-    "c2": "deadpad/deadpad_c2.wav",
-    "c3": "deadpad/deadpad_c3.wav",
-    "c4": "deadpad/deadpad_c4.wav",
-    "c5": "deadpad/deadpad_c5.wav"
+    "c1": "/deadpad/deadpad_c1.wav",
+    "c2": "/deadpad/deadpad_c2.wav",
+    "c3": "/deadpad/deadpad_c3.wav",
+    "c4": "/deadpad/deadpad_c4.wav",
+    "c5": "/deadpad/deadpad_c5.wav"
   },
   "deadbrass": {
-    "c0": "deadbrass/deadbrass_c0.wav",
-    "c1": "deadbrass/deadbrass_c1.wav",
-    "c2": "deadbrass/deadbrass_c2.wav",
-    "c3": "deadbrass/deadbrass_c3.wav",
-    "c4": "deadbrass/deadbrass_c4.wav",
-    "c5": "deadbrass/deadbrass_c5.wav"
+    "c0": "/deadbrass/deadbrass_c0.wav",
+    "c1": "/deadbrass/deadbrass_c1.wav",
+    "c2": "/deadbrass/deadbrass_c2.wav",
+    "c3": "/deadbrass/deadbrass_c3.wav",
+    "c4": "/deadbrass/deadbrass_c4.wav",
+    "c5": "/deadbrass/deadbrass_c5.wav"
   },
   "deadbell": {
-    "c0": "deadbell/deadbell_c0.wav",
-    "c1": "deadbell/deadbell_c1.wav",
-    "c2": "deadbell/deadbell_c2.wav",
-    "c3": "deadbell/deadbell_c3.wav"
+    "c0": "/deadbell/deadbell_c0.wav",
+    "c1": "/deadbell/deadbell_c1.wav",
+    "c2": "/deadbell/deadbell_c2.wav",
+    "c3": "/deadbell/deadbell_c3.wav"
   },
-  "deadrums_bd": "deadrums/deadrums_bd.wav",
-  "deadrums_808": "deadrums/deadrums_808.wav",
-  "deadrums_sd": "deadrums/deadrums_sd.wav",
-  "deadrums_cr": "deadrums/deadrums_cr.wav",
-  "deadrums_hh": "deadrums/deadrums_hh.wav",
-  "deadrums_oh": "deadrums/deadrums_oh.wav",
-  "deadrums_ht": "deadrums/deadrums_ht.wav",
-  "deadrums_lt": "deadrums/deadrums_lt.wav",
-  "deadrums_boom": "deadrums/deadrums_boom.wav",
-  "deadrums_scan": "deadrums/deadrums_scan.wav",
-  "deadrums_sear": "deadrums/deadrums_sear.wav",
-  "deadfx_harm": "deadfx/00-FX-Harmonics.wav",
-  "deadfx_wind": "deadfx/00-FX-Wind.wav",
+  "deadrums_bd": "/deadrums/deadrums_bd.wav",
+  "deadrums_808": "/deadrums/deadrums_808.wav",
+  "deadrums_sd": "/deadrums/deadrums_sd.wav",
+  "deadrums_cr": "/deadrums/deadrums_cr.wav",
+  "deadrums_hh": "/deadrums/deadrums_hh.wav",
+  "deadrums_oh": "/deadrums/deadrums_oh.wav",
+  "deadrums_ht": "/deadrums/deadrums_ht.wav",
+  "deadrums_lt": "/deadrums/deadrums_lt.wav",
+  "deadrums_boom": "/deadrums/deadrums_boom.wav",
+  "deadrums_scan": "/deadrums/deadrums_scan.wav",
+  "deadrums_sear": "/deadrums/deadrums_sear.wav",
+  "deadfx_harm": "/deadfx/00-FX-Harmonics.wav",
+  "deadfx_wind": "/deadfx/00-FX-Wind.wav",
   "deadfx_noisedbl": [
-    "deadfx/00-FX-Noise-Dbl-1.wav",
-    "deadfx/00-FX-Noise-Dbl-2.wav"
+    "/deadfx/00-FX-Noise-Dbl-1.wav",
+    "/deadfx/00-FX-Noise-Dbl-2.wav"
   ],
   "deadfx_noise": [
-    "deadfx/00-FX-Noise-Hi.wav",
-    "deadfx/00-FX-Noise-HiMid.wav",
-    "deadfx/00-FX-Noise-Mid.wav"
+    "/deadfx/00-FX-Noise-Hi.wav",
+    "/deadfx/00-FX-Noise-HiMid.wav",
+    "/deadfx/00-FX-Noise-Mid.wav"
   ],
-  "01-otd_808": "01-otd/01-otd-808.wav",
-  "01-otd_bass_chorus": "01-otd/01-otd-bass-chorus.wav",
-  "01-otd_bass_outro": "01-otd/01-otd-bass-outro.wav",
-  "01-otd_bass_verse": "01-otd/01-otd-bass-verse.wav",
-  "01-otd_distgtr_chorus": "01-otd/01-otd-distgtr-chorus.wav",
+  "01-otd_808": "/01-otd/01-otd-808.wav",
+  "01-otd_bass_chorus": "/01-otd/01-otd-bass-chorus.wav",
+  "01-otd_bass_outro": "/01-otd/01-otd-bass-outro.wav",
+  "01-otd_bass_verse": "/01-otd/01-otd-bass-verse.wav",
+  "01-otd_distgtr_chorus": "/01-otd/01-otd-distgtr-chorus.wav",
   "01-otd_distgtr_outro": [
-    "01-otd/01-otd-distgtr-outro1.wav",
-    "01-otd/01-otd-distgtr-outro2.wav"
+    "/01-otd/01-otd-distgtr-outro1.wav",
+    "/01-otd/01-otd-distgtr-outro2.wav"
   ],
-  "01-otd_drums_chorus": "01-otd/01-otd-drums-chorus.wav",
-  "01-otd_drums_outro": "01-otd/01-otd-drums-outro.wav",
-  "01-otd_drums_verse": "01-otd/01-otd-drums-verse.wav",
-  "01-otd_synths_intro": "01-otd/01-otd-synths-intro.wav",
-  "01-otd_synths_outro": "01-otd/01-otd-synths-outro.wav",
-  "01-otd_synths_verse": "01-otd/01-otd-synths-verse.wav",
-  "02-tpk_bass_main": "02-tpk/02-tpk-bass-main.wav",
-  "02-tpk_bass_postverse": "02-tpk/02-tpk-bass-postverse.wav",
-  "02-tpk_bass_solo": "02-tpk/02-tpk-bass-solo.wav",
-  "02-tpk_bass_verse": "02-tpk/02-tpk-bass-verse.wav",
-  "02-tpk_drums_bridge": "02-tpk/02-tpk-drums-bridge.wav",
-  "02-tpk_drums_main": "02-tpk/02-tpk-drums-main.wav",
-  "02-tpk_drums_outro": "02-tpk/02-tpk-drums-outro.wav",
-  "02-tpk_gtrclav_bridge": "02-tpk/02-tpk-gtrclav-bridge.wav",
-  "02-tpk_gtrclav_postverse": "02-tpk/02-tpk-gtrclav-postverse.wav",
-  "02-tpk_gtrclav_solo": "02-tpk/02-tpk-gtrclav-solo.wav",
-  "02-tpk_gtrclav_verse": "02-tpk/02-tpk-gtrclav-verse.wav",
-  "02-tpk_synths_bridge": "02-tpk/02-tpk-synths-bridge.wav",
+  "01-otd_drums_chorus": "/01-otd/01-otd-drums-chorus.wav",
+  "01-otd_drums_outro": "/01-otd/01-otd-drums-outro.wav",
+  "01-otd_drums_verse": "/01-otd/01-otd-drums-verse.wav",
+  "01-otd_synths_intro": "/01-otd/01-otd-synths-intro.wav",
+  "01-otd_synths_outro": "/01-otd/01-otd-synths-outro.wav",
+  "01-otd_synths_verse": "/01-otd/01-otd-synths-verse.wav",
+  "02-tpk_bass_main": "/02-tpk/02-tpk-bass-main.wav",
+  "02-tpk_bass_postverse": "/02-tpk/02-tpk-bass-postverse.wav",
+  "02-tpk_bass_solo": "/02-tpk/02-tpk-bass-solo.wav",
+  "02-tpk_bass_verse": "/02-tpk/02-tpk-bass-verse.wav",
+  "02-tpk_drums_bridge": "/02-tpk/02-tpk-drums-bridge.wav",
+  "02-tpk_drums_main": "/02-tpk/02-tpk-drums-main.wav",
+  "02-tpk_drums_outro": "/02-tpk/02-tpk-drums-outro.wav",
+  "02-tpk_gtrclav_bridge": "/02-tpk/02-tpk-gtrclav-bridge.wav",
+  "02-tpk_gtrclav_postverse": "/02-tpk/02-tpk-gtrclav-postverse.wav",
+  "02-tpk_gtrclav_solo": "/02-tpk/02-tpk-gtrclav-solo.wav",
+  "02-tpk_gtrclav_verse": "/02-tpk/02-tpk-gtrclav-verse.wav",
+  "02-tpk_synths_bridge": "/02-tpk/02-tpk-synths-bridge.wav",
   "02-tpk_synths_chorus": [
-    "02-tpk/02-tpk-synths-chorus1.wav",
-    "02-tpk/02-tpk-synths-chorus2.wav",
-    "02-tpk/02-tpk-synths-chorus3.wav"
+    "/02-tpk/02-tpk-synths-chorus1.wav",
+    "/02-tpk/02-tpk-synths-chorus2.wav",
+    "/02-tpk/02-tpk-synths-chorus3.wav"
   ],
-  "02-tpk_synths_intro": "02-tpk/02-tpk-synths-intro.wav",
-  "02-tpk_synths_outro": "02-tpk/02-tpk-synths-outro.wav",
-  "02-tpk_synths_postverse": "02-tpk/02-tpk-synths-postverse.wav",
-  "03-gnh_bass_chorus": "03-gnh/03-gnh-bass-chorus.wav",
-  "03-gnh_bass_outro": "03-gnh/03-gnh-bass-outro.wav",
-  "03-gnh_bass_verse": "03-gnh/03-gnh-bass-verse.wav",
-  "03-gnh_drums_bridge": "03-gnh/03-gnh-drums-bridge.wav",
+  "02-tpk_synths_intro": "/02-tpk/02-tpk-synths-intro.wav",
+  "02-tpk_synths_outro": "/02-tpk/02-tpk-synths-outro.wav",
+  "02-tpk_synths_postverse": "/02-tpk/02-tpk-synths-postverse.wav",
+  "03-gnh_bass_chorus": "/03-gnh/03-gnh-bass-chorus.wav",
+  "03-gnh_bass_outro": "/03-gnh/03-gnh-bass-outro.wav",
+  "03-gnh_bass_verse": "/03-gnh/03-gnh-bass-verse.wav",
+  "03-gnh_drums_bridge": "/03-gnh/03-gnh-drums-bridge.wav",
   "03-gnh_drums_chorus": [
-    "03-gnh/03-gnh-drums-chorus1.wav",
-    "03-gnh/03-gnh-drums-chorus2.wav"
+    "/03-gnh/03-gnh-drums-chorus1.wav",
+    "/03-gnh/03-gnh-drums-chorus2.wav"
   ],
-  "03-gnh_drums_outro1": "03-gnh/03-gnh-drums-outro1.wav",
-  "03-gnh_drums_outro4": "03-gnh/03-gnh-drums-outro4.wav",
+  "03-gnh_drums_outro1": "/03-gnh/03-gnh-drums-outro1.wav",
+  "03-gnh_drums_outro4": "/03-gnh/03-gnh-drums-outro4.wav",
   "03-gnh_drums_verse": [
-    "03-gnh/03-gnh-drums-verse1.wav",
-    "03-gnh/03-gnh-drums-verse2.wav"
+    "/03-gnh/03-gnh-drums-verse1.wav",
+    "/03-gnh/03-gnh-drums-verse2.wav"
   ],
-  "03-gnh_synths_bridge": "03-gnh/03-gnh-synths-bridge.wav",
-  "03-gnh_synths_chorus": "03-gnh/03-gnh-synths-chorus.wav",
-  "03-gnh_synths_intro": "03-gnh/03-gnh-synths-intro.wav",
+  "03-gnh_synths_bridge": "/03-gnh/03-gnh-synths-bridge.wav",
+  "03-gnh_synths_chorus": "/03-gnh/03-gnh-synths-chorus.wav",
+  "03-gnh_synths_intro": "/03-gnh/03-gnh-synths-intro.wav",
   "03-gnh_synths_outro": [
-    "03-gnh/03-gnh-synths-outro1.wav",
-    "03-gnh/03-gnh-synths-outro2.wav",
-    "03-gnh/03-gnh-synths-outro3.wav",
-    "03-gnh/03-gnh-synths-outro4.wav"
+    "/03-gnh/03-gnh-synths-outro1.wav",
+    "/03-gnh/03-gnh-synths-outro2.wav",
+    "/03-gnh/03-gnh-synths-outro3.wav",
+    "/03-gnh/03-gnh-synths-outro4.wav"
   ],
-  "03-gnh_synths_verse2": "03-gnh/03-gnh-synths-verse2.wav"
+  "04-avy_techytop": "/04-avy/04-avy-techytop.wav",
+  "04-avy_guitar": "/04-avy/04-avy-acoustic-guitar.wav",
+  "04-avy_bass": "/04-avy/04-avy-bass.wav",
+  "04-avy_toms": "/04-avy/04-avy-toms.wav",
+  "04-avy_hit": "/04-avy/04-avy-hit.wav",
+  "03-gnh_synths_verse2": "/03-gnh/03-gnh-synths-verse2.wav",
+  "yaxu-clean-breaks_useme": [
+    "/yaxu-clean-breaks/Bill_Withers_-_Use_Me_(101_LoopFix) [2019-03-04 124553].wav"
+  ],
+  "yaxu-clean-breaks_sesame": [
+    "/yaxu-clean-breaks/Blowfly_-_Sesame_Street_(2) [2019-03-04 124553].wav"
+  ],
+  "yaxu-clean-breaks_do": [
+    "/yaxu-clean-breaks/Bobby_Byrd_Feat._The_J.B's_-_Doin'_The_Do [2019-03-04 124553].wav"
+  ],
+  "yaxu-clean-breaks_funkydrummer": [
+    "/yaxu-clean-breaks/James_Brown_-_Funky_Drummer_(2) [2019-03-04 124553].wav"
+  ],
+  "yaxu-clean-breaks_mechanicalman": [
+    "/yaxu-clean-breaks/Jerry_Butler_-_I'm_Your_Mechanical_Man_(101_Edit) [2019-03-04 124554].wav"
+  ],
+  "yaxu-clean-breaks_kool": [
+    "/yaxu-clean-breaks/Kool_&_The_Gang_-_Chocolate_Buttermilk [2019-03-04 124554].wav"
+  ],
+  "yaxu-clean-breaks_sport": [
+    "/yaxu-clean-breaks/Lightnin'_Rod_-_Sport [2019-03-04 124552].wav"
+  ],
+  "yaxu-clean-breaks_rill": [
+    "/yaxu-clean-breaks/Little_Richard_-_The_Rill_Thing [2019-03-04 124550].wav"
+  ],
+  "yaxu-clean-breaks_think": [
+    "/yaxu-clean-breaks/Lyn_Collins_-_Think_(4) [2019-03-04 124551].wav"
+  ],
+  "yaxu-clean-breaks_king": [
+    "/yaxu-clean-breaks/Mantronix_-_King_Of_The_Beats [2019-03-04 124552].wav"
+  ],
+  "yaxu-clean-breaks_around": [
+    "/yaxu-clean-breaks/Mark_Putney_-_Don't_Come_Around_Here_Anymore [2019-03-04 124552].wav"
+  ],
+  "yaxu-clean-breaks_riffin": [
+    "/yaxu-clean-breaks/M.c_Duke_-_I'm_Riffin_(Smokin'_Beats_Small_Edit) [2019-03-04 124552].wav"
+  ],
+  "yaxu-clean-breaks_apache": [
+    "/yaxu-clean-breaks/Michael_Viner's_Incredible_Bongo_Band_-_Apache_(1)(Fixed-End) [2019-03-04 124550].wav"
+  ],
+  "yaxu-clean-breaks_neworleans": [
+    "/yaxu-clean-breaks/Nat_Adderley_-_New_Orleans [2019-03-04 124550].wav"
+  ],
+  "yaxu-clean-breaks_hitormiss": [
+    "/yaxu-clean-breaks/Odetta_-_Hit_Or_Miss [2019-03-04 124550].wav"
+  ],
+  "yaxu-clean-breaks_action": [
+    "/yaxu-clean-breaks/Orange_Krush_-_Action [2019-03-04 124551].wav"
+  ],
+  "yaxu-clean-breaks_hotline": [
+    "/yaxu-clean-breaks/Rance_Allen_Group_-_Hot_Line_To_Jesus [2019-03-04 124551].wav"
+  ],
+  "yaxu-clean-breaks_swat": [
+    "/yaxu-clean-breaks/Rhythm_Heritage_-_Theme_From_S.W.A.T_(Hats) [2019-03-04 124551].wav"
+  ],
+  "yaxu-clean-breaks_ripple": [
+    "/yaxu-clean-breaks/Ripple_-_A_Funky_Song [2019-03-04 124551].wav"
+  ],
+  "yaxu-clean-breaks_fireeater": [
+    "/yaxu-clean-breaks/Rusty_Bryant_-_Fire_Eater_(2) [2019-03-04 124551].wav"
+  ],
+  "yaxu-clean-breaks_hungup": [
+    "/yaxu-clean-breaks/Salt_-_Hung_Up_(1) [2019-03-04 124551].wav",
+    "sounds/Salt_-_Hung_Up_(1) [2019-03-04 124553].wav"
+  ],
+  "yaxu-clean-breaks_newday": [
+    "/yaxu-clean-breaks/Skull_Snaps_-_Its_A_New_Day [2019-03-04 124549].wav"
+  ],
+  "yaxu-clean-breaks_movement": [
+    "/yaxu-clean-breaks/SL_Troopers_-_Movement_(2) [2019-03-04 124549].wav"
+  ],
+  "yaxu-clean-breaks_boogiewoogie": [
+    "/yaxu-clean-breaks/Sound_Experience_-_Boogie_Woogie [2019-03-04 124549].wav"
+  ],
+  "yaxu-clean-breaks_delight": [
+    "/yaxu-clean-breaks/Sugarhill_Gang_-_Rapper's_Delight [2019-03-04 124549].wav"
+  ],
+  "yaxu-clean-breaks_eeloil": [
+    "/yaxu-clean-breaks/The_Bamboos_-_Eel_Oil [2019-03-04 124549].wav"
+  ],
+  "yaxu-clean-breaks_impeach": [
+    "/yaxu-clean-breaks/The_Honeydrippers_-_Impeach_The_President [2019-03-04 124550].wav"
+  ],
+  "yaxu-clean-breaks_marymary": [
+    "/yaxu-clean-breaks/The_Monkeys_-_Mary_Mary [2019-03-04 124550].wav"
+  ],
+  "yaxu-clean-breaks_amen": [
+    "/yaxu-clean-breaks/The_Winstons_-_Amen_Brother [2019-03-04 124550].wav"
+  ],
+  "yaxu-clean-breaks_sneakin": [
+    "/yaxu-clean-breaks/Tom_Scott_And_The_L.A._Express_-_Sneakin'_In_The_Back [2019-03-04 124552].wav"
+  ],
+  "yaxu-clean-breaks_squib": [
+    "/yaxu-clean-breaks/Tower_Of_Power_-_Squib_Cakes [2019-03-04 124552].wav"
+  ],
+  "yaxu-clean-breaks_groove": [
+    "/yaxu-clean-breaks/Wilbur_Bascomb_&_The_Zodiac_-_Just_A_Groove_In_'G' [2019-03-04 124553].wav"
+  ]
 }
