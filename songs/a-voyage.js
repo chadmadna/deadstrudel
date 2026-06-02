@@ -1,7 +1,7 @@
 // @title A Voyage
 // @by DEADLEADERS
 
-samples("http://localhost:3000/strudel.json?v=9");
+samples("http://localhost:3000/strudel.json?v=99");
 setcpm(130 / 4);
 
 await initHydra();
@@ -10,7 +10,9 @@ let bg = src(s2)
   .modulate(src(s2), 0.2)
   .scrollX(0.5, 0.1)
   .modulate(
-    osc(60, 0.05, 0).modulate(noise(3, 0.01)).modulate(noise(100, 0), 0.01),
+    osc(30, 0.05, 0)
+      .modulate(noise(3, 0.01), 0.01)
+      .modulate(noise(100, 0), 0.01),
     0.01,
   )
   .modulateScale(noise(1, 0.3), 0.1)
@@ -23,9 +25,18 @@ $BASS: s("bass")
   .loopAt(16)
   .chop(128)
   .seg(8)
-  .gain(slider(0, 0, 0.35, 0.01));
+  .gain(slider(0.35, 0, 0.5, 0.05));
 
 _$GUITAR: s("guitar").bank("04-avy").loopAt(16).chop(128).seg(8).gain(0.3);
+
+_$PADS: note(
+  "[D1,D2] [A#1,F2] [A1,E2] [A1,C#2] [A1,D2] [F1,A#1] [A1,C3] [E2,C#3]",
+)
+  .slow(16)
+  .s("deadpad")
+  .att(0.5)
+  .rel(1)
+  .gain(0.3);
 
 $DRUMS: stack(
   s("bd sd").bank("deadrums").slow(2),
@@ -44,11 +55,11 @@ $DRUMS: stack(
     .rel(0)
     .vel(0.9),
 )
-  .room(0.5)
+  .room(0.25)
   .o(1)
-  .gain(1);
+  .gain(0.7);
 
-$TOMS: s("toms")
+_$TOMS: s("toms")
   .bank("04-avy")
   .loopAt(2)
   .chop(16)
@@ -58,7 +69,7 @@ $TOMS: s("toms")
   .rsize(2)
   .rdim(200)
   .o(1)
-  .gain(0.4);
+  .gain(0.45);
 
 _$TOPS: s("techytop")
   .bank("04-avy")
@@ -75,9 +86,9 @@ _$TOPS: s("techytop")
 
 _$HIT: s("hit").bank("04-avy").slow(16).delay(0.5).room(0.5).o(1).gain(0.25);
 
-$NOISE: s("deadfx_noise:0").loopAt(8).chop(64).seg(8).gain(0.15);
+$NOISE: s("deadfx_noise:0").loopAt(8).chop(64).seg(8).gain(0.1);
 
-_$BREAKS: s("riffin")
+$BREAKS: s("riffin")
   .bank("yaxu-clean-breaks")
   .loopAt(2)
   .chop(16)
@@ -108,8 +119,8 @@ _$BREAKS: s("riffin")
   .lpf(slider(122.5, 0, 140).pow(2))
   .lpq(3)
   .hpf(60)
-  .chebyshev(0.4, 0.1)
-  .gain(0.1);
+  .chebyshev(0.4, 0.01)
+  .gain(0.07);
 
 all((x) => x.compressor("-10:10:.1:.1:.5"));
 
