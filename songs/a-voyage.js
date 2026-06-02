@@ -27,7 +27,7 @@ $BASS: s("bass")
   .seg(8)
   .gain(slider(0.35, 0, 0.5, 0.05));
 
-_$GUITAR: s("guitar").bank("04-avy").loopAt(16).chop(128).seg(8).gain(0.3);
+$GUITAR: s("guitar").bank("04-avy").loopAt(16).chop(128).seg(8).gain(0.3);
 
 _$PADS: note(
   "[D1,D2] [A#1,F2] [A1,E2] [A1,C#2] [A1,D2] [F1,A#1] [A1,C3] [E2,C#3]",
@@ -59,7 +59,7 @@ $DRUMS: stack(
   .o(1)
   .gain(0.7);
 
-_$TOMS: s("toms")
+$TOMS: s("toms")
   .bank("04-avy")
   .loopAt(2)
   .chop(16)
@@ -71,7 +71,7 @@ _$TOMS: s("toms")
   .o(1)
   .gain(0.45);
 
-_$TOPS: s("techytop")
+$TOPS: s("techytop")
   .bank("04-avy")
   .loopAt(2)
   .chop(32)
@@ -84,11 +84,11 @@ _$TOPS: s("techytop")
   .o(1)
   .gain(0.2);
 
-_$HIT: s("hit").bank("04-avy").slow(16).delay(0.5).room(0.5).o(1).gain(0.25);
+$HIT: s("hit").bank("04-avy").slow(16).delay(0.5).room(0.5).o(1).gain(0.25);
 
 $NOISE: s("deadfx_noise:0").loopAt(8).chop(64).seg(8).gain(0.1);
 
-$BREAKS: s("riffin")
+_$BREAKS: s("riffin")
   .bank("yaxu-clean-breaks")
   .loopAt(2)
   .chop(16)
