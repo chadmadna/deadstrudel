@@ -11,35 +11,28 @@ let randVals = Array.from({ length: 128 }, Math.random);
 let bg = src(s2)
   .modulate(src(s2).modulate(noise(1, 0.5), 0.01), 0.5)
   .scrollY(0.25, 0.2)
-  .scrollX(
-    randVals
-      .map((x) => x * 0.25 - 0.125)
-      .fast(2)
-      .smooth()
-      .ease("easeInOutCubic"),
-  )
+  .scrollX(randVals.map((x) => x * 0.25 - 0.125).ease("easeInOutQuart"))
   .modulateScrollY(voronoi(1000, 4, 0.5), 0.01)
-  .modulateScale(voronoi(20, 0.3), 0.1)
+  .modulateScale(voronoi(20, 0.3).modulateRotate(osc(1, 0.3)), 0.1)
   .invert()
   .saturate(0.8)
   .hue(0)
   .brightness(-0.2)
   .out(o0);
 
-_$BASS: s("bass_verse")
-  // s("bass_solo")
+$BASS: s("bass_verse")
+  // s("bass_solo").vel(.7)
   .bank("02-tpk")
   .loopAt(8)
   .chop(64)
   .seg(8)
   .vel(0.7)
-  .gain(slider(0.5, 0, 0.5, 0.05));
+  .gain(slider(0.4, 0, 0.4, 0.05));
 
-// note("[e2,a2] [[g2,c3]@3 [a2,d3]] [g2,b2] [f#2,d3]").slow(8) // main
-// note("[e2,a2]").slow(4).seg(8) // postverse
-$PADS: note("[e2,a2]!6 [g2,c3] [a2,d3]")
-  .slow(8)
-  .seg(8) // solo
+$PADS: note("[e2,a2] [[g2,c3]@3 [a2,d3]] [g2,b2] [f#2,d3]")
+  .slow(8) // main
+  // note("[e2,a2]").slow(4).seg(8) // postverse
+  // note("[e2,a2]!6 [g2,c3] [a2,d3]").slow(8).seg(8) // solo
   .s("deadpad")
   .hpf(400)
   .att(0.3)
@@ -52,15 +45,13 @@ _$DISTGTR: s("distgtr_solo")
   .chop(64)
   .seg(8)
   .vel(0.7)
-  .scrub(irand(8).div(8).seg(8))
-  .sometimes((x) => x.dec(0.2).ply("2 | 4"))
-  .rarely((x) => x.speed("-.0675"))
-  .juxBy(0.3, rev)
+  // .scrub(irand(8).div(8).seg(8)).sometimes(x => x.dec(.2).ply("2 | 4"))
+  // .rarely(x => x.speed("-.0675")).juxBy(0.3, rev)
   .gain(0.35);
 
-// s("gtrclav_verse")
-// s("gtrclav_postverse")
-$GTRCLAV: s("gtrclav_solo")
+$GTRCLAV: s("gtrclav_verse")
+  // s("gtrclav_postverse")
+  // s("gtrclav_solo")
   .bank("02-tpk")
   .loopAt(8)
   .chop(64)
@@ -74,11 +65,13 @@ $GTRCLAV: s("gtrclav_solo")
   .gain(0.3);
 
 // verse
-_$VOX: note(`[-@2 7 7 11 10@2 11@2 10@2 11@2 10 11@2] [-@7 7 11 11 11 11@2 10@2 10] [10@2 9 9 8@2 7 7 10 10 9 9 8@2 8 7] [8@2 7 8@3 9@2 -@6 7@2]
-        [11@3 10@3 11@2 -@5 7 7@2] [11@2 11@2 11 11 10 10 10 9@3 -@4] [10@3 9@3 8 7 10@2 10 9@2 9 8 7] [8@2 8 7 8@2 9@2 -@6 7@2]
-        [11@3 10@3 11@3 10@3 11@2 10@2] [11 10@2 9@3 9 10 9 8 8@2 -@2 6@2] [10@3 9 8@4 -@4 8 9@2 7] [-@13 11 11 10]
-        [11@2 10 10 11 10@2 11@2 11 10 9@5] [-@4 [11 11 10]@4 11@4 -@4] [-@5 9 9 9 10@2 9 8@5] [-@4 10@2 10@2 9@2 8 8@3 -@2]`)
-  .slow(32)
+_$VOX: note(
+  `[-@2 7 7 11 10@2 11@2 10@2 11@2 10 11@2] [-@7 7 11 11 11 11@2 10@2 10] [10@2 9 9 8@2 7 7 10 10 9 9 8@2 8 7] [8@2 7 8@3 9@2 -@6 7@2]`,
+)
+  .slow(8)
+  // note(`[11@3 10@3 11@2 -@5 7 7@2] [11@2 11@2 11 11 10 10 10 9@3 -@4] [10@3 9@3 8 7 10@2 10 9@2 9 8 7] [8@2 8 7 8@2 9@2 -@6 7@2]`).slow(8)
+  // note(`[11@3 10@3 11@3 10@3 11@2 10@2] [11 10@2 9@3 9 10 9 8 8@2 -@2 6@2] [10@3 9 8@4 -@4 8 9@2 7] [-@13 11 11 10]`).slow(8)
+  // note(`[11@2 10 10 11 10@2 11@2 11 10 9@5] [-@4 [11 11 10]@4 11@4 -@4] [-@5 9 9 9 10@2 9 8@5] [-@4 10@2 10@2 9@2 8 8@3 -@2]`).slow(8)
   // postverse
   // note(`[9@4 7@4 -@8] -@3`).slow(8)
   .scale("A:minor")
@@ -106,8 +99,8 @@ $DRUMS: stack(
 
 $HIT: s("hit")
   .bank("04-avy")
-  // .slow(16) // usual
-  .slow(8) // breaks section
+  .slow(16) // usual
+  // .slow(8) // breaks section
   .delay(0.5)
   .room(0.5)
   .o(1)
@@ -115,7 +108,7 @@ $HIT: s("hit")
 
 $NOISE: s("deadfx_noise").loopAt(8).chop(64).seg(8).gain(0.1);
 
-_$BREAKS: s("kool")
+_$BREAKS: s("do")
   .bank("yaxu-clean-breaks")
   .loopAt(2)
   .chop(16)
@@ -123,13 +116,15 @@ _$BREAKS: s("kool")
   .pickF("<pat!7 fill>", {
     pat: (x) =>
       x
-        .when("<0 1!7>".fast(4), (x) => x.rib("0 | 4".div(16), "1 | .5"))
+        .when("<0 1!7>".fast(4), (x) => x.rib("0 | 4".div(16), 1))
         .when("0 1!3", (x) => x.sometimesBy(0.1, (x) => x.ply(2))),
     fill: (x) => x.rib("12".div(16), 0.25).ply("1 2"),
   })
-  .delay(0.3)
+  .crush(6)
+  .delay(0.2)
   .delays(0.25)
   .delayfb(0.3)
+  .room(0.3)
   .gain(0.3);
 
 all((x) => x.compressor("-10:10:.1:.1:.5"));
