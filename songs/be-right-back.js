@@ -35,25 +35,19 @@ _$LEAD: note(
 
 _$BELLS: s("bells").bank("00-brb").loopAt(4).chop(16).seg(8).gain(0.08);
 
+// // .superimpose(x => x.midi()),
 $DRUMS: stack(
   // main
-  note(
-    "<[c2 c2*2 - c2*2 [c2 c2] [- c2] - c2*2]!3 [c2 c2*2 - c2*2 c2 [- c2] - c2]>",
-  )
-    .s("bd")
-    .slow(2)
-    .superimpose((x) => x.vel(1).midi()),
-  note("<[- c#2]!7 [- c#2*2 c#2 -@2 c#2 -@2]>")
-    .s("sd")
-    .superimpose((x) => x.vel(1).midi()),
-  s("<hh*16!7 [hh*8 -]>").vel(`.5 .2`.fast(8)).slow(2),
-  s("<[- oh]!7 [oh -@2 oh -@2 oh -]>").begin(0.1).vel(0.8),
+  // note("<[c2 c2*2 - c2*2 [c2 c2] [- c2] - c2*2]!3 [c2 c2*2 - c2*2 c2 [- c2] - c2]>").s("bd").slow(2),
+  // note("<[- c#2]!7 [- c#2*2 c#2 -@2 c#2 -@2]>").s("sd"),
+  // s("<hh*16!7 [hh*8 -]>").vel(`.5 .2`.fast(8)).slow(2),
+  // s("<[- oh]!7 [oh -@2 oh -@2 oh -]>").begin(.1).vel(.8),
 
   // break
-  // note("c2 c2*2 - c2*2 [c2 c2] [- c2] - c2*2").vel("1 .7 1 .7").s("bd").slow(2).superimpose(x => x.midi()),
-  // note("- c#2").s("sd").vel(1).superimpose(x => x.midi()),
-  // s("hh*16").vel(`.5 .2`.fast(8)).slow(2),
-  // s("- oh").begin(.1).vel(.3),
+  note("c2 c2*2 - c2*2 [c2 c2] [- c2] - c2*2").vel("1 .7 1 .7").s("bd").slow(2),
+  note("- c#2").s("sd"),
+  s("hh*16").vel(`.5 .2`.fast(8)).slow(2),
+  s("- oh").begin(0.1).vel(0.3),
 )
   .bank("deadrums")
   .room(0.25)
@@ -62,7 +56,7 @@ $DRUMS: stack(
 
 $HIT: s("hit").bank("04-avy").slow(8).delay(0.5).room(0.5).o(1).gain(0.35);
 
-_$NOISE: s("deadfx_noise:0").loopAt(8).chop(64).seg(8).gain(0.1);
+$NOISE: s("deadfx_noise:1").loopAt(8).chop(64).seg(8).gain(0.1);
 
 _$VONY: s("vony_sid")
   .bank("00-brb")
