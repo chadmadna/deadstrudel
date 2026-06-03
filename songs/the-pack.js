@@ -21,13 +21,13 @@ let bg = src(s2)
   .out(o0);
 
 $BASS: s("bass_verse")
-  // s("bass_solo").vel(.7)
+  // s("bass_solo").hpf(120)
   .bank("02-tpk")
   .loopAt(8)
   .chop(64)
   .seg(8)
   .vel(0.7)
-  .gain(slider(0.4, 0, 0.4, 0.05));
+  .gain(slider(0.55, 0, 0.6, 0.05));
 
 $PADS: note("[e2,a2] [[g2,c3]@3 [a2,d3]] [g2,b2] [f#2,d3]")
   .slow(8) // main
@@ -45,9 +45,10 @@ _$DISTGTR: s("distgtr_solo")
   .chop(64)
   .seg(8)
   .vel(0.7)
+  .hpf(400)
   // .scrub(irand(8).div(8).seg(8)).sometimes(x => x.dec(.2).ply("2 | 4"))
   // .rarely(x => x.speed("-.0675")).juxBy(0.3, rev)
-  .gain(0.35);
+  .gain(0.5);
 
 $GTRCLAV: s("gtrclav_verse")
   // s("gtrclav_postverse")

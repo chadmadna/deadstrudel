@@ -25,7 +25,7 @@ $BASS: s("bass_verse")
   .loopAt(16)
   .chop(128)
   .seg(8)
-  .gain(slider(0.35, 0, 0.35, 0.05));
+  .gain(slider(0.3, 0, 0.35, 0.05));
 
 // note("[f1,g#1,c2,g2]").slow(2) // main
 $PADS: note("[f2,g#2,c3,g3]")
@@ -34,20 +34,20 @@ $PADS: note("[f2,g#2,c3,g3]")
   .s("deadpad")
   .att(0.5)
   .rel(1)
-  .gain(0.3);
+  .gain(0.25);
 
 _$LEAD: note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
   .s("deadbrass")
   .lpf(10000)
   .lpq(5)
-  .gain(0.6);
+  .gain(0.5);
 
 _$BELLS: note(
   `<a#2 [- c3] c#3 [- d#3] c3 [- a#2] f2 - a#2 [- c3] c#3 [- d#3] c3 [- a#2] c3>`,
 ) // verse
   // note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
   .s("deadbell")
-  .gain(0.35);
+  .gain(0.25);
 
 // s("guitar_intro").loopAt(8).chop(64).seg(8)
 $GUITAR: s("guitar_verse")
@@ -56,14 +56,14 @@ $GUITAR: s("guitar_verse")
   .seg(8)
   // s("guitar_chorus").loopAt(16).chop(128).seg(8)
   .bank("03-gnh")
-  .gain(0.35);
+  .gain(0.3);
 
 $DRUMS: stack(
   // verse
-  // s("bd bd*2 -@3 [- bd] -@2"),
-  // s("-@6 sd!2"),
-  // s("-@2 [- ht] lt [- ht] lt -@2").vel(.8),
-  // s("oh!4").begin(.1).vel(.3),
+  s("bd bd*2 -@3 [- bd] -@2"),
+  s("-@6 sd!2"),
+  s("-@2 [- ht] lt [- ht] lt -@2").vel(0.8),
+  s("oh!4").begin(0.1).vel(0.3),
 
   // chorus
   // s("bd [bd bd*2] -@2 bd [- bd*2] -@2"),
@@ -72,15 +72,13 @@ $DRUMS: stack(
   // s("oh!4").begin(.1).vel(.3),
 
   // outro
-  s(
-    "<[bd - sd [- lt] - [ht bd] sd [ht lt]] [bd - sd ht [- ht] [- bd] sd sd] [bd - sd - [- ht] [- bd] sd [ht lt]] [[bd sd] [- bd] sd [ht lt] [- lt] bd sd ht]>",
-  ),
+  // s("<[bd - sd [- lt] - [ht bd] sd [ht lt]] [bd - sd ht [- ht] [- bd] sd sd] [bd - sd - [- ht] [- bd] sd [ht lt]] [[bd sd] [- bd] sd [ht lt] [- lt] bd sd ht]>")
 )
   .slow(2)
   .bank("deadrums")
   .room(0.25)
   .o(1)
-  .gain(0.8);
+  .gain(0.7);
 
 $TOMS: s("toms")
   .bank("04-avy")
