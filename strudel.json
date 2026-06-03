@@ -20,6 +20,13 @@
     "c2": "/deadbell/deadbell_c2.wav",
     "c3": "/deadbell/deadbell_c3.wav"
   },
+  "brbass": {
+    "c1": "/brbass/brbass_c1.wav",
+    "c2": "/brbass/brbass_c2.wav",
+    "c3": "/brbass/brbass_c3.wav",
+    "f#1": "/brbass/brbass_f#1.wav",
+    "f#2": "/brbass/brbass_f#2.wav"
+  },
   "deadrums_bd": "/deadrums/deadrums_bd.wav",
   "deadrums_808": "/deadrums/deadrums_808.wav",
   "deadrums_sd": "/deadrums/deadrums_sd.wav",
@@ -110,6 +117,8 @@
   "04-avy_toms": "/04-avy/04-avy-toms.wav",
   "04-avy_hit": "/04-avy/04-avy-hit.wav",
   "03-gnh_synths_verse2": "/03-gnh/03-gnh-synths-verse2.wav",
+  "00-brb_vony_sid": "/00-brb/00-brb-vony-sid.wav",
+  "00-brb_bells": "/00-brb/00-brb-bells.wav",
   "yaxu-clean-breaks_useme": [
     "/yaxu-clean-breaks/Bill_Withers_-_Use_Me_(101_LoopFix) [2019-03-04 124553].wav"
   ],
