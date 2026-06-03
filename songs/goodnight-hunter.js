@@ -25,7 +25,7 @@ $BASS: s("bass_verse")
   .loopAt(16)
   .chop(128)
   .seg(8)
-  .gain(slider(0.3, 0, 0.35, 0.05));
+  .gain(slider(0.25, 0, 0.3, 0.05));
 
 // note("[f1,g#1,c2,g2]").slow(2) // main
 $PADS: note("[f2,g#2,c3,g3]")
@@ -40,14 +40,13 @@ _$LEAD: note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
   .s("deadbrass")
   .lpf(10000)
   .lpq(5)
-  .gain(0.5);
+  .dec(2)
+  .gain(0.4);
 
-_$BELLS: note(
-  `<a#2 [- c3] c#3 [- d#3] c3 [- a#2] f2 - a#2 [- c3] c#3 [- d#3] c3 [- a#2] c3>`,
-) // verse
-  // note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
+// note(`<a#2 [- c3] c#3 [- d#3] c3 [- a#2] f2 - a#2 [- c3] c#3 [- d#3] c3 [- a#2] c3>`) // verse
+_$BELLS: note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
   .s("deadbell")
-  .gain(0.25);
+  .gain(0.2);
 
 // s("guitar_intro").loopAt(8).chop(64).seg(8)
 $GUITAR: s("guitar_verse")
