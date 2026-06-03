@@ -81,6 +81,9 @@
   "03-gnh_bass_chorus": "/03-gnh/03-gnh-bass-chorus.wav",
   "03-gnh_bass_outro": "/03-gnh/03-gnh-bass-outro.wav",
   "03-gnh_bass_verse": "/03-gnh/03-gnh-bass-verse.wav",
+  "03-gnh_guitar_intro": "/03-gnh/03-gnh-guitar-intro.wav",
+  "03-gnh_guitar_verse": "/03-gnh/03-gnh-guitar-verse.wav",
+  "03-gnh_guitar_chorus": "/03-gnh/03-gnh-guitar-chorus.wav",
   "03-gnh_drums_bridge": "/03-gnh/03-gnh-drums-bridge.wav",
   "03-gnh_drums_chorus": [
     "/03-gnh/03-gnh-drums-chorus1.wav",
