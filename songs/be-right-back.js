@@ -91,8 +91,13 @@ solid(0)
       .brightness(briRand.ease("easeInOutQuad").fast(1.2))
       .posterize(posRand.ease("easeInOutQuad").fast(1.4)),
   )
-  // .blend(src(s0).modulate(o0).scrollY(-.1).scale(1, 1, 1.5), .1)
-  // .add(src(o1), .7)
+  .blend(src(s0).modulate(o0).scrollY(-0.1).scale(1, 1, 1.5).rotate(-11), 0.1)
+  .add(
+    src(o1)
+      .mask(shape(100, 0.5, 0.9))
+      .scale(1, height / width),
+    0.7,
+  )
   .out(o0);
 
 // MIDI trigs and scenes
@@ -102,11 +107,14 @@ await hm.midi.start({
   adsrVelocity: "latched",
 });
 
-let trigify = (x) => x.diff(solid(trig, trig, trig)).luma();
-
 // hm.midi.show()
 
 let trig = hm.note("*", 0, 0).adsr(100, 500, 0.6, 500);
+let trigify = (x) =>
+  x
+    .diff(solid(trig, trig, trig))
+    .contrast(2)
+    .luma();
 
 let mask1 = trigify(
   osc(trig.range(5, 30), 0, 0)
