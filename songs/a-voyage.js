@@ -4,28 +4,12 @@
 samples("http://localhost:3000/strudel.json?v=99");
 setcpm(130 / 4);
 
-await initHydra();
-
-let bg = src(s2)
-  .modulate(src(s2), 0.2)
-  .scrollX(0.5, 0.1)
-  .modulate(
-    osc(30, 0.05, 0)
-      .modulate(noise(3, 0.01), 0.01)
-      .modulate(noise(100, 0), 0.01),
-    0.01,
-  )
-  .modulateScale(noise(1, 0.3), 0.1)
-  .saturate(0.5)
-  .hue(0.55)
-  .out(o0);
-
 $BASS: s("bass")
   .bank("04-avy")
   .loopAt(16)
   .chop(128)
   .seg(8)
-  .gain(slider(0.35, 0, 0.5, 0.05));
+  .gain(slider(0.4, 0, 0.5, 0.05));
 
 $GUITAR: s("guitar").bank("04-avy").loopAt(16).chop(128).seg(8).gain(0.3);
 
@@ -123,6 +107,22 @@ _$BREAKS: s("riffin")
   .gain(0.07);
 
 all((x) => x.compressor("-10:10:.1:.1:.5"));
+
+await initHydra();
+
+let bg = src(s2)
+  .modulate(src(s2), 0.2)
+  .scrollX(0.5, 0.1)
+  .modulate(
+    osc(30, 0.05, 0)
+      .modulate(noise(3, 0.01), 0.01)
+      .modulate(noise(100, 0), 0.01),
+    0.01,
+  )
+  .modulateScale(noise(1, 0.3), 0.1)
+  .saturate(0.5)
+  .hue(0.55)
+  .out(o0);
 
 s2.initImage(
   "https://upload.wikimedia.org/wikipedia/commons/b/bf/Hieronymus_Bosch_-_Triptych_of_Garden_of_Earthly_Delights_%28detail%29_-_WGA2526.jpg",

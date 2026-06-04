@@ -4,22 +4,6 @@
 samples("http://localhost:3000/strudel.json?v=99");
 setcpm(130 / 4);
 
-await initHydra();
-
-let randVals = Array.from({ length: 128 }, Math.random);
-
-let bg = src(s2)
-  .modulate(src(s2).modulate(noise(1, 0.5), 0.01), 0.5)
-  .scrollY(0.25, 0.2)
-  .scrollX(randVals.map((x) => x * 0.25 - 0.125).ease("easeInOutQuart"))
-  .modulateScrollY(voronoi(1000, 4, 0.5), 0.01)
-  .modulateScale(voronoi(20, 0.3).modulateRotate(osc(1, 0.3)), 0.1)
-  .invert()
-  .saturate(0.8)
-  .hue(0)
-  .brightness(-0.2)
-  .out(o0);
-
 $BASS: s("bass_verse")
   // s("bass_solo").hpf(120)
   .bank("02-tpk")
@@ -129,6 +113,22 @@ _$BREAKS: s("do")
   .gain(0.3);
 
 all((x) => x.compressor("-10:10:.1:.1:.5"));
+
+await initHydra();
+
+let randVals = Array.from({ length: 128 }, Math.random);
+
+let bg = src(s2)
+  .modulate(src(s2).modulate(noise(1, 0.5), 0.01), 0.5)
+  .scrollY(0.25, 0.2)
+  .scrollX(randVals.map((x) => x * 0.25 - 0.125).ease("easeInOutQuart"))
+  .modulateScrollY(voronoi(1000, 4, 0.5), 0.01)
+  .modulateScale(voronoi(20, 0.3).modulateRotate(osc(1, 0.3)), 0.1)
+  .invert()
+  .saturate(0.8)
+  // .hue(.53)
+  .brightness(-0.2)
+  .out(o0);
 
 s2.initImage(
   "https://upload.wikimedia.org/wikipedia/commons/b/bf/Hieronymus_Bosch_-_Triptych_of_Garden_of_Earthly_Delights_%28detail%29_-_WGA2526.jpg",
