@@ -4,20 +4,6 @@
 samples("http://localhost:3000/strudel.json?v=3");
 setcpm(130 / 4);
 
-await initHydra();
-
-let bg = src(s2)
-  .modulate(src(s2), 0.1)
-  .scrollY(0.5, 0.1)
-  .modulate(
-    osc(30, 0.05, 0)
-      .modulate(noise(3, 0.01), 0.01)
-      .modulate(noise(100, 0), 0.01),
-    0.01,
-  )
-  .modulateScale(noise(1, 0.3), 0.1)
-  .out(o0);
-
 $BASS: s("bass_verse")
   // s("bass_chorus")
   // s("bass_outro")
@@ -141,6 +127,25 @@ _$BREAKS: s("funkydrummer")
 
 all((x) => x.compressor("-10:10:.1:.1:.5"));
 
-s2.initImage(
+await initHydra();
+
+let bg = src(s0)
+  .modulate(src(s2), 0.1)
+  .scrollX(() => Math.sin(time) * 0.2 + 3, 0.3)
+  .scrollY(() => Math.sin(Math.sin(2 * time)) * 0.1, 0.1)
+  .modulateScrollX(osc(600, 0.1).modulate(noise(10, 0.01), 0.1), 0.01)
+  .modulate(osc(30, 0.05, 0).modulate(noise(100, 0), 0.01), 0.01)
+  .modulateScale(noise(1, 0.3), 0.1)
+  .hue(0.05)
+  .invert()
+  .mult(
+    src(s1).invert().hue(0.45).scale(1.2).modulateScale(voronoi(30, 1), 0.1),
+  )
+  .out(o0);
+
+s0.initImage(
   "https://upload.wikimedia.org/wikipedia/commons/b/bf/Hieronymus_Bosch_-_Triptych_of_Garden_of_Earthly_Delights_%28detail%29_-_WGA2526.jpg",
+);
+s1.initImage(
+  "https://upload.wikimedia.org/wikipedia/commons/0/0e/ARCSIX_Analyzes_Arctic_Sea_Ice_Loss_%28153113_-_photo_lrg%29.jpg",
 );
