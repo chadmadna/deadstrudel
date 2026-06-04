@@ -104,7 +104,7 @@ await hm.midi.start({
 
 let trigify = (x) => x.diff(solid(trig, trig, trig)).luma();
 
-hm.midi.show();
+// hm.midi.show()
 
 let trig = hm.note("*", 0, 0).adsr(100, 500, 0.6, 500);
 
