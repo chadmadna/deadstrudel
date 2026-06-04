@@ -5,7 +5,7 @@ samples("http://localhost:3000/strudel.json?v=3");
 setcpm(130 / 4);
 
 await initHydra();
-midiport("IAC Driver");
+// midiport('IAC Driver')
 
 // note(`<f#1*8!7 [a1 a1 c#2 f#2@2 c#2 f#2 c2]>`) // verse
 $BASS: note(`<f#1*8!4 d2*8!2 c#2*8 [a1 a1 c#2 f#2@2 c#2 f#2 c2]>`) // chorus
@@ -79,7 +79,8 @@ solid(0)
   .blend(
     src(s0)
       .saturate(3)
-      .modulate(s0, 0.05)
+      .scale(1.1)
+      .modulate(s0, 0.1)
       .brightness(briRand.ease("easeInOutQuad").fast(3.4))
       .posterize(posRand.ease("easeInOutQuad").fast(3)),
   )
