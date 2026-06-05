@@ -4,14 +4,14 @@
 samples("http://localhost:3000/strudel.json?v=99");
 setcpm(130 / 4);
 
-$BASS: s("bass")
+_$BASS: s("bass")
   .bank("04-avy")
   .loopAt(16)
   .chop(128)
   .seg(8)
   .gain(slider(0.4, 0, 0.5, 0.05));
 
-$GUITAR: s("guitar").bank("04-avy").loopAt(16).chop(128).seg(8).gain(0.3);
+_$GUITAR: s("guitar").bank("04-avy").loopAt(16).chop(128).seg(8).gain(0.3);
 
 _$PADS: note(
   "[D1,D2] [A#1,F2] [A1,E2] [A1,C#2] [A1,D2] [F1,A#1] [A1,C3] [E2,C#3]",
@@ -22,7 +22,7 @@ _$PADS: note(
   .rel(1)
   .gain(0.3);
 
-$DRUMS: stack(
+_$DRUMS: stack(
   s("bd sd").bank("deadrums").slow(2),
   s("boom").bank("deadrums").slow(2),
   s("sear")
@@ -43,7 +43,7 @@ $DRUMS: stack(
   .o(1)
   .gain(0.7);
 
-$TOMS: s("toms")
+_$TOMS: s("toms")
   .bank("04-avy")
   .loopAt(2)
   .chop(16)
@@ -55,7 +55,7 @@ $TOMS: s("toms")
   .o(1)
   .gain(0.45);
 
-$TOPS: s("techytop")
+_$TOPS: s("techytop")
   .bank("04-avy")
   .loopAt(2)
   .chop(32)

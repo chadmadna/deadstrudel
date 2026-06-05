@@ -4,22 +4,25 @@
 samples("http://localhost:3000/strudel.json?v=3");
 setcpm(130 / 4);
 
-$BASS: s("bass_verse")
+_$BASS: s("bass_verse")
   // s("bass_chorus")
   // s("bass_outro")
   .bank("03-gnh")
   .loopAt(16)
   .chop(128)
   .seg(8)
-  .gain(slider(0.25, 0, 0.3, 0.05));
+  .gain(slider(0.2, 0, 0.3, 0.05));
 
-// note("[f1,g#1,c2,g2]").slow(2) // main
-$PADS: note("[f2,g#2,c3,g3]")
-  .slow(2) // verse
+$PADS: note("[f1,g#1,c2,g2]")
+  .slow(2) // main
+  // note("[f2,g#2,c3,g3]").slow(2) // verse
   // note("[[[f2@8],[- g#2@7],[-@2 c3@6],[-@3 g3@5]] [f2,g#2,c3,g3]!7],[- [c4@3 c#4] c4 [a#3@3 g#3]]").slow(8)
   .s("deadpad")
   .att(0.5)
   .rel(1)
+  .o(3)
+  .room(0.9)
+  .rsize(7)
   .gain(0.25);
 
 _$LEAD: note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
@@ -29,21 +32,23 @@ _$LEAD: note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
   .dec(2)
   .gain(0.4);
 
-// note(`<a#2 [- c3] c#3 [- d#3] c3 [- a#2] f2 - a#2 [- c3] c#3 [- d#3] c3 [- a#2] c3>`) // verse
-_$BELLS: note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
+_$BELLS: note(
+  `<a#2 [- c3] c#3 [- d#3] c3 [- a#2] f2 - a#2 [- c3] c#3 [- d#3] c3 [- a#2] c3>`,
+) // verse
+  // note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
   .s("deadbell")
   .gain(0.2);
 
-// s("guitar_intro").loopAt(8).chop(64).seg(8)
-$GUITAR: s("guitar_verse")
+_$GUITAR: s("guitar_intro")
   .loopAt(8)
   .chop(64)
   .seg(8)
+  // s("guitar_verse").loopAt(8).chop(64).seg(8)
   // s("guitar_chorus").loopAt(16).chop(128).seg(8)
   .bank("03-gnh")
   .gain(0.3);
 
-$DRUMS: stack(
+_$DRUMS: stack(
   // verse
   s("bd bd*2 -@3 [- bd] -@2"),
   s("-@6 sd!2"),
@@ -65,7 +70,7 @@ $DRUMS: stack(
   .o(1)
   .gain(0.7);
 
-$TOMS: s("toms")
+_$TOMS: s("toms")
   .bank("04-avy")
   .loopAt(2)
   .chop(16)

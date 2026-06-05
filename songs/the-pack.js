@@ -11,9 +11,9 @@ $BASS: s("bass_verse")
   .chop(64)
   .seg(8)
   .vel(0.7)
-  .gain(slider(0.55, 0, 0.6, 0.05));
+  .gain(slider(0, 0, 0.6, 0.05));
 
-$PADS: note("[e2,a2] [[g2,c3]@3 [a2,d3]] [g2,b2] [f#2,d3]")
+_$PADS: note("[e2,a2] [[g2,c3]@3 [a2,d3]] [g2,b2] [f#2,d3]")
   .slow(8) // main
   // note("[e2,a2]").slow(4).seg(8) // postverse
   // note("[e2,a2]!6 [g2,c3] [a2,d3]").slow(8).seg(8) // solo
@@ -34,7 +34,7 @@ _$DISTGTR: s("distgtr_solo")
   // .rarely(x => x.speed("-.0675")).juxBy(0.3, rev)
   .gain(0.5);
 
-$GTRCLAV: s("gtrclav_verse")
+_$GTRCLAV: s("gtrclav_verse")
   // s("gtrclav_postverse")
   // s("gtrclav_solo")
   .bank("02-tpk")
@@ -71,7 +71,7 @@ _$VOX: note(
   // .o(2).delay(.5).delayfb(.95).delays(1/6).room(.3)
   .gain(0.7);
 
-$DRUMS: stack(
+_$DRUMS: stack(
   s("bd bd bd*4@2 - bd bd*4@2").vel(0.7),
   s("lt*2 - lt -").vel(0.6),
   s("- sd"),
