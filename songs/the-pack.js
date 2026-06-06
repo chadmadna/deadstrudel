@@ -5,11 +5,12 @@ samples('http://localhost:3000/strudel.json')
 setcpm(130 / 4)
 
 $BASS:
+  s("bass_intro")
   // s("bass_verse")
-  s("bass_solo").hpf(120)
+  // s("bass_solo").hpf(120)
     .bank("02-tpk").loopAt(8).chop(64).seg(8)
     .vel(0.7)
-    .gain(slider(0, 0, 0.6, 0.05))
+    .gain(slider(0, 0, 0.35, 0.05))
 
 _$PADS:
   note("[e2,a2] [[g2,c3]@3 [a2,d3]] [g2,b2] [f#2,d3]").slow(8) // main
@@ -26,6 +27,7 @@ _$DISTGTR:
     // .scrub(irand(8).div(8).seg(8)).sometimes(x => x.dec(.2).ply("2 | 4"))
     // .rarely(x => x.speed("-.0675")).juxBy(0.3, rev)
     .gain(0.5)
+    // .gain(0.2) // breaks section
 
 _$GTRCLAV:
   s("gtrclav_verse")
@@ -34,7 +36,7 @@ _$GTRCLAV:
     .bank("02-tpk").loopAt(8).chop(64).seg(8)
     // .rib("0 | 0.5 | 1.25".fast(4), .375)
     .lpf(8000).hpf(60).delay(0.3).dfb(0.7).ds(1)
-    .gain(0.3)
+    .gain(0.25)
 
 _$VOX:
 // verse
@@ -44,10 +46,10 @@ _$VOX:
   // note(`[11@2 10 10 11 10@2 11@2 11 10 9@5] [-@4 [11 11 10]@4 11@4 -@4] [-@5 9 9 9 10@2 9 8@5] [-@4 10@2 10@2 9@2 8 8@3 -@2]`).slow(8)
 // postverse
   // note(`[9@4 7@4 -@8] -@3`).slow(8)
-    .scale("A:minor")
-    .s("gm_choir_aahs")
+    .s("gm_choir_aahs").scale("A:minor")
     .att(0).dec(0.2).sus(0.7).rel(0.2)
-    .chebyshev(0.1, 1).delay(0.3).room(0.5)
+    .chebyshev(0.1, 1)
+    .delay(0.3).room(0.5)
     // .o(2).delay(.5).delayfb(.95).delays(1/6).room(.3)
     .gain(0.7)
 
@@ -71,6 +73,8 @@ $HIT:
     .gain(0.25)
 
 $NOISE: s("deadfx_noise").loopAt(8).chop(64).seg(8).gain(0.1)
+
+$TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => x.jux(press).vel(.5)).gain(.5)
 
 _$BREAKS:
   s("do")

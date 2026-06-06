@@ -1,7 +1,7 @@
 // @title Goodnight, Hunter
 // @by DEADLEADERS
 
-samples('http://localhost:3000/strudel.json')
+samples('http://localhost:3000/strudel.json?v=3')
 setcpm(130 / 4)
 
 _$BASS:
@@ -9,25 +9,16 @@ _$BASS:
   // s("bass_chorus")
   // s("bass_outro")
     .bank("03-gnh").loopAt(16).chop(128).seg(8)
-    .gain(slider(0.2, 0, 0.3, 0.05))
+    .gain(slider(0.3, 0, 0.3, 0.05))
 
 $PADS:
   note("[f1,g#1,c2,g2]").slow(2) // main
   // note("[f2,g#2,c3,g3]").slow(2) // verse
+  // note("<[a#1,[a#2@3 c2]] [c#1,[c#2@3 d#2]] [f1,[c2@3 a#2]] [g#1,f2] [a#1,[a#2@3 c2]] [c#1,[c#2@3 d#2]] [f1,[c2@3 a#2]] [c2,[[a#2,c3]@7 g3@9]]>".slow(2)) // chorus
   // note("[[[f2@8],[- g#2@7],[-@2 c3@6],[-@3 g3@5]] [f2,g#2,c3,g3]!7],[- [c4@3 c#4] c4 [a#3@3 g#3]]").slow(8) // outro
     .s("deadpad").att(0.2).rel(1)
     .o(3).room(0.9).rsize(7)
     .gain(0.25)
-
-_$LEAD: note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
-  .s("deadbrass").lpf(10000).lpq(5).dec(2)
-  .gain(0.45)
-
-_$BELLS:
-  note(`<a#2 [- c3] c#3 [- d#3] c3 [- a#2] f2 - a#2 [- c3] c#3 [- d#3] c3 [- a#2] c3 ->`) // verse
-  // note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
-    .s("deadbell")
-    .gain(0.2)
 
 $GUITAR:
   s("guitar_intro").loopAt(8).chop(64).seg(8)
@@ -35,6 +26,16 @@ $GUITAR:
   // s("guitar_chorus").loopAt(16).chop(128).seg(8)
     .bank("03-gnh")
     .gain(slider(0, 0, 0.3, 0.01))
+
+_$BELLS:
+  // note(`<a#2 [- c3] c#3 [- d#3] c3 [- a#2] f2 - a#2 [- c3] c#3 [- d#3] c3 [- a#2] c3 ->`) // verse
+  note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
+    .s("deadbell")
+    .gain(0.2)
+
+_$LEAD: note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
+  .s("deadbrass").lpf(10000).lpq(5).dec(2)
+  .gain(0.45)
 
 _$DRUMS: stack(
   // // verse
@@ -74,7 +75,9 @@ $HIT: s("hit").bank("04-avy").slow(16).delay(0.5).room(0.5).o(1).gain(0.25)
 
 _$NOISE: s("deadfx_noise:0").loopAt(8).chop(64).seg(8).gain(0.1)
 
-_$BREAKS: s("funkydrummer")
+$TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => x.jux(press).vel(.5)).gain(.5)
+
+_$BREAKS: s("squib")
   .bank("yaxu-clean-breaks").loopAt(2).chop(16).seg(8)
   .pickF("<pat!7 <fillA fillB>>", {
     pat: (x) => x
@@ -87,8 +90,8 @@ _$BREAKS: s("funkydrummer")
     fillB: (x) => x.scrub(stepcat([1, "0 0"], [3, run(32).div(32).add(4).div(32)])),
   })
   .lpf(slider(122.5, 0, 140).pow(2)).lpq(3).hpf(60)
-  .chebyshev(0.4, 0.01)
-  .gain(0.09)
+  .chebyshev(0.4, 0.01).juxBy(0.7, rev)
+  .gain(0.05)
 
 all(
   x => x.compressor("-10:10:.1:.1:.5")

@@ -5,45 +5,46 @@ samples('http://localhost:3000/strudel.json?v=133')
 setcpm(130 / 4)
 
 _$BASS:
-  // note(`<f#1*8!7 [a1 a1 c#2 f#2@2 c#2 f#2 c2]>`) // verse
-  note(`<f#1*8!4 d2*8!2 c#2*8 [a1 a1 c#2 f#2@2 c#2 f#2 c2]>`) // chorus
+  note(`<f#1*8!7 [a1 a1 c#2 f#2@2 c#2 f#2 c2]>`) // verse
+  // note(`<f#1*8!4 d2*8!2 c#2*8 [a1 a1 c#2 f#2@2 c#2 f#2 c2]>`) // chorus
     .s("brbass").att(0).rel(0.2)
-    .gain(0.25)
+    .gain(0.2)
 
 $BELLS: s("bells/4").bank("00-brb").fit().chop(16).seg(8).gain(0.15)
 
 _$PADS:
   note(`<f#1,f#2>`) // intro
-  // stack(note(`<[f#1,f#2]>`), note(`<[- - [d3,c4]@6] [[c3,e4]@2 d3 [c3,c#4]@2 e3 [c3,c4]@2]>`).vel(.7)) // chorus
+  // stack(note(`<[f#1,f#2]>`), note(`<[- - [d3,c4]@6] [[c3,e4]@2 d3 [c3,c#4]@2 e3 [c3,c4]@2]>`).vel(.7)) // verse
   // stack(note(`<[f#1,f#2]!4 [d1,d2]!2 [c#1,c#2] [a1,a2]>`), note(`<[- - [d3,c4]@6] [[c3,e4]@2 d3 [c3,c#4]@2 e3 [c3,c4]@2]>`).vel(.7)) // chorus
   // chord(`<Bm DM7 F#m A2>`).slow(2).anchor("B2").voicing().vel(.7) // ada yg ngomong dari surga
-    // stack( // lagu klasik
-    //   chord(`<DM7 A2 E F#m DM7 C#m F#m@2>`).anchor("F3").voicing().vel(.5),
-    //   note(`a3@4 b3@3 a3@5 c#4@3 b3@5 d4@3 c#4@2 a3@5 a3 g#4@5 f#4@4 e4@5 a3@2 g#4@6 a4 g#4 f#4@5 b3@3 a3`).trans(-12).slow(8),
-    // )
+  // stack( // lagu klasik
+  //   chord(`<DM7 A2 E F#m DM7 C#m F#m@2>`).anchor("F3").voicing().vel(.7),
+  //   note(`a3@4 b3@3 a3@5 c#4@3 b3@5 d4@3 c#4@2 a3@5 a3 g#4@5 f#4@4 e4@5 a3@2 g#4@6 a4 g#4 f#4@5 b3@3 a3`).trans(-12).slow(8),
+  // )
     .s("deadpad").att(0).rel(1)
     .gain(0.3)
 
 _$LEAD:
   note(`<[- - [d2,c3] [c2,d3] - c2 [d2,c3] -] [[c2,e3] - - - d2 - [c2,c#3] - e2 - c2 - c3@2 -@2]>`)
-    .s("deadbrass")
-    .hpf(500).lpf(12000)
+    .s("deadbrass").trans(12)
+    .hpf(200).lpf(10000)
     .rel(0.3).delay(0.9)
     .gain(0.35)
 
-$DRUMS:
+_$DRUMS:
 stack(
-  // // main
+  // // verse
+  note("c2 c2*2 - c2*2 [c2 c2] [- c2] - c2*2").vel("1 .7 1 .7").s("bd").slow(2),
+  note("- [c2 -@3]").s("sd").superimpose(x => x.midi()),
+  s("hh*16").vel(`.5 .2`.fast(8)).slow(2),
+  s("- oh").begin(0.1).vel(0.3),
+
+  // // chorus
   // note("<[c2 c2*2 - c2*2 [c2 c2] [- c2] - c2*2]!3 [c2 c2*2 - c2*2 c2 [- c2] - c2]>").s("bd").slow(2).superimpose(x => x.midi()),
   // note("<[- c#2]!7 [- c#2*2 c#2 -@2 c#2 -@2]>").s("sd").superimpose(x => x.midi()),
   // s("<hh*16!7 [hh*8 -]>").vel(`.5 .2`.fast(8)).slow(2),
   // s("<[- oh]!7 [oh -@2 oh -@2 oh -]>").begin(.1).vel(.8),
 
-  // // break
-  // note("c2 c2*2 - c2*2 [c2 c2] [- c2] - c2*2").vel("1 .7 1 .7").s("bd").slow(2),
-  // note("- c#2").s("sd"),
-  // s("hh*16").vel(`.5 .2`.fast(8)).slow(2),
-  // s("- oh").begin(0.1).vel(0.3),
 )
   .bank("deadrums")
   .room(0.25).o(1)
@@ -54,6 +55,8 @@ $HIT: s("hit").bank("04-avy").slow(8).delay(0.5).room(0.5).o(1).gain(0.35)
 
 $NOISE: s("deadfx_noise:1").loopAt(8).chop(64).seg(8).gain(0.1)
 
+$TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => x.jux(press).vel(.5)).gain(.5)
+
 //  ██████  █████  ██████  ███████ ██   ██          ██  █████  ██████  ██     ██     ██ ███    ██ ██ ██ ██
 // ██      ██   ██ ██   ██ ██      ██  ██           ██ ██   ██ ██   ██ ██     ██     ██ ████   ██ ██ ██ ██
 // ██      ███████ ██████  █████   █████            ██ ███████ ██   ██ ██     ██  █  ██ ██ ██  ██ ██ ██ ██
@@ -62,8 +65,9 @@ $NOISE: s("deadfx_noise:1").loopAt(8).chop(64).seg(8).gain(0.1)
 
 _$VONY: s("vony_sid")
   .bank("00-brb").loopAt(32).chop(64).seg(2)
-  .o(2).room(0.8).delay(0.3).delays(0.3).delayfb(0.8)
-  .speed(.014).rib("0 | 0.5 | 1.25".fast(2), .5)
+  .o(2).room(0.8)
+  // .delay(0.3).delays(0.3).delayfb(0.8)
+  // .speed(.014).rib("0 | 0.5 | 1.25".fast(2), .5)
   .gain(0.3)
 
 all(

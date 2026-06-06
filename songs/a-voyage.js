@@ -7,7 +7,7 @@ setcpm(130 / 4)
 $BASS:
   s("bass")
     .bank("04-avy").loopAt(16).chop(128).seg(8)
-    .gain(slider(0, 0, 0.5, 0.05))
+    .gain(slider(0, 0, 0.35, 0.05))
 
 _$GUITAR: s("guitar")
   .bank("04-avy").loopAt(16).chop(128).seg(8)
@@ -15,11 +15,10 @@ _$GUITAR: s("guitar")
 
 _$PADS:
   note("[D1,D2] [A#1,F2] [A1,E2] [A1,C#2] [A1,D2] [F1,A#1] [A1,C3] [E2,C#3]").slow(16)
-    .s("deadpad")
-    .att(0.5).rel(1)
+    .s("deadpad").att(0.5).rel(1)
     .gain(0.3)
 
-$DRUMS:
+_$DRUMS:
 stack(
   s("bd sd").bank("deadrums").slow(2),
   s("boom").bank("deadrums").slow(2),
@@ -37,13 +36,16 @@ _$TOMS: s("toms")
 
 _$TOPS: s("techytop")
   .bank("04-avy").loopAt(2).chop(32).seg(16)
-  .vel(0.8).mask("1 0".slow(2))
+  .vel(0.8)
+  .mask("1 0".slow(2))
   .delay(0.5).delays(0.5).delayfb(0.5).o(1)
   .gain(0.2)
 
 $HIT: s("hit").bank("04-avy").slow(16).delay(0.5).room(0.5).o(1).gain(0.25)
 
 $NOISE: s("deadfx_noise:0").loopAt(8).chop(64).seg(8).gain(0.1)
+
+$TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => x.jux(press).vel(.5)).gain(.5)
 
 _$BREAKS: s("riffin")
   .bank("yaxu-clean-breaks").loopAt(2).chop(16).seg(8)
