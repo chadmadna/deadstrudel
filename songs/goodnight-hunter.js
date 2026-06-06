@@ -75,7 +75,8 @@ $HIT: s("hit").bank("04-avy").slow(16).delay(0.5).room(0.5).o(1).gain(0.25)
 
 _$NOISE: s("deadfx_noise:0").loopAt(8).chop(64).seg(8).gain(0.1)
 
-$TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => x.jux(press).vel(.5)).gain(.5)
+_$TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => x.jux(press).vel(.5)).gain(.5)
+$CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
 
 _$BREAKS: s("squib")
   .bank("yaxu-clean-breaks").loopAt(2).chop(16).seg(8)

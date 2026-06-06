@@ -49,6 +49,7 @@
     "/deadfx/00-FX-Noise-HiMid.wav",
     "/deadfx/00-FX-Noise-Mid.wav"
   ],
+  "deadfx_clock": "/deadfx/00-FX-Clock.wav",
   "01-otd_808": "/01-otd/01-otd-808.wav",
   "01-otd_bass_chorus": "/01-otd/01-otd-bass-chorus.wav",
   "01-otd_bass_outro": "/01-otd/01-otd-bass-outro.wav",
