@@ -1,7 +1,7 @@
 // @title A Voyage
 // @by DEADLEADERS
 
-samples('http://localhost:3000/strudel.json')
+samples('http://localhost:3000/strudel.json?v=99')
 setcpm(130 / 4)
 
 $BASS:
@@ -9,7 +9,9 @@ $BASS:
     .bank("04-avy").loopAt(16).chop(128).seg(8)
     .gain(slider(0, 0, 0.5, 0.05))
 
-_$GUITAR: s("guitar").bank("04-avy").loopAt(16).chop(128).seg(8).gain(0.3)
+_$GUITAR: s("guitar")
+  .bank("04-avy").loopAt(16).chop(128).seg(8)
+  .gain(slider(0.3, 0, 0.3, 0.05))
 
 _$PADS:
   note("[D1,D2] [A#1,F2] [A1,E2] [A1,C#2] [A1,D2] [F1,A#1] [A1,C3] [E2,C#3]").slow(16)
@@ -39,7 +41,7 @@ _$TOPS: s("techytop")
   .delay(0.5).delays(0.5).delayfb(0.5).o(1)
   .gain(0.2)
 
-_$HIT: s("hit").bank("04-avy").slow(16).delay(0.5).room(0.5).o(1).gain(0.25)
+$HIT: s("hit").bank("04-avy").slow(16).delay(0.5).room(0.5).o(1).gain(0.25)
 
 $NOISE: s("deadfx_noise:0").loopAt(8).chop(64).seg(8).gain(0.1)
 
