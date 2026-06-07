@@ -91,10 +91,6 @@ _$BREAKS: s("squib")
   .chebyshev(0.4, 0.01).juxBy(0.7, rev)
   .gain(0.1)
 
-all(
-  x => x.compressor("-10:10:.1:.1:.5")
-)
-
 // Hydra stuff
 await initHydra()
 

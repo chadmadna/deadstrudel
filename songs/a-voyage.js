@@ -65,10 +65,6 @@ _$BREAKS: s("riffin")
   .chebyshev(0.4, 0.01)
   .gain(0.08)
 
-all(
-  x => x.compressor("-10:10:.1:.1:.5")
-)
-
 await initHydra()
 
 let bg = src(s2)

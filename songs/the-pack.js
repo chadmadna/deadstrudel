@@ -90,8 +90,6 @@ _$BREAKS:
     .delay(0.2).delays(0.25).delayfb(0.3)
     .gain(0.5)
 
-all((x) => x.compressor("-10:10:.1:.1:.5"))
-
 await initHydra()
 
 let randVals = Array.from({ length: 128 }, Math.random)
