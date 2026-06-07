@@ -51,7 +51,7 @@ _$VOX:
     .chebyshev(0.1, 1)
     .delay(0.3).room(0.5)
     // .o(2).delay(.5).delayfb(.95).delays(1/6).room(.3)
-    .gain(0.7)
+    .gain(0.5)
 
 _$DRUMS:
 stack(
@@ -88,7 +88,7 @@ _$BREAKS:
     })
     .crush(6).room(0.3)
     .delay(0.2).delays(0.25).delayfb(0.3)
-    .gain(0.3)
+    .gain(0.5)
 
 all((x) => x.compressor("-10:10:.1:.1:.5"))
 

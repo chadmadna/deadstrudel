@@ -7,7 +7,7 @@ setcpm(130 / 4)
 $BASS:
   s("bass")
     .bank("04-avy").loopAt(16).chop(128).seg(8)
-    .gain(slider(0, 0, 0.35, 0.05))
+    .gain(slider(0, 0, 0.3, 0.05))
 
 _$GUITAR: s("guitar")
   .bank("04-avy").loopAt(16).chop(128).seg(8)
@@ -63,7 +63,7 @@ _$BREAKS: s("riffin")
   })
   .lpf(slider(122.5, 0, 140).pow(2)).lpq(3).hpf(60)
   .chebyshev(0.4, 0.01)
-  .gain(0.07)
+  .gain(0.08)
 
 all(
   x => x.compressor("-10:10:.1:.1:.5")

@@ -22,14 +22,14 @@ _$PADS:
   //   note(`a3@4 b3@3 a3@5 c#4@3 b3@5 d4@3 c#4@2 a3@5 a3 g#4@5 f#4@4 e4@5 a3@2 g#4@6 a4 g#4 f#4@5 b3@3 a3`).trans(-12).slow(8),
   // )
     .s("deadpad").att(0).rel(1)
-    .gain(0.3)
+    .gain(0.2)
 
 _$LEAD:
   note(`<[- - [d2,c3] [c2,d3] - c2 [d2,c3] -] [[c2,e3] - - - d2 - [c2,c#3] - e2 - c2 - c3@2 -@2]>`)
     .s("deadbrass").trans(12)
     .hpf(200).lpf(10000)
     .rel(0.3).delay(0.9)
-    .gain(0.35)
+    .gain(0.2)
 
 _$DRUMS:
 stack(
@@ -53,7 +53,7 @@ stack(
 
 $HIT: s("hit").bank("04-avy").slow(8).delay(0.5).room(0.5).o(1).gain(0.35)
 
-$NOISE: s("deadfx_noise:1").loopAt(8).chop(64).seg(8).gain(0.1)
+_$NOISE: s("deadfx_noise:1").loopAt(8).chop(64).seg(8).gain(0.1)
 
 _$TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => x.jux(press).vel(.5)).gain(.5)
 $CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
@@ -66,10 +66,10 @@ $CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => p
 
 _$VONY: s("vony_sid")
   .bank("00-brb").loopAt(32).chop(64).seg(2)
-  .o(2).room(0.8)
+  .hpf(800)
   // .delay(0.3).delays(0.3).delayfb(0.8)
   // .speed(.014).rib("0 | 0.5 | 1.25".fast(2), .5)
-  .gain(0.3)
+  .gain(0.25)
 
 all(
   x => x?.compressor("-10:10:.1:.1:.5")

@@ -28,8 +28,8 @@ $GUITAR:
     .gain(slider(0, 0, 0.3, 0.01))
 
 _$BELLS:
-  // note(`<a#2 [- c3] c#3 [- d#3] c3 [- a#2] f2 - a#2 [- c3] c#3 [- d#3] c3 [- a#2] c3 ->`) // verse
-  note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
+  note(`<a#2 [- c3] c#3 [- d#3] c3 [- a#2] f2 - a#2 [- c3] c#3 [- d#3] c3 [- a#2] c3 ->`) // verse
+  // note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
     .s("deadbell")
     .gain(0.2)
 
@@ -51,18 +51,15 @@ _$DRUMS: stack(
   // s("oh!4").begin(.1).vel(.3),
 
   // // outro
-  // s("<[bd - sd [- lt] - [ht bd] sd [ht lt]] [bd - sd ht [- ht] [- bd] sd sd] [bd - sd - [- ht] [- bd] sd [ht lt]] [[bd sd] [- bd] sd [ht lt] [- lt] bd sd ht]>")
+  s("<[bd - sd [- lt] - [ht bd] sd [ht lt]] [bd - sd ht [- ht] [- bd] sd sd] [bd - sd - [- ht] [- bd] sd [ht lt]] [[bd sd] [- bd] sd [ht lt] [- lt] bd sd ht]>")
 ).slow(2)
   .bank("deadrums")
   .room(0.25).o(1)
   .gain(0.7)
 
-_$TOMS:
-  s("toms")
-    .bank("04-avy").loopAt(2).chop(16).seg(8).vel(0.49)
-    .rib(0.5, 0.5)
-    .room(0.4).rsize(2).rdim(200).o(1)
-    .gain(0.45)
+_$TOMS: s("toms").bank("04-avy").loopAt(2).chop(16).seg(8).vel(0.49).rib(0.5, 0.5)
+  .room(0.4).rsize(2).rdim(200).o(1)
+  .gain(0.45)
 
 _$DRUMS_BRIDGE:
   s("drums_bridge")
@@ -92,7 +89,7 @@ _$BREAKS: s("squib")
   })
   .lpf(slider(122.5, 0, 140).pow(2)).lpq(3).hpf(60)
   .chebyshev(0.4, 0.01).juxBy(0.7, rev)
-  .gain(0.05)
+  .gain(0.1)
 
 all(
   x => x.compressor("-10:10:.1:.1:.5")
