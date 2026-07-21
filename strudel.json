@@ -112,12 +112,45 @@
     "/03-gnh/03-gnh-synths-outro3.wav",
     "/03-gnh/03-gnh-synths-outro4.wav"
   ],
+  "03-gnh_synths_verse2": "/03-gnh/03-gnh-synths-verse2.wav",
   "04-avy_techytop": "/04-avy/04-avy-techytop.wav",
   "04-avy_guitar": "/04-avy/04-avy-acoustic-guitar.wav",
   "04-avy_bass": "/04-avy/04-avy-bass.wav",
   "04-avy_toms": "/04-avy/04-avy-toms.wav",
   "04-avy_hit": "/04-avy/04-avy-hit.wav",
-  "03-gnh_synths_verse2": "/03-gnh/03-gnh-synths-verse2.wav",
+  "05-dfh_bass_outro": "/05-dfh/05-dfh-bass-outro.wav",
+  "05-dfh_bass_verse": "/05-dfh/05-dfh-bass-verse.wav",
+  "05-dfh_sine_main": "/05-dfh/05-dfh-sine-main.wav",
+  "05-dfh_sine_outro": "/05-dfh/05-dfh-sine-outro.wav",
+  "05-dfh_sine_glitch": [
+    "/05-dfh/05-dfh-sine-glitch1.wav",
+    "/05-dfh/05-dfh-sine-glitch2.wav"
+  ],
+  "05-dfh_synths_intro": "/05-dfh/05-dfh-synths-intro.wav",
+  "05-dfh_synths_verse": "/05-dfh/05-dfh-synths-verse.wav",
+  "05-dfh_synths_chorus": "/05-dfh/05-dfh-synths-chorus.wav",
+  "05-dfh_synths_bridge": [
+    "/05-dfh/05-dfh-synths-bridge1.wav",
+    "/05-dfh/05-dfh-synths-bridge2.wav"
+  ],
+  "05-dfh_synths_hook": [
+    "/05-dfh/05-dfh-synths-hook1.wav",
+    "/05-dfh/05-dfh-synths-hook2.wav"
+  ],
+  "05-dfh_drums_main": "/05-dfh/05-dfh-drums-main.wav",
+  "05-dfh_drums_bridge": "/05-dfh/05-dfh-drums-bridge.wav",
+  "05-dfh_drums_sparse": "/05-dfh/05-dfh-drums-sparse.wav",
+  "05-dfh_drums_outro": "/05-dfh/05-dfh-drums-outro.wav",
+  "05-dfh_backvox_chorus": "/05-dfh/05-dfh-backvox-chorus.wav",
+  "06-spa_bass_intro": "/06-spa/06-spa-bass-intro.wav",
+  "06-spa_bass_main": "/06-spa/06-spa-bass-main.wav",
+  "06-spa_bass_verse": "/06-spa/06-spa-bass-verse.wav",
+  "06-spa_bass_chorus": "/06-spa/06-spa-bass-chorus.wav",
+  "06-spa_guitar_intro": "/06-spa/06-spa-guitar-intro.wav",
+  "06-spa_guitar_main": "/06-spa/06-spa-guitar-main.wav",
+  "06-spa_guitar_verse1": "/06-spa/06-spa-guitar-verse1.wav",
+  "06-spa_guitar_verse2": "/06-spa/06-spa-guitar-verse2.wav",
+  "06-spa_guitar_chorus": "/06-spa/06-spa-guitar-chorus.wav",
   "00-brb_vony_sid": "/00-brb/00-brb-vony-sid.wav",
   "00-brb_bells": "/00-brb/00-brb-bells.wav",
   "yaxu-clean-breaks_useme": [
