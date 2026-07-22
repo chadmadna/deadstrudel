@@ -6,7 +6,7 @@ setcpm(140 / 4)
 
 $NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .loopAt(8).chop(64).seg(16)
-  .sinefold(".5:1").room(.7).rsize(1)
+  .sinefold(".5:1")
   // .vel(perlin.range(.4, 1)) // random walk
   .gain(slider(0.047, 0, 0.15, 0.001))
 
@@ -40,7 +40,7 @@ $DRUMS:
 $HIT:
   s("hit").slow(16)
     .bank("04-avy")
-    .delay(0.5).room(0.5)
+    .delay(0.5)
     .gain(0.3)
 
 _$BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
