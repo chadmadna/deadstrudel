@@ -4,35 +4,35 @@
 samples('http://localhost:3000/strudel.json')
 setcpm(160 / 4)
 
-$NOISE: stack(
+_$NOISE: stack(
   s("deadfx_noise:0").pan(.6),
   s("deadfx_noise:1").pan(.5),
   s("deadfx_noise:2").pan(.1),
 )
-  .loopAt(8).chop(64).seg(8).clip(2).rel(.3).room(.5).rsize(4)
+  .loopAt(8).chop(64).seg(8).clip(2).rel(.3)
   .gain(slider(0.043, 0, 0.1, 0.001))
 
 $GUITAR:
-  // s("guitar_intro")
+  s("guitar_intro")
   // s("guitar_main")
   // s("guitar_verse1")
-  s("guitar_verse2")
+  // s("guitar_verse2")
   // s("guitar_chorus")
-    .bank("06-spa").loopAt(16).chop(128).seg(8).vel(0.7)
+    .bank("06-spa").loopAt(16).chop(32).seg(4).vel(0.7)
     .diode(".5:.8")
     .gain(slider(0.3, 0, 0.3, 0.05))
 
 $BASS:
-  // s("bass_intro")
-  s("bass_main")
+  s("bass_intro")
+  // s("bass_main")
   // s("bass_verse")
   // s("bass_chorus")
-    .bank("06-spa").loopAt(16).chop(128).seg(8)
+    .bank("06-spa").loopAt(16).chop(64).seg(4)
     .vel(0.7)
     .chebyshev(".2:.7").o(2)
     .gain(slider(0.4, 0, 0.4, 0.05))
 
-$PADS:
+_$PADS:
   note("[e1,[f#1@3 a#1]]!3 [[e1,f#1]@3 -]").slow(16) // intro
   // note("e0,f#1,[[e2@3 f#2 g2@2]@3 [a#0,a#2]]").slow(4) // bridge
     .s("deadpad").o(2)
@@ -41,18 +41,18 @@ $PADS:
 
 $DRUMS:
   /** INTRO **/
-  // stack(
-  //   s("[bd*4]!14 [bd!3 [bd bd*2]] bd").slow(16).vel(.9).hpf(70).hpq(5),
-  //   s("[- [-!5 ht lt ht] - [-!5 sd lt ht]]!3 [- [-!5 ht lt ht] - [sd,lt]]").slow(16).vel(.7),
-  //   s("sear").loopAt(2).chop(32).seg(32).rel(0).mask("0!15 1".slow(16)).vel(saw.range(0.4, 1.3).seg(32)),
-  // )
-  /** MAIN **/
   stack(
-    s("[bd [- bd]!2 -]!15 <[- bd - bd]>").slow(16).vel(.9).hpf(70).hpq(5),
-    s("[[- sd]*2]!15 <[[- sd]*2]>").slow(16).vel(1),
-    s("[[ht -]*4]!15 <[[ht -]*2 [lt*2 ht lt ht]]>").slow(16).vel(.5),
-    s("[[- ht]*4]!15 <[[- ht]*2 -]>").slow(16).vel(.3),
+    s("[bd*4]!14 [bd!3 [bd bd*2]] bd").slow(16).vel(.9).hpf(70).hpq(5),
+    s("[- [-!5 ht lt ht] - [-!5 sd lt ht]]!3 [- [-!5 ht lt ht] - [sd,lt]]").slow(16).vel(.7),
+    s("sear").loopAt(2).chop(32).seg(32).rel(0).mask("0!15 1".slow(16)).vel(saw.range(0.4, 1.3).seg(32)),
   )
+  /** MAIN **/
+  // stack(
+  //   s("[bd [- bd]!2 -]!15 <[- bd - bd]>").slow(16).vel(.9).hpf(70).hpq(5),
+  //   s("[[- sd]*2]!15 <[[- sd]*2]>").slow(16).vel(1),
+  //   s("[[ht -]*4]!15 <[[ht -]*2 [lt*2 ht lt ht]]>").slow(16).vel(.5),
+  //   s("[[- ht]*4]!15 <[[- ht]*2 -]>").slow(16).vel(.3),
+  // )
   /** CHORUS **/
   // stack(
   //   s("<[[bd [- bd] -@2]!3 [bd [- bd]!2 [- bd]]] [[- [- bd]!2 -] [[- bd]!3 -] [bd*2 [- bd]!2 -] [[- bd] - bd*2 -]]>").slow(4).vel(.9).hpf(70).hpq(5),
@@ -77,7 +77,7 @@ $HIT:
     .delay(0.5).room(0.5)
     .gain(0.25)
 
-$BREAKS: s("riffin").loopAt(2).chop(16).segment(8)
+_$BREAKS: s("riffin").loopAt(2).chop(16).segment(8)
   .pickF("<pat!7 <fillA fillB>>", {
     pat: x => x
       .when("0 1!3", x => x
