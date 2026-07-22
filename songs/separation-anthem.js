@@ -10,29 +10,29 @@ $NOISE: stack(
   s("deadfx_noise:2").pan(.1),
 )
   .loopAt(8).chop(64).seg(8).clip(2).rel(.3).room(.5).rsize(4)
-  .gain(slider(0.025, 0, 0.1, 0.001))
+  .gain(slider(0.043, 0, 0.1, 0.001))
 
 $GUITAR:
   // s("guitar_intro")
   // s("guitar_main")
   // s("guitar_verse1")
-  // s("guitar_verse2")
-  s("guitar_chorus")
+  s("guitar_verse2")
+  // s("guitar_chorus")
     .bank("06-spa").loopAt(16).chop(128).seg(8).vel(0.7)
     .diode(".5:.8")
     .gain(slider(0.3, 0, 0.3, 0.05))
 
 $BASS:
   // s("bass_intro")
-  // s("bass_main")
+  s("bass_main")
   // s("bass_verse")
-  s("bass_chorus")
+  // s("bass_chorus")
     .bank("06-spa").loopAt(16).chop(128).seg(8)
     .vel(0.7)
     .chebyshev(".2:.7").o(2)
     .gain(slider(0.4, 0, 0.4, 0.05))
 
-_$PADS:
+$PADS:
   note("[e1,[f#1@3 a#1]]!3 [[e1,f#1]@3 -]").slow(16) // intro
   // note("e0,f#1,[[e2@3 f#2 g2@2]@3 [a#0,a#2]]").slow(4) // bridge
     .s("deadpad").o(2)
@@ -47,37 +47,37 @@ $DRUMS:
   //   s("sear").loopAt(2).chop(32).seg(32).rel(0).mask("0!15 1".slow(16)).vel(saw.range(0.4, 1.3).seg(32)),
   // )
   /** MAIN **/
-  // stack(
-  //   s("[bd [- bd]!2 -]!15 <[- bd - bd]>").slow(16).vel(.9).hpf(70).hpq(5),
-  //   s("[[- sd]*2]!15 <[[- sd]*2]>").slow(16).vel(1),
-  //   s("[[ht -]*4]!15 <[[ht -]*2 [lt*2 ht lt ht]]>").slow(16).vel(.5),
-  //   s("[[- ht]*4]!15 <[[- ht]*2 -]>").slow(16).vel(.3),
-  // )
-  /** CHORUS **/
   stack(
-    s("<[[bd [- bd] -@2]!3 [bd [- bd]!2 [- bd]]] [[- [- bd]!2 -] [[- bd]!3 -] [bd*2 [- bd]!2 -] [[- bd] - bd*2 -]]>").slow(4).vel(.9).hpf(70).hpq(5),
-    s("<[[- sd]!3 [sd*2 - sd sd]] [[- sd]!8]>").slow(4).vel(1),
-    s("<[[ht -]!16] ->").slow(4).vel(".6@31 .8@33".slow(8)),
-    s("<[[- lt]*16] [- oh!15]>").slow(4).vel(.4),
+    s("[bd [- bd]!2 -]!15 <[- bd - bd]>").slow(16).vel(.9).hpf(70).hpq(5),
+    s("[[- sd]*2]!15 <[[- sd]*2]>").slow(16).vel(1),
+    s("[[ht -]*4]!15 <[[ht -]*2 [lt*2 ht lt ht]]>").slow(16).vel(.5),
+    s("[[- ht]*4]!15 <[[- ht]*2 -]>").slow(16).vel(.3),
   )
+  /** CHORUS **/
+  // stack(
+  //   s("<[[bd [- bd] -@2]!3 [bd [- bd]!2 [- bd]]] [[- [- bd]!2 -] [[- bd]!3 -] [bd*2 [- bd]!2 -] [[- bd] - bd*2 -]]>").slow(4).vel(.9).hpf(70).hpq(5),
+  //   s("<[[- sd]!3 [sd*2 - sd sd]] [[- sd]!8]>").slow(4).vel(1),
+  //   s("<[[ht -]!16] ->").slow(4).vel(".6@31 .8@33".slow(8)),
+  //   s("<[[- lt]*16] [- oh!15]>").slow(4).vel(.4),
+  // )
   /** BRIDGE **/
   // stack(
   //   s("bd*4").vel(.9).hpf(70).hpq(5).duck(2).duckdepth(.2).datt(.25),
   //   s("[- hh]*4").vel(.4),
-  //   // s("[- sd]*2").vel(1)
+  //   s("[- sd]*2").vel(1)
   // )
     .bank("deadrums")
     .hpf(100)
     .gain(0.7)
 
 $HIT:
-  // s("hit").slow(16) // verse, main
-  s("hit -@30 hit -@32").slow(8) // chorus
+  s("hit").slow(16) // verse, main
+  // s("hit -@30 hit -@32").slow(8) // chorus
     .bank("04-avy")
     .delay(0.5).room(0.5)
     .gain(0.25)
 
-_$BREAKS: s("riffin").loopAt(2).chop(16).segment(8)
+$BREAKS: s("riffin").loopAt(2).chop(16).segment(8)
   .pickF("<pat!7 <fillA fillB>>", {
     pat: x => x
       .when("0 1!3", x => x
@@ -119,6 +119,7 @@ let randVals = Array.from({ length: 128 }, Math.random)
 let randVals2 = Array.from({ length: 13 }, Math.random)
 
 let bg = src(s0)
+  .brightness(.1)
   .modulate(src(s0).scale(8), 0.5)
   .scrollY(0.25, 0.2)
   // .scrollX(randVals.map((x) => x * 0.25 - 0.125).ease('easeInOutQuart'))
@@ -139,8 +140,8 @@ let axe = src(s0).hue(.5).brightness(.3)
   .out(o1)
 
 src(o0)
+  .modulate(src(o0).modulatePixelate(osc(100), .3), .99)
   .layer(src(o1).luma(.001))
-  .modulate(src(o0).modulatePixelate(osc(1000), 9999), .99)
   .scale(randVals.map((x) => x * 2 + 1).ease('easeInOutQuart'), height/width)
   .out(o2)
 
