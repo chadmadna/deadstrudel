@@ -60,10 +60,10 @@ $BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
     fillA: x => x.scrub("{0!3 0*2 2!2 2*3 2*6}%8".div(16)),
     fillB: x => x.scrub(stepcat([1, "0 0"], [3, run(32).div(32).add(4).div(32)])),
   })
-  .degradeBy(slider(0, 0, .75, .0625)).rel(.3) // die off
+  .degradeBy(slider(0, 0, .75, .0625)) // die off
   .chebyshev(".3:.5")
   .lpf(slider(140,0, 140).pow(2)).lpq(3)
-  .gain(.2)
+  .gain(.5)
 
 all((x) => x.compressor("-10:10:.1:.1:.5").postgain(1.4))
 
@@ -86,7 +86,7 @@ src(o0)
   .modulatePixelate(src(o0).posterize(16), 100)
   .diff(src(o2), .2)
   .modulateScrollY(src(s1).scale(1.3), .2)
-  .add(src(s1).scale(1.3).modulate(src(s1).scale(1.3), 3), .2)
+  .add(src(s1).scale(1.3).modulate(src(s1).scale(1.3), 3), 0)
   .scale(1, height/width)
   .out(o2)
 
