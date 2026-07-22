@@ -7,10 +7,10 @@ setcpm(140 / 4)
 $NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .loopAt(8).chop(64).seg(16)
   .sinefold(".5:1")
-  // .vel(perlin.range(.4, 1)) // random walk
-  .gain(slider(0.047, 0, 0.15, 0.001))
+  .vel(perlin.range(.4, 1)) // random walk
+  .gain(slider(0.05, 0, 0.12, 0.001))
 
-_$BASS:
+$BASS:
   s("bass_main")
   // s("bass_verse")
   // s("bass_solo")
@@ -18,24 +18,24 @@ _$BASS:
     .hpq(6).hpf(60)
     .gain(slider(0.28, 0, 0.28, 0.01))
 
-_$PADS:
-  // s("synth_main").vel(.8)
-  s("synth_verse").vel(.8)
+$PADS:
+  s("synth_main").vel(.8)
+  // s("synth_verse").vel(.8)
   // s("synth_build").vel(1)
     .bank("07-edc").loopAt(8).chop(64).seg(16)
     .rel(0.5)
-    .gain(0.22)
+    .gain(0.2)
 
 $DRUMS:
   stack(
     s("boom,808 sear").vel(.9).rel(0).att("0 2").slow(4),
-    // s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(70).hpq(5),
-    // s("[- sd]*2").vel(1),
+    s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(70).hpq(5),
+    s("[- sd]*2").vel(1),
     // s("[- sd]").vel(1),
   )
     .bank("deadrums")
     .hpf(100)
-    .gain(.9)
+    .gain(1)
 
 $HIT:
   s("hit").slow(16)
@@ -43,7 +43,7 @@ $HIT:
     .delay(0.5)
     .gain(0.3)
 
-_$BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
+$BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
   .pickF("<pat>", {
   // .pickF("<pat!7 <fillA fillB>>", {
     pat: x => x
@@ -60,12 +60,12 @@ _$BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
     fillA: x => x.scrub("{0!3 0*2 2!2 2*3 2*6}%8".div(16)),
     fillB: x => x.scrub(stepcat([1, "0 0"], [3, run(32).div(32).add(4).div(32)])),
   })
-  .degradeBy(slider(0.75, 0, .75, .0625)).rel(.3) // die off
+  .degradeBy(slider(0, 0, .75, .0625)).rel(.3) // die off
   .chebyshev(".3:.5")
   .lpf(slider(140,0, 140).pow(2)).lpq(3)
-  .gain(.3)
+  .gain(.25)
 
-all((x) => x.compressor("-10:10:.1:.1:.5")).postgain()
+all((x) => x.compressor("-10:10:.1:.1:.5").postgain(1.4))
 
 await initHydra()
 
@@ -76,7 +76,6 @@ let randVals = Array.from({ length: 32 }, Math.random)
 src(s0)
   .brightness(.1)
   .scrollY(0.25, 0.6)
-  .hue(-.1)
   .scrollY(randVals.map((x) => x * 0.25 - 0.125).ease('easeInOutQuart').fast(1.3))
   .repeat(randVals.map(x => x * 3).fast(3.5), randVals.map(x => x * 4).fast(2.3))
   .kaleid(7)
@@ -85,7 +84,7 @@ src(s0)
 
 src(o0)
   .modulatePixelate(src(o0).posterize(16), 100)
-  .blend(src(o2), .2)
+  .diff(src(o2), .2)
   .modulateScrollY(src(s1).scale(1.3), .2)
   .scale(1, height/width)
   .out(o2)
