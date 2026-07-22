@@ -65,7 +65,7 @@ $BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
   .lpf(slider(140,0, 140).pow(2)).lpq(3)
   .gain(.25)
 
-all((x) => x.compressor("-10:10:.1:.1:.5").postgain(1.4))
+// all((x) => x.compressor("-10:10:.1:.1:.5").postgain(1.4))
 
 await initHydra()
 
@@ -86,6 +86,7 @@ src(o0)
   .modulatePixelate(src(o0).posterize(16), 100)
   .diff(src(o2), .2)
   .modulateScrollY(src(s1).scale(1.3), .2)
+  .add(src(s1).scale(1.3).modulate(src(s1).scale(1.3), 3), .2)
   .scale(1, height/width)
   .out(o2)
 
