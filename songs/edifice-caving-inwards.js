@@ -4,7 +4,7 @@
 samples('http://localhost:3000/strudel.json')
 setcpm(140 / 4)
 
-$NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
+_$NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .loopAt(8).chop(64).seg(16)
   .sinefold(".5:1")
   .vel(perlin.range(.4, 1)) // random walk
@@ -30,8 +30,8 @@ $DRUMS:
   stack(
     s("boom,808 sear").vel(.9).rel(0).att("0 2").slow(4),
     s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(70).hpq(5),
-    s("[- sd]*2").vel(1),
-    // s("[- sd]").vel(1),
+    // s("[- sd]*2").vel(1),
+    s("[- sd]").vel(1),
   )
     .bank("deadrums")
     .hpf(100)
@@ -63,9 +63,9 @@ $BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
   .degradeBy(slider(0, 0, .75, .0625)).rel(.3) // die off
   .chebyshev(".3:.5")
   .lpf(slider(140,0, 140).pow(2)).lpq(3)
-  .gain(.25)
+  .gain(.2)
 
-// all((x) => x.compressor("-10:10:.1:.1:.5").postgain(1.4))
+all((x) => x.compressor("-10:10:.1:.1:.5").postgain(1.4))
 
 await initHydra()
 
