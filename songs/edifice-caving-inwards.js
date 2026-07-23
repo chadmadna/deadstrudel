@@ -10,17 +10,17 @@ $NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .vel(perlin.range(.4, 1)) // random walk
   .gain(slider(0, 0, 0.2, 0.001))
 
-_$BASS:
+$BASS:
   s("bass_main")
   // s("bass_verse")
   // s("bass_solo")
     .bank("07-edc").loopAt(8).chop(64).seg(8)
-    .hpq(6).hpf(60)
+    .hpq(15).hpf(80)
     .gain(slider(0.25, 0, 0.25, 0.01))
 
 $PADS:
-  s("synth_main").vel(.8)
-  // s("synth_verse").vel(.8)
+  // s("synth_main").vel(.8)
+  s("synth_verse").vel(.8)
   // s("synth_build").vel(1)
     .bank("07-edc").loopAt(8).chop(64).seg(16)
     .rel(0.5)
@@ -29,9 +29,12 @@ $PADS:
 $DRUMS:
   stack(
     // s("boom,808 sear").vel(.9).rel(0).att("0 2").slow(4),
-    s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(70).hpq(5),
+    s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(50).hpq(6),
     s("[- sd]*2").vel(1),
     // s("[- sd]").vel(1),
+    // s("boom@3 boom boom@2 boom@2 boom!2 boom@2 boom@2 boom!2").dec(.3).slow(2).vel(.9), // lmao
+    // s("[sd sd*2 sd sd] [- sd!2 -] [sd sd*2 sd sd] [- sd sd*2 -] [sd sd*2 sd sd] [- sd!2 -] [sd sd*2 sd sd] [sd sd*2 [- sd] sd]").dec(.4).slow(4).vel(.9),
+    // s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
   )
     .bank("deadrums")
     .hpf(100)
@@ -42,6 +45,9 @@ $HIT:
     .bank("04-avy")
     .delay(0.5)
     .gain(0.4)
+
+const slidey = slider(37.2,0, 100)
+const cutoffFunc = x => x.mul(0).add(50).pow(x.div(100)).sub(1).mul(19980).div(49).add(20)
 
 $BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
   // .pickF("<pat>", {
@@ -62,9 +68,10 @@ $BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
   })
   .degradeBy(slider(0, 0, .75, .0625)) // die off
   .gain(.5)
-  .compressor("-40:4:0:.01:.15")
+  .compressor("-45:4:0:.01:.15")
   .chebyshev(".3:.5")
-  .lpf(slider(140,0, 140).pow(2)).lpq(3)
+  .coarse(slidey.mul(-.03).add(4))
+  .lpf(slidey.apply(cutoffFunc)).lpq(10)
 
 await initHydra()
 
