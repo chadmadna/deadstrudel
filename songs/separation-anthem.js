@@ -4,13 +4,13 @@
 samples('http://localhost:3000/strudel.json')
 setcpm(160 / 4)
 
-_$NOISE: stack(
+$NOISE: stack(
   s("deadfx_noise:0").pan(.6),
   s("deadfx_noise:1").pan(.5),
   s("deadfx_noise:2").pan(.1),
 )
   .loopAt(8).chop(64).seg(8).clip(2).rel(.3)
-  .gain(slider(0.043, 0, 0.1, 0.001))
+  .gain(slider(0.061, 0, 0.1, 0.001))
 
 $GUITAR:
   // s("guitar_intro")
@@ -32,7 +32,7 @@ $BASS:
     .chebyshev(".2:.7").o(2)
     .gain(slider(0.4, 0, 0.4, 0.05))
 
-$PADS:
+_$PADS:
   note("[e1,[f#1@3 a#1]]!3 [[e1,f#1]@3 -]").slow(16) // intro
   // note("e0,f#1,[[e2@3 f#2 g2@2]@3 [a#0,a#2]]").slow(4) // bridge
     .s("deadpad").o(2)
@@ -68,7 +68,7 @@ $DRUMS:
   // )
     .bank("deadrums")
     .hpf(100)
-    .gain(0.7)
+    .gain(0.75)
 
 $HIT:
   s("hit").slow(16) // verse, main
@@ -140,7 +140,7 @@ let axe = src(s0).hue(.5).brightness(.3)
   .out(o1)
 
 src(o0)
-  .modulate(src(o0).modulatePixelate(osc(100), .3), .99)
+  .modulate(src(o0).modulatePixelate(osc(1000), 1000), .4)
   .layer(src(o1).luma(.001))
   .scale(randVals.map((x) => x * 2 + 1).ease('easeInOutQuart'), height/width)
   .out(o2)
