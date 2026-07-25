@@ -8,9 +8,9 @@ $NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .loopAt(8).chop(64).seg(16)
   .sinefold(".5:1")
   .vel(perlin.range(.4, 1)) // random walk
-  .gain(slider(0, 0, 0.2, 0.001))
+  .gain(slider(0.1, 0, 0.2, 0.001))
 
-$BASS:
+_$BASS:
   s("bass_main")
   // s("bass_verse")
   // s("bass_solo")
@@ -46,7 +46,7 @@ $HIT:
     .delay(0.5)
     .gain(0.4)
 
-const slidey = slider(37.2,0, 100)
+const slidey = slider(0, 0, 100)
 const cutoffFunc = x => x.mul(0).add(50).pow(x.div(100)).sub(1).mul(19980).div(49).add(20)
 
 $BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
