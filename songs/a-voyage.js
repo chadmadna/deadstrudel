@@ -22,7 +22,7 @@ $DRUMS:
 stack(
   s("bd sd").bank("deadrums").slow(2),
   s("boom").bank("deadrums").slow(2),
-  s("sear").bank("deadrums").loopAt(2).chop(32).seg(32).rel(0).mask("0 1".slow(2)).vel(saw.range(0.3, 1).fast(1).seg(32)),
+  s("sear").bank("deadrums").loopAt(2).chop(32).seg(32).rel(0).mask("0 1".slow(2)).vel(saw.range(0.5, 1.4).fast(1).seg(32)),
   note("-@7 [- [[c2 -]!2 [c2@3 -]@2 [c2 -] [c2@3 -]@2 c2]]".slow(8)).s("scan").bank("deadrums").rel(0).vel(0.9),
 )
   .room(0.25).o(1)
@@ -43,7 +43,7 @@ _$TOPS: s("techytop")
 
 $HIT: s("hit").bank("04-avy").slow(16).delay(0.5).room(0.5).o(1).gain(0.3)
 
-$NOISE: s("deadfx_noise:0").loopAt(8).chop(64).seg(8).gain(0.25)
+$NOISE: s("deadfx_noise:0").loopAt(8).chop(64).seg(8).gain(0.15)
 
 _$TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => x.jux(press).vel(.5)).gain(.5)
 $CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
