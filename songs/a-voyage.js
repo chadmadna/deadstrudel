@@ -1,24 +1,24 @@
 // @title A Voyage
 // @by DEADLEADERS
 
-samples('http://localhost:3000/strudel.json?v=99')
+samples('http://localhost:3000/strudel.json')
 setcpm(130 / 4)
 
 $BASS:
   s("bass")
     .bank("04-avy").loopAt(16).chop(128).seg(8)
-    .gain(slider(0, 0, 0.3, 0.05))
+    .gain(slider(0.45, 0, 0.45, 0.05))
 
-_$GUITAR: s("guitar")
+$GUITAR: s("guitar")
   .bank("04-avy").loopAt(16).chop(128).seg(8)
-  .gain(slider(0.3, 0, 0.3, 0.05))
+  .gain(slider(0.45, 0, 0.45, 0.05))
 
-_$PADS:
+$PADS:
   note("[D1,D2] [A#1,F2] [A1,E2] [A1,C#2] [A1,D2] [F1,A#1] [A1,C3] [E2,C#3]").slow(16)
     .s("deadpad").att(0.5).rel(1)
-    .gain(0.3)
+    .gain(0.4)
 
-_$DRUMS:
+$DRUMS:
 stack(
   s("bd sd").bank("deadrums").slow(2),
   s("boom").bank("deadrums").slow(2),
@@ -26,7 +26,7 @@ stack(
   note("-@7 [- [[c2 -]!2 [c2@3 -]@2 [c2 -] [c2@3 -]@2 c2]]".slow(8)).s("scan").bank("deadrums").rel(0).vel(0.9),
 )
   .room(0.25).o(1)
-  .gain(0.7)
+  .gain(1)
 
 _$TOMS: s("toms")
   .bank("04-avy").loopAt(2).chop(16).seg(8)
@@ -41,14 +41,14 @@ _$TOPS: s("techytop")
   .delay(0.5).delays(0.5).delayfb(0.5).o(1)
   .gain(0.2)
 
-$HIT: s("hit").bank("04-avy").slow(16).delay(0.5).room(0.5).o(1).gain(0.25)
+$HIT: s("hit").bank("04-avy").slow(16).delay(0.5).room(0.5).o(1).gain(0.3)
 
 $NOISE: s("deadfx_noise:0").loopAt(8).chop(64).seg(8).gain(0.1)
 
 _$TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => x.jux(press).vel(.5)).gain(.5)
 $CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
 
-_$BREAKS: s("riffin")
+$BREAKS: s("riffin")
   .bank("yaxu-clean-breaks").loopAt(2).chop(16).seg(8)
   .pickF("<pat!7 <fillA fillB>>", {
     pat: (x) =>x
@@ -61,9 +61,12 @@ _$BREAKS: s("riffin")
     fillA: (x) => x.scrub("{0!3 0*2 2!2 2*3 2*6}%8".div(16)),
     fillB: (x) => x.scrub(stepcat([1, "0 0"], [3, run(32).div(32).add(4).div(32)])),
   })
-  .lpf(slider(122.5, 0, 140).pow(2)).lpq(3).hpf(60)
-  .chebyshev(0.4, 0.01)
-  .gain(0.08)
+  .lpf(slider(140, 0, 140).pow(2)).lpq(3)
+  .compressor("-45:4:0:.01:.15")
+  .distort("3:.05")
+  .gain(0.4)
+
+all(x => x.postgain(1.1))
 
 await initHydra()
 
