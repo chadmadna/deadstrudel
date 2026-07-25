@@ -5,12 +5,11 @@ samples('http://localhost:3000/strudel.json')
 setcpm(130 / 4)
 
 $BASS:
-  s("bass_intro")
-  // s("bass_verse")
+  // s("bass_intro")
+  s("bass_verse")
   // s("bass_solo").hpf(120)
     .bank("02-tpk").loopAt(8).chop(64).seg(8)
-    .vel(0.7)
-    .gain(slider(0, 0, 0.35, 0.05))
+    .gain(slider(0, 0, 0.45, 0.05))
 
 _$PADS:
   note("[e2,a2] [[g2,c3]@3 [a2,d3]] [g2,b2] [f#2,d3]").slow(8) // main
@@ -18,14 +17,14 @@ _$PADS:
   // note("[e2,a2]!6 [g2,c3] [a2,d3]").slow(8).seg(8) // solo
     .s("deadpad")
     .hpf(400).att(0.3).rel(0.5)
-    .gain(0.35)
+    .gain(0.4)
 
 _$DISTGTR:
   s("distgtr_solo")
     .bank("02-tpk").loopAt(8).chop(64).seg(8)
-    .vel(0.7).hpf(400)
+    .hpf(500)
     // .scrub(irand(8).div(8).seg(8)).sometimes(x => x.dec(.2).ply("2 | 4"))
-    // .rarely(x => x.speed("-.0675")).juxBy(0.3, rev)
+    // .rarely(x => x.speed("-.0675")).juxBy(0.3, rev).vel(.7)
     .gain(0.5)
     // .gain(0.2) // breaks section
 
@@ -36,7 +35,7 @@ _$GTRCLAV:
     .bank("02-tpk").loopAt(8).chop(64).seg(8)
     // .rib("0 | 0.5 | 1.25".fast(4), .375)
     .lpf(8000).hpf(60).delay(0.3).dfb(0.7).ds(1)
-    .gain(0.25)
+    .gain(0.4)
 
 _$VOX:
 // verse
@@ -51,34 +50,34 @@ _$VOX:
     .chebyshev(0.1, 1)
     .delay(0.3).room(0.5)
     // .o(2).delay(.5).delayfb(.95).delays(1/6).room(.3)
-    .gain(0.5)
+    .gain(0.85)
 
-_$DRUMS:
+$DRUMS:
 stack(
-  s("bd bd bd*4@2 - bd bd*4@2").vel(0.7),
-  s("lt*2 - lt -").vel(0.6),
+  s("bd bd bd*4@2 - bd bd*4@2").vel(1),
+  s("lt*2 - lt -").vel(.8),
   s("- sd"),
 )
   // s("[bd*2 -!3] -!7 [bd*2 -!3] -!3 [bd*2 -!3] - [bd*2 -!3] [bd*8]").slow(16)
     .bank("deadrums")
-    // .scrub("{0 0 0 0*2 1 1 1 1}%8".div(16)) // fill 1
+    // .scrub("{0 0 0 0*2 .5 .5 .5 .5}%8".div(16)) // fill 1
     .hpf(100)
-    .gain(0.7)
+    .gain(1)
 
 $HIT:
   s("hit").bank("04-avy")
-    .slow(16) // usual
-    // .slow(8) // breaks section
+    // .slow(16) // usual
+    .slow(8) // breaks section
     .delay(0.5).room(0.5).o(1)
-    .gain(0.25)
+    .gain(0.3)
 
-$NOISE: s("deadfx_noise").loopAt(8).chop(64).seg(8).gain(0.1)
+$NOISE: s("deadfx_noise").loopAt(8).chop(64).seg(8).gain(0.15)
 
 _$TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => x.jux(press).vel(.5)).gain(.5)
-$CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
+_$CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
 
 _$BREAKS:
-  s("do")
+  s("funkydrummer")
     .bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
     .pickF("<pat!7 fill>", {
       pat: (x) => x
@@ -86,9 +85,12 @@ _$BREAKS:
         .when("0 1!3", (x) => x.sometimesBy(0.1, (x) => x.ply(2))),
       fill: (x) => x.rib("12".div(16), 0.25).ply("1 2"),
     })
-    .crush(6).room(0.3)
+    .compressor("-45:4:0:.01:.15")
+    .crush(8)
     .delay(0.2).delays(0.25).delayfb(0.3)
-    .gain(0.5)
+    .gain(0.35)
+
+all(x => x.postgain(1))
 
 await initHydra()
 
