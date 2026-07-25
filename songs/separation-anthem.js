@@ -10,11 +10,11 @@ $NOISE: stack(
   s("deadfx_noise:2").pan(.1),
 )
   .loopAt(8).chop(128).seg(32).o(2)
-  .gain(slider(0.07, 0, 0.15, 0.001))
+  .gain(slider(0, 0, 0.2, 0.001))
 
-_$GUITAR:
-  // s("guitar_intro")
-  s("guitar_main")
+$GUITAR:
+  s("guitar_intro")
+  // s("guitar_main")
   // s("guitar_verse1")
   // s("guitar_verse2")
   // s("guitar_chorus")
@@ -22,9 +22,9 @@ _$GUITAR:
     .diode(".5:.8").hpf(200)
     .gain(slider(0.35, 0, 0.35))
 
-_$BASS:
-  // s("bass_intro")
-  s("bass_main")
+$BASS:
+  s("bass_intro")
+  // s("bass_main")
   // s("bass_verse")
   // s("bass_chorus")
     .bank("06-spa").loopAt(16).chop(64).seg(4)
@@ -33,8 +33,8 @@ _$BASS:
     .gain(slider(0.45, 0, 0.45))
 
 $PADS:
-  // note("[e1,[f#1@3 a#1]]!3 [[e1,f#1]@3 -]").slow(16) // intro
-  note("e0,f#1,[[e2@3 f#2 g2@2]@3 [a#0,a#2]]").slow(4) // bridge
+  note("[e1,[f#1@3 a#1]]!3 [[e1,f#1]@3 -]").slow(16) // intro
+  // note("e0,f#1,[[e2@3 f#2 g2@2]@3 [a#0,a#2]]").slow(4) // bridge
     .s("deadpad").o(2)
     .hpf(400).att(0.3).rel(0.5)
     .gain(0.45)
@@ -67,7 +67,7 @@ let drumPats = {
 }
 
 _$DRUMS:
-  drumPats.main
+  drumPats.intro
     .bank("deadrums")
     .gain(1.2)
 
