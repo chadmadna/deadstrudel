@@ -4,7 +4,7 @@
 samples('http://localhost:3000/strudel.json')
 setcpm(140 / 4)
 
-$NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
+_$NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .loopAt(8).chop(64).seg(16)
   .sinefold(".5:1")
   .vel(perlin.range(.4, 1)) // random walk
@@ -16,7 +16,7 @@ $BASS:
   // s("bass_solo")
     .bank("07-edc").loopAt(8).chop(64).seg(8)
     .hpq(15).hpf(80)
-    .gain(slider(0.25, 0, 0.25, 0.01))
+    .gain(slider(0, 0, 0.3))
 
 $PADS:
   // s("synth_main").vel(.8)
@@ -24,17 +24,17 @@ $PADS:
   // s("synth_build").vel(1)
     .bank("07-edc").loopAt(8).chop(64).seg(16)
     .rel(0.5)
-    .gain(0.2)
+    .gain(0.25)
 
 $DRUMS:
   stack(
-    // s("boom,808 sear").vel(.9).rel(0).att("0 2").slow(4),
+    s("boom,808 sear").vel(.9).rel(0).att("0 2").slow(4),
     s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(50).hpq(6),
-    s("[- sd]*2").vel(1),
+    // s("[- sd]*2").vel(1),
     // s("[- sd]").vel(1),
     // s("boom@3 boom boom@2 boom@2 boom!2 boom@2 boom@2 boom!2").dec(.3).slow(2).vel(.9), // lmao
     // s("[sd sd*2 sd sd] [- sd!2 -] [sd sd*2 sd sd] [- sd sd*2 -] [sd sd*2 sd sd] [- sd!2 -] [sd sd*2 sd sd] [sd sd*2 [- sd] sd]").dec(.4).slow(4).vel(.9),
-    s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
+    // s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
   )
     .bank("deadrums")
     .hpf(100)
@@ -49,7 +49,7 @@ $HIT:
 const slidey = slider(100, 0, 100)
 const cutoffFunc = x => x.mul(0).add(50).pow(x.div(100)).sub(1).mul(19980).div(49).add(20)
 
-$BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
+_$BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
   // .pickF("<pat>", {
   .pickF("<pat!7 <fillA fillB>>", {
     pat: x => x
