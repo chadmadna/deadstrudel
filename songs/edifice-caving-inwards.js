@@ -10,7 +10,7 @@ $NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .vel(perlin.range(.4, 1)) // random walk
   .gain(slider(0.1, 0, 0.2, 0.001))
 
-_$BASS:
+$BASS:
   s("bass_main")
   // s("bass_verse")
   // s("bass_solo")
@@ -34,7 +34,7 @@ $DRUMS:
     // s("[- sd]").vel(1),
     // s("boom@3 boom boom@2 boom@2 boom!2 boom@2 boom@2 boom!2").dec(.3).slow(2).vel(.9), // lmao
     // s("[sd sd*2 sd sd] [- sd!2 -] [sd sd*2 sd sd] [- sd sd*2 -] [sd sd*2 sd sd] [- sd!2 -] [sd sd*2 sd sd] [sd sd*2 [- sd] sd]").dec(.4).slow(4).vel(.9),
-    // s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
+    s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
   )
     .bank("deadrums")
     .hpf(100)
@@ -46,7 +46,7 @@ $HIT:
     .delay(0.5)
     .gain(0.4)
 
-const slidey = slider(0, 0, 100)
+const slidey = slider(100, 0, 100)
 const cutoffFunc = x => x.mul(0).add(50).pow(x.div(100)).sub(1).mul(19980).div(49).add(20)
 
 $BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
@@ -72,6 +72,8 @@ $BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
   .chebyshev(".3:.5")
   .coarse(slidey.mul(-.03).add(4))
   .lpf(slidey.apply(cutoffFunc)).lpq(10)
+
+all(x => x.postgain(.85))
 
 await initHydra()
 
