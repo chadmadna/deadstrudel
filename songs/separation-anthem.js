@@ -66,7 +66,7 @@ let drumPats = {
   )
 }
 
-_$DRUMS:
+$DRUMS:
   drumPats.intro
     .bank("deadrums")
     .gain(1.2)
@@ -145,7 +145,7 @@ let axe = src(s0).hue(.5).brightness(.3)
   .out(o1)
 
 src(o0)
-  .modulate(src(o0).modulatePixelate(osc(1000), 1000), .4)
+  .modulate(src(o0), .4)
   .layer(src(o1).luma(.001))
   .scale(randVals.map((x) => x * 2 + 1).ease('easeInOutQuart'), height/width)
   .out(o2)
