@@ -50,7 +50,7 @@ let drumPats = {
     s("[[- sd]*2]!15 <[[- sd]*2]>").slow(16).vel(1),
     s("[[ht -]*4]!15 <[[ht -]*2 [lt*2 ht lt ht]]>").slow(16).vel(.6).dec(.6).pan(.4),
     s("[[- ht]*4]!15 <[[- ht]*2 -]>").slow(16).vel(.4).dec(.6).pan(.6),
-    // s("-!15 sear").loopAt(2).rel(0.5).slow(8).vel(1),
+    s("-!15 sear").loopAt(2).rel(0.5).slow(8).vel(1),
   ),
   chorus: stack(
     s("<[[bd [- bd] -@2]!3 [bd [- bd]!2 [- bd]]] [[[- bd]!4]!3 [[- bd]!2 [bd!3 -] [- bd]]]>").slow(4).vel(1).hpf(70).hpq(5),
