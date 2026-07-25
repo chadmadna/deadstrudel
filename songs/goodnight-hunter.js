@@ -20,7 +20,7 @@ $PADS:
     .o(3).room(0.9).rsize(7)
     .gain(0.3)
 
-$GUITAR:
+_$GUITAR:
   s("guitar_intro").loopAt(8).chop(64).seg(8)
   // s("guitar_verse").loopAt(8).chop(64).seg(8)
   // s("guitar_chorus").loopAt(16).chop(128).seg(8)
