@@ -1,15 +1,15 @@
 // @title Goodnight, Hunter
 // @by DEADLEADERS
 
-samples('http://localhost:3000/strudel.json?v=3')
+samples('http://localhost:3000/strudel.json')
 setcpm(130 / 4)
 
-$BASS:
+_$BASS:
   s("bass_verse")
   // s("bass_chorus")
   // s("bass_outro")
     .bank("03-gnh").loopAt(16).chop(128).seg(8)
-    .gain(slider(0, 0, 0.45, 0.05))
+    .gain(slider(0.45, 0, 0.45, 0.05))
 
 $PADS:
   note("[f1,g#1,c2,g2]").slow(2) // main
@@ -28,7 +28,7 @@ _$GUITAR:
     .gain(slider(0.35, 0, 0.35, 0.01))
 
 _$BELLS:
-  note(`<a#2 [- c3] c#3 [- d#3] c3 [- a#2] f2 - a#2 [- c3] c#3 [- d#3] c3 [- a#2] c3 ->`) // verse
+  note(`<a#2 [- c3] c#3 [- d#3] c3 [- a#2] f2 - a#2 [- c3] c#3 [- d#3] c3 [- a#2] c3 ->`) // chorus
   // note(`<f2 [d#3 c3] f2 [c#3 d#3] f2 [d#3 c3] a#2 [c#3 d#3]>`) // outro
     .s("deadbell")
     .gain(0.3)
@@ -77,7 +77,8 @@ $CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => p
 
 _$BREAKS: s("squib")
   .bank("yaxu-clean-breaks").loopAt(2).chop(16).seg(8)
-  .pickF("<pat!7 <fillA fillB>>", {
+  .pickF("<pat>", {
+  // .pickF("<pat!7 <fillA fillB>>", {
     pat: (x) => x
       .when("0 1!3", (x) => x.sometimesBy(0.7, (x) => x.rib("0 | 3".div(8), 0.75)))
       .when("0 1!7".slow(2), (x) => x.sometimesBy(0.1, wchoose(
@@ -88,7 +89,7 @@ _$BREAKS: s("squib")
     fillB: (x) => x.scrub(stepcat([1, "0 0"], [3, run(32).div(32).add(4).div(32)])),
   })
   .lpf(slider(122.5, 0, 140).pow(2)).lpq(3).hpf(60)
-  .chebyshev(0.4, 0.01).juxBy(0.7, rev)
+  .chebyshev(0.4, 0.01).juxBy(0.7, rev).coarse(3)
   .gain(0.1)
 
 all(
