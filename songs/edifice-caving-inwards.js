@@ -6,33 +6,33 @@ setcpm(140 / 4)
 
 _$NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .loopAt(8).chop(64).seg(16)
-  .sinefold(".5:1")
+  .sinefold(".5:1").o(2)
   .vel(perlin.range(.4, 1)) // random walk
-  .gain(slider(0.1, 0, 0.2, 0.001))
+  .gain(slider(0.096, 0, 0.2, 0.001))
 
-$BASS:
+_$BASS:
   s("bass_main")
   // s("bass_verse")
   // s("bass_solo")
-    .bank("07-edc").loopAt(8).chop(64).seg(8)
+    .bank("07-edc").loopAt(8).chop(64).seg(8).o(2)
     .hpq(15).hpf(80)
-    .gain(slider(0, 0, 0.3))
+    .gain(slider(0.3, 0, 0.3))
 
 $PADS:
   // s("synth_main").vel(.8)
   s("synth_verse").vel(.8)
   // s("synth_build").vel(1)
     .bank("07-edc").loopAt(8).chop(64).seg(16)
-    .rel(0.5)
+    .rel(0.5).o(2)
     .gain(0.25)
 
-$DRUMS:
+_$DRUMS:
   stack(
-    s("boom,808 sear").vel(.9).rel(0).att("0 2").slow(4),
-    s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(50).hpq(6),
-    // s("[- sd]*2").vel(1),
+    // s("boom,808 sear").vel(.9).rel(0).att("0 2").slow(4).duck(2).duckdepth(".5 0".slow(4)).datt(.15),
+    s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(50).hpq(6).duck(2).duckdepth(.3).datt(.1),
+    s("[- sd]*2").vel(1),
     // s("[- sd]").vel(1),
-    // s("boom@3 boom boom@2 boom@2 boom!2 boom@2 boom@2 boom!2").dec(.3).slow(2).vel(.9), // lmao
+    // s("[boom,bd] [- [boom,bd]@2] - [boom,bd] - [boom,bd]!3").dec(.5).vel(1).duck(2).duckdepth(.5).datt(.15),
     // s("[sd sd*2 sd sd] [- sd!2 -] [sd sd*2 sd sd] [- sd sd*2 -] [sd sd*2 sd sd] [- sd!2 -] [sd sd*2 sd sd] [sd sd*2 [- sd] sd]").dec(.4).slow(4).vel(.9),
     // s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
   )
@@ -50,15 +50,15 @@ const slidey = slider(100, 0, 100)
 const cutoffFunc = x => x.mul(0).add(50).pow(x.div(100)).sub(1).mul(19980).div(49).add(20)
 
 _$BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
-  // .pickF("<pat>", {
-  .pickF("<pat!7 <fillA fillB>>", {
+  .pickF("<pat>", {
+  // .pickF("<pat!7 <fillA fillB>>", {
     pat: x => x
       .when("0 1!3", x => x
-        // .sometimesBy(.7, x => x.rib("0 | 2 | 4".div(8), .75))
+        // .sometimesBy(.5, x => x.rib("0 | 2".div(8), .75))
        )
       .when("0 1!7".slow(2), x => x
-        // .sometimesBy(.7, x => x.rib("0 | 2 | 3 | 4".div(8), ".5 | .25"))
-        // .sometimesBy(.2, wchoose(
+        // .sometimesBy(.75, x => x.rib("0 | 2 | 3".div(8), ".5 | .25"))
+        // .sometimesBy(.25, wchoose(
         //   [x => x.ply("4 | 6"), 3],
         //   [x => x.scrub("{2!4}%16".div(16)).speed(".3 .33 .36 .39".fast(4)), 1]
         // ))
@@ -66,14 +66,14 @@ _$BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
     fillA: x => x.scrub("{0!3 0*2 2!2 2*3 2*6}%8".div(16)),
     fillB: x => x.scrub(stepcat([1, "0 0"], [3, run(32).div(32).add(4).div(32)])),
   })
-  .degradeBy(slider(0, 0, .75, .0625)) // die off
-  .gain(.5)
+  // .degradeBy(slider(0, 0, .75, .0625)) // die off
+  .gain(.4)
   .compressor("-45:4:0:.01:.15")
   .chebyshev(".3:.5")
   .coarse(slidey.mul(-.03).add(4))
   .lpf(slidey.apply(cutoffFunc)).lpq(10)
 
-all(x => x.postgain(.85))
+all(x => x.postgain(1))
 
 await initHydra()
 
