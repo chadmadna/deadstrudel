@@ -41,7 +41,7 @@ _$DRUMS:
     .gain(1)
 
 $HIT:
-  s("hit").slow(16)
+  s("hit").slow(8)
     .bank("04-avy")
     .delay(0.5)
     .gain(0.4)

@@ -20,7 +20,7 @@ $GUITAR:
   // s("guitar_chorus")
     .bank("06-spa").loopAt(16).chop(128).seg(8).vel(0.7).o(2)
     .diode(".5:.8").hpf(200)
-    .gain(slider(0.35, 0, 0.35))
+    .gain(slider(0.4, 0, 0.4))
 
 $BASS:
   s("bass_intro")
@@ -59,10 +59,11 @@ let drumPats = {
     s("<[[- lt]*16] [- oh!15]>").slow(4).vel(.4).dec(.6).pan(.6),
   ),
   bridge: stack(
-    // s("bd*4").vel(1).hpf(70).hpq(5).duck(2).duckdepth(.3).datt(.25),
-    // s("[- hh]*4").vel(.35),
-    s("[- sd]*2").vel(1),
-    s("[boom,bd] [- [boom,bd]@2] - [boom,bd] - [boom,bd]!3").dec(.3).vel(.9),
+    s("bd*4").vel(1).hpf(70).hpq(5).duck(2).duckdepth(.3).datt(.25),
+    s("[- hh]*4").vel(.35),
+    // s("[- sd]*2").vel(1),
+    // s("[boom,bd] [- [boom,bd]@2] - [boom,bd] - [boom,bd]!3").dec(.3).vel(.9),
+    // s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
   )
 }
 
