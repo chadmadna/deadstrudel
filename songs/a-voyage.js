@@ -18,12 +18,12 @@ _$PADS:
     .s("deadpad").att(0.5).rel(1)
     .gain(0.4)
 
-$DRUMS:
+_$DRUMS:
 stack(
-  s("bd sd").bank("deadrums").slow(2),
+  // s("bd sd").bank("deadrums").slow(2),
   s("boom").bank("deadrums").slow(2),
   s("sear").bank("deadrums").loopAt(2).chop(32).seg(32).rel(0).mask("0 1".slow(2)).vel(saw.range(0.5, 1.4).fast(1).seg(32)),
-  note("-@7 [- [[c2 -]!2 [c2@3 -]@2 [c2 -] [c2@3 -]@2 c2]]".slow(8)).s("scan").bank("deadrums").rel(0).vel(0.9),
+  // note("-@7 [- [[c2 -]!2 [c2@3 -]@2 [c2 -] [c2@3 -]@2 c2]]".slow(8)).s("scan").bank("deadrums").rel(0).vel(0.9),
 )
   .room(0.25).o(1)
   .gain(1)
@@ -39,7 +39,7 @@ _$TOPS: s("techytop")
   .vel(0.8)
   .mask("1 0".slow(2))
   .delay(0.5).delays(0.5).delayfb(0.5).o(1)
-  .gain(0.2)
+  .gain(0.35)
 
 $HIT: s("hit").bank("04-avy").slow(16).delay(0.5).room(0.5).o(1).gain(0.3)
 
@@ -50,6 +50,7 @@ $CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => p
 
 _$BREAKS: s("riffin")
   .bank("yaxu-clean-breaks").loopAt(2).chop(16).seg(8)
+  // .pickF("<pat>", {
   .pickF("<pat!7 <fillA fillB>>", {
     pat: (x) =>x
         .when("0 1!3", (x) => x.sometimesBy(0.7, (x) => x.rib("0 | 3".div(8), 0.75)))

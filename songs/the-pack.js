@@ -4,16 +4,16 @@
 samples('http://localhost:3000/strudel.json')
 setcpm(130 / 4)
 
-$BASS:
+_$BASS:
   // s("bass_intro")
   s("bass_verse")
   // s("bass_solo").hpf(120)
     .bank("02-tpk").loopAt(8).chop(64).seg(8)
-    .gain(slider(0, 0, 0.45, 0.05))
+    .gain(slider(0.45, 0, 0.45, 0.05))
 
 _$PADS:
-  note("[e2,a2] [[g2,c3]@3 [a2,d3]] [g2,b2] [f#2,d3]").slow(8) // main
-  // note("[e2,a2]").slow(4).seg(8) // postverse
+  // note("[e2,a2] [[g2,c3]@3 [a2,d3]] [g2,b2] [f#2,d3]").slow(8) // main
+  note("[e2,a2]").slow(4).seg(8) // postverse
   // note("[e2,a2]!6 [g2,c3] [a2,d3]").slow(8).seg(8) // solo
     .s("deadpad")
     .hpf(400).att(0.3).rel(0.5)
@@ -23,14 +23,14 @@ _$DISTGTR:
   s("distgtr_solo")
     .bank("02-tpk").loopAt(8).chop(64).seg(8)
     .hpf(500)
-    // .scrub(irand(8).div(8).seg(8)).sometimes(x => x.dec(.2).ply("2 | 4"))
+    .scrub(irand(8).div(8).seg(8)).sometimes(x => x.dec(.2).ply("2 | 4"))
     // .rarely(x => x.speed("-.0675")).juxBy(0.3, rev).vel(.7)
-    .gain(0.5)
-    // .gain(0.2) // breaks section
+    // .gain(0.5)
+    .gain(0.2) // breaks section
 
 _$GTRCLAV:
-  s("gtrclav_verse")
-  // s("gtrclav_postverse")
+  // s("gtrclav_verse")
+  s("gtrclav_postverse")
   // s("gtrclav_solo")
     .bank("02-tpk").loopAt(8).chop(64).seg(8)
     // .rib("0 | 0.5 | 1.25".fast(4), .375)
@@ -39,12 +39,12 @@ _$GTRCLAV:
 
 _$VOX:
 // verse
-  note(`[-@2 7 7 11 10@2 11@2 10@2 11@2 10 11@2] [-@7 7 11 11 11 11@2 10@2 10] [10@2 9 9 8@2 7 7 10 10 9 9 8@2 8 7] [8@2 7 8@3 9@2 -@6 7@2]`).slow(8)
+  // note(`[-@2 7 7 11 10@2 11@2 10@2 11@2 10 11@2] [-@7 7 11 11 11 11@2 10@2 10] [10@2 9 9 8@2 7 7 10 10 9 9 8@2 8 7] [8@2 7 8@3 9@2 -@6 7@2]`).slow(8)
   // note(`[11@3 10@3 11@2 -@5 7 7@2] [11@2 11@2 11 11 10 10 10 9@3 -@4] [10@3 9@3 8 7 10@2 10 9@2 9 8 7] [8@2 8 7 8@2 9@2 -@6 7@2]`).slow(8)
   // note(`[11@3 10@3 11@3 10@3 11@2 10@2] [11 10@2 9@3 9 10 9 8 8@2 -@2 6@2] [10@3 9 8@4 -@4 8 9@2 7] [-@13 11 11 10]`).slow(8)
   // note(`[11@2 10 10 11 10@2 11@2 11 10 9@5] [-@4 [11 11 10]@4 11@4 -@4] [-@5 9 9 9 10@2 9 8@5] [-@4 10@2 10@2 9@2 8 8@3 -@2]`).slow(8)
 // postverse
-  // note(`[9@4 7@4 -@8] -@3`).slow(8)
+  note(`[9@4 7@4 -@8] -@3`).slow(8)
     .s("gm_choir_aahs").scale("A:minor")
     .att(0).dec(0.2).sus(0.7).rel(0.2)
     .chebyshev(0.1, 1)
@@ -81,7 +81,7 @@ _$BREAKS:
     .bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
     .pickF("<pat!7 fill>", {
       pat: (x) => x
-        .when("<0 1!7>".fast(4), (x) => x.rib("0 | 4".div(16), 1))
+        .when("<0 1!7>".fast(4), (x) => x.rib("0 | 4".div(16), ".75 | .5"))
         .when("0 1!3", (x) => x.sometimesBy(0.1, (x) => x.ply(2))),
       fill: (x) => x.rib("12".div(16), 0.25).ply("1 2"),
     })
