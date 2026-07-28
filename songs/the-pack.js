@@ -4,12 +4,12 @@
 samples('http://localhost:3000/strudel.json')
 setcpm(130 / 4)
 
-_$BASS:
-  // s("bass_intro")
-  s("bass_verse")
+$BASS:
+  s("bass_intro")
+  // s("bass_verse")
   // s("bass_solo").hpf(120)
     .bank("02-tpk").loopAt(8).chop(64).seg(8)
-    .gain(slider(0.45, 0, 0.45, 0.05))
+    .gain(slider(0, 0, 0.45, 0.05))
 
 _$PADS:
   // note("[e2,a2] [[g2,c3]@3 [a2,d3]] [g2,b2] [f#2,d3]").slow(8) // main
