@@ -10,9 +10,11 @@ $NOISE: stack(
   s("deadfx_noise:2").pan(.1),
 )
   .loopAt(8).chop(128).seg(32).o(2)
-  .gain(slider(0, 0, 0.2, 0.001))
+  .gain(slider(0.073, 0, 0.2, 0.001))
 
-$GUITAR:
+$CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
+
+_$GUITAR:
   s("guitar_intro")
   // s("guitar_main")
   // s("guitar_verse1")
@@ -22,7 +24,7 @@ $GUITAR:
     .diode(".5:.8").hpf(200)
     .gain(slider(0.4, 0, 0.4))
 
-$BASS:
+_$BASS:
   s("bass_intro")
   // s("bass_main")
   // s("bass_verse")
@@ -32,7 +34,7 @@ $BASS:
     .chebyshev(".2:.7").o(2)
     .gain(slider(0.45, 0, 0.45))
 
-$PADS:
+_$PADS:
   note("[e1,[f#1@3 a#1]]!3 [[e1,f#1]@3 -]").slow(16) // intro
   // note("e0,f#1,[[e2@3 f#2 g2@2]@3 [a#0,a#2]]").slow(4) // bridge
     .s("deadpad").o(2)
@@ -59,15 +61,15 @@ let drumPats = {
     s("<[[- lt]*16] [- oh!15]>").slow(4).vel(.4).dec(.6).pan(.6),
   ),
   bridge: stack(
-    // s("bd*4").vel(1).hpf(70).hpq(5).duck(2).duckdepth(.3).datt(.25),
-    // s("[- hh]*4").vel(.35),
+    s("bd*4").vel(1).hpf(70).hpq(5).duck(2).duckdepth(.3).datt(.25),
+    s("[- hh]*4").vel(.35),
     // s("[- sd]*2").vel(1),
-    s("[boom,bd] [- [boom,bd]@2] - [boom,bd] - [boom,bd]!3").dec(.3).vel(.9),
-    s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
+    // s("[boom,bd] [- [boom,bd]@2] - [boom,bd] - [boom,bd]!3").dec(.3).vel(.9),
+    // s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
   )
 }
 
-$DRUMS:
+_$DRUMS:
   drumPats.intro
     .bank("deadrums")
     .gain(1.2)
@@ -83,7 +85,7 @@ _$PREBRING: s("siapa_ya_londo_ireng_yang_sesungguhnya").bank("deadfx")
   // .scrub(`{0@2 0 0@2 0@2 0@2 0 0@2 0@2 0@2}%16 {2@2 2 2@2 2@2 2@2 2 2@2 2@2 2@2}%16 {5@2 5 5@2 5@2 5@2 5 5@2 5@2 5@2}%16 <{4!12}%12 {0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 5!2 5!2 7@2 4@2}%32>`.div(8).slow(8)).delay(0.5)
 
 $HIT:
-  s("hit").slow(16) // verse, main
+  s("hit").slow(8) // verse, main
   // s("hit -@30 hit -@32").slow(8) // chorus
     .bank("04-avy")
     .delay(0.5).delays(.125).delayfb(.5).room(0.5).o(1)

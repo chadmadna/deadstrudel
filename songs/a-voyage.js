@@ -20,10 +20,10 @@ _$PADS:
 
 _$DRUMS:
 stack(
-  // s("bd sd").bank("deadrums").slow(2),
+  s("bd sd").bank("deadrums").slow(2),
   s("boom").bank("deadrums").slow(2),
   s("sear").bank("deadrums").loopAt(2).chop(32).seg(32).rel(0).mask("0 1".slow(2)).vel(saw.range(0.5, 1.4).fast(1).seg(32)),
-  // note("-@7 [- [[c2 -]!2 [c2@3 -]@2 [c2 -] [c2@3 -]@2 c2]]".slow(8)).s("scan").bank("deadrums").rel(0).vel(0.9),
+  note("-@7 [- [[c2 -]!2 [c2@3 -]@2 [c2 -] [c2@3 -]@2 c2]]".slow(8)).s("scan").bank("deadrums").rel(0).vel(0.9),
 )
   .room(0.25).o(1)
   .gain(1)
