@@ -23,10 +23,10 @@ _$DISTGTR:
   s("distgtr_solo")
     .bank("02-tpk").loopAt(8).chop(64).seg(8)
     .hpf(500)
-    .scrub(irand(8).div(8).seg(8)).sometimes(x => x.dec(.2).ply("2 | 4"))
+    // .scrub(irand(8).div(8).seg(8)).sometimes(x => x.dec(.2).ply("2 | 4"))
     // .rarely(x => x.speed("-.0675")).juxBy(0.3, rev).vel(.7)
-    // .gain(0.5)
-    .gain(0.2) // breaks section
+    .gain(0.5)
+    // .gain(0.4) // breaks section
 
 _$GTRCLAV:
   s("gtrclav_verse")
