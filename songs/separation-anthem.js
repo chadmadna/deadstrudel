@@ -59,11 +59,11 @@ let drumPats = {
     s("<[[- lt]*16] [- oh!15]>").slow(4).vel(.4).dec(.6).pan(.6),
   ),
   bridge: stack(
-    s("bd*4").vel(1).hpf(70).hpq(5).duck(2).duckdepth(.3).datt(.25),
-    s("[- hh]*4").vel(.35),
+    // s("bd*4").vel(1).hpf(70).hpq(5).duck(2).duckdepth(.3).datt(.25),
+    // s("[- hh]*4").vel(.35),
     // s("[- sd]*2").vel(1),
-    // s("[boom,bd] [- [boom,bd]@2] - [boom,bd] - [boom,bd]!3").dec(.3).vel(.9),
-    // s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
+    s("[boom,bd] [- [boom,bd]@2] - [boom,bd] - [boom,bd]!3").dec(.3).vel(.9),
+    s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
   )
 }
 
@@ -73,14 +73,20 @@ $DRUMS:
     .gain(1.2)
 
 _$SPILL: stack(
-  s("spillfill:48").vel(.5).loopAt(1).hpf(400),
+  s("spillfill:48").vel(.8).loopAt(1).hpf(400),
 )
+
+_$PREBRING: s("siapa_ya_londo_ireng_yang_sesungguhnya").bank("deadfx")
+  .loopAt(2).chop(16).crush(5).vel(.4).gain(.7)
+  .o(1).speed(.35)
+  .scrub("{0 6*2 0 0 6*2 0 5*2 7*2}%8".div(8)).delay(0.3)
+  // .scrub(`{0@2 0 0@2 0@2 0@2 0 0@2 0@2 0@2}%16 {2@2 2 2@2 2@2 2@2 2 2@2 2@2 2@2}%16 {5@2 5 5@2 5@2 5@2 5 5@2 5@2 5@2}%16 <{4!12}%12 {0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 5!2 5!2 7@2 4@2}%32>`.div(8).slow(8)).delay(0.5)
 
 $HIT:
   s("hit").slow(16) // verse, main
   // s("hit -@30 hit -@32").slow(8) // chorus
     .bank("04-avy")
-    .delay(0.5).room(0.5)
+    .delay(0.5).delays(.125).delayfb(.5).room(0.5).o(1)
     .gain(0.4)
 
 _$BREAKS: s("riffin").loopAt(2).chop(16).segment(8)
@@ -111,8 +117,7 @@ _$SPARSE: s("riffin").loopAt(2).chop(16).segment(8)
       .layer(x => x.juxBy(0.2, press)),
   })
   .rel(.2).vel(.8)
-  .sinefold("1:.3")
-  .delay(0.3).delayfb(.5)
+  .sinefold("1:.3").o(1)
   .lpf(slider(140,0, 140).pow(2)).lpq(3)
   .bank("yaxu-clean-breaks")
   .gain(.5)
