@@ -39,6 +39,7 @@
   "deadrums_scan": "/deadrums/deadrums_scan.wav",
   "deadrums_sear": "/deadrums/deadrums_sear.wav",
   "deadrums_bdh": "/deadrums/deadrums_bdh.wav",
+  "deadrums_bl": "/deadrums/deadrums_bl.wav",
   "deadfx_harm": "/deadfx/00-FX-Harmonics.wav",
   "deadfx_wind": "/deadfx/00-FX-Wind.wav",
   "deadfx_noisedbl": [

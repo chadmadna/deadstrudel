@@ -16,7 +16,7 @@ setcpm(160 / 4)
 
 $CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
 
-$NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
+_$NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .loopAt(8).chop(64).seg(16)
   .sinefold(".5:1").o(2)
   .vel(perlin.range(.4, 1)) // random walk
@@ -29,25 +29,28 @@ _$BASS:
     .bank("07-edc").loopAt(8).chop(64).seg(8).o(2)
     .hpq(15).hpf(80)
     .gain(slider(0.3, 0, 0.3))
+    // .mask("x@3 -") // bye
 
 $PADS:
   // s("synth_main").vel(.8)
   s("synth_verse").vel(.8)
   // s("synth_build").vel(1)
+  // s("synth_outro").vel(1)
     .bank("07-edc").loopAt(8).chop(64).seg(16)
     .rel(0.5).o(2)
     .gain(0.25)
 
 $DRUMS:
   stack(
-    s("boom,808 sear").vel(.9).rel(0).att("0 2").slow(4).duck(2).duckdepth(".5 0".slow(4)).datt(.15),
-    s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(50).hpq(6).duck(2).duckdepth(.5).datt(.15),
+    // s("boom,808 sear").vel(.9).rel(0).att("0 2").slow(4).duck(2).duckdepth(".5 0".slow(4)).datt(.15),
+    s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(50).hpq(6).duck(2).duckdepth(.3).datt(.15),
     // s("[- sd]*2").vel(1),
     // s("[- sd]").vel(1),
     // s("[boom,bd] [- [boom,bd]@2] - [boom,bd] - [boom,bd]!3").dec(.5).vel(1).duck(2).duckdepth(.3).datt(.15),
     // s("[bdh,boom]@2 [bdh,boom] [bdh,boom]*3@6 [bdh,boom] [bdh,boom]*3@6").slow(2).vel(.5).duck(2).duckdepth(.5).datt(.15), // lmao
     // s("[sd sd*2 sd sd] [- sd!2 -] [sd sd*2 sd sd] [- sd sd*2 -] [sd sd*2 sd sd] [- sd!2 -] [sd sd*2 sd sd] [sd sd*2 [- sd] sd]").dec(.4).slow(4).vel(.9),
     // s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
+    // s("[boom,bd] [- boom,bd] - sd*2 ht*2 lt*2 [bl,sd]@2").dec(.5).vel("1@3 1.5@3 1.7@2").duck(2).duckdepth(.3).datt(.15).room("0@3 1").rsize("0@3 4").delay("0@3 1"), // bye
   )
     .bank("deadrums")
     .hpf(100)
@@ -88,10 +91,11 @@ _$BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
   })
   // .degradeBy(slider(0, 0, .75, .0625)) // die off
   .gain(.4)
-  .compressor("-45:4:0:.01:.15")
-  .chebyshev(".3:.5")
+  .compressor("-35:4:0:.03:.15")
+  .chebyshev(".3:.25")
   .coarse(slidey.mul(-.03).add(4))
   .lpf(slidey.apply(cutoffFunc)).lpq(10)
+  // .mask("x@3 -") // bye
 
 all(x => x.postgain(1))
 
