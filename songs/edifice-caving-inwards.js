@@ -4,11 +4,23 @@
 samples('http://localhost:3000/strudel.json')
 setcpm(160 / 4)
 
-_$NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
+/*
+██▄   ▄███▄   ██   ██▄   █     ▄███▄   ██   ██▄   ▄███▄   █▄▄▄▄   ▄▄▄▄▄   
+█  █  █▀   ▀  █ █  █  █  █     █▀   ▀  █ █  █  █  █▀   ▀  █  ▄▀  █     ▀▄ 
+█   █ ██▄▄    █▄▄█ █   █ █     ██▄▄    █▄▄█ █   █ ██▄▄    █▀▀▌ ▄  ▀▀▀▀▄   
+█  █  █▄   ▄▀ █  █ █  █  ███▄  █▄   ▄▀ █  █ █  █  █▄   ▄▀ █  █  ▀▄▄▄▄▀    
+███▀  ▀███▀      █ ███▀      ▀ ▀███▀      █ ███▀  ▀███▀     █             
+                █                        █                 ▀              
+               ▀                        ▀                                 
+*/
+
+$CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
+
+$NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .loopAt(8).chop(64).seg(16)
   .sinefold(".5:1").o(2)
   .vel(perlin.range(.4, 1)) // random walk
-  .gain(slider(0.096, 0, 0.2, 0.001))
+  .gain(slider(0.05, 0, 0.2, 0.001))
 
 _$BASS:
   s("bass_main")
