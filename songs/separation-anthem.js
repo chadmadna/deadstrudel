@@ -78,12 +78,6 @@ _$SPILL: stack(
   s("spillfill:48").vel(.8).loopAt(1).hpf(400),
 )
 
-_$PREBRING: s("siapa_ya_londo_ireng_yang_sesungguhnya").bank("deadfx")
-  .loopAt(2).chop(16).crush(5).vel(.4).gain(.7)
-  .o(1).speed(.35)
-  .scrub("{0 6*2 0 0 6*2 0 5*2 7*2}%8".div(8)).delay(0.3)
-  // .scrub(`{0@2 0 0@2 0@2 0@2 0 0@2 0@2 0@2}%16 {2@2 2 2@2 2@2 2@2 2 2@2 2@2 2@2}%16 {5@2 5 5@2 5@2 5@2 5 5@2 5@2 5@2}%16 <{4!12}%12 {0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 5!2 5!2 7@2 4@2}%32>`.div(8).slow(8)).delay(0.5)
-
 $HIT:
   s("hit").slow(8) // verse, main
   // s("hit -@30 hit -@32").slow(8) // chorus

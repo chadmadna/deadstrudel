@@ -2,7 +2,7 @@
 // @by DEADLEADERS
 
 samples('http://localhost:3000/strudel.json')
-setcpm(140 / 4)
+setcpm(160 / 4)
 
 _$NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .loopAt(8).chop(64).seg(16)
@@ -26,13 +26,14 @@ $PADS:
     .rel(0.5).o(2)
     .gain(0.25)
 
-_$DRUMS:
+$DRUMS:
   stack(
-    // s("boom,808 sear").vel(.9).rel(0).att("0 2").slow(4).duck(2).duckdepth(".5 0".slow(4)).datt(.15),
-    s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(50).hpq(6).duck(2).duckdepth(.3).datt(.1),
-    s("[- sd]*2").vel(1),
+    s("boom,808 sear").vel(.9).rel(0).att("0 2").slow(4).duck(2).duckdepth(".5 0".slow(4)).datt(.15),
+    s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(50).hpq(6).duck(2).duckdepth(.5).datt(.15),
+    // s("[- sd]*2").vel(1),
     // s("[- sd]").vel(1),
-    // s("[boom,bd] [- [boom,bd]@2] - [boom,bd] - [boom,bd]!3").dec(.5).vel(1).duck(2).duckdepth(.5).datt(.15),
+    // s("[boom,bd] [- [boom,bd]@2] - [boom,bd] - [boom,bd]!3").dec(.5).vel(1).duck(2).duckdepth(.3).datt(.15),
+    // s("[bdh,boom]@2 [bdh,boom] [bdh,boom]*3@6 [bdh,boom] [bdh,boom]*3@6").slow(2).vel(.5).duck(2).duckdepth(.5).datt(.15), // lmao
     // s("[sd sd*2 sd sd] [- sd!2 -] [sd sd*2 sd sd] [- sd sd*2 -] [sd sd*2 sd sd] [- sd!2 -] [sd sd*2 sd sd] [sd sd*2 [- sd] sd]").dec(.4).slow(4).vel(.9),
     // s("[hh*2@11 oh@13]*4").dec(.4).vel(.35),
   )
@@ -46,7 +47,14 @@ $HIT:
     .delay(0.5)
     .gain(0.4)
 
-const slidey = slider(100, 0, 100)
+_$PREBRING: 
+  s("nontech").bank("deadfx").loopAt(2).chop(16).crush(5).vel(.4).gain(.7).o(1).speed(.35)
+  // s("nontech@3 [nontech@3 praisebe]".slow(4)).bank("deadfx").loopAt(2).chop(16).crush(5).vel(".4@3 [.4@3 .8]".slow(8)).gain(.7).o(1).speed(.35)
+    .scrub("{0 6*2 0 0 6*2 0 5*2 7*2}%8".div(8)).delay(0.3)
+    // .scrub(`{0@2 0 0@2 0@2 0@2 0 0@2 0@2 0@2}%16 {2@2 2 2@2 2@2 2@2 2 2@2 2@2 2@2}%16 {5@2 5 5@2 5@2 5@2 5 5@2 5@2 5@2}%16 <{4!12}%12 {0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 5!2 5!2 7@2 4@2}%32>`.div(8).slow(8)).delay(0.5)
+    // .scrub(`{0@2 0 0@2 0@2 0@2 0 0@2 0@2 0@2}%16 {2@2 2 2@2 2@2 2@2 2 2@2 2@2 2@2}%16 {5@2 5 5@2 5@2 5@2 5 5@2 5@2 5@2}%16 {0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 0@8}%32`.div(8).slow(8)).delay(0.5)
+
+const slidey = slider(0, 0, 100)
 const cutoffFunc = x => x.mul(0).add(50).pow(x.div(100)).sub(1).mul(19980).div(49).add(20)
 
 _$BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
@@ -99,6 +107,22 @@ src(o0)
   .out(o2)
 
 render(o2)
+
+/*
+██╗    ██╗    ██╗ ██████╗ ███╗   ██╗██████╗ ███████╗██████╗     ██╗    ██╗██╗  ██╗ ██████╗ ███████╗    ████████╗██╗  ██╗███████╗
+██║    ██║    ██║██╔═══██╗████╗  ██║██╔══██╗██╔════╝██╔══██╗    ██║    ██║██║  ██║██╔═══██╗██╔════╝    ╚══██╔══╝██║  ██║██╔════╝
+██║    ██║ █╗ ██║██║   ██║██╔██╗ ██║██║  ██║█████╗  ██████╔╝    ██║ █╗ ██║███████║██║   ██║███████╗       ██║   ███████║█████╗  
+██║    ██║███╗██║██║   ██║██║╚██╗██║██║  ██║██╔══╝  ██╔══██╗    ██║███╗██║██╔══██║██║   ██║╚════██║       ██║   ██╔══██║██╔══╝  
+██║    ╚███╔███╔╝╚██████╔╝██║ ╚████║██████╔╝███████╗██║  ██║    ╚███╔███╔╝██║  ██║╚██████╔╝███████║       ██║   ██║  ██║███████╗
+╚═╝     ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═══╝╚═════╝ ╚══════╝╚═╝  ╚═╝     ╚══╝╚══╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝       ╚═╝   ╚═╝  ╚═╝╚══════╝
+                                                                                                                                
+██████╗ ███████╗ █████╗ ██╗         ██╗      ██████╗ ███╗   ██╗██████╗  ██████╗     ██╗██████╗ ███████╗███╗   ██╗ ██████╗       
+██╔══██╗██╔════╝██╔══██╗██║         ██║     ██╔═══██╗████╗  ██║██╔══██╗██╔═══██╗    ██║██╔══██╗██╔════╝████╗  ██║██╔════╝       
+██████╔╝█████╗  ███████║██║         ██║     ██║   ██║██╔██╗ ██║██║  ██║██║   ██║    ██║██████╔╝█████╗  ██╔██╗ ██║██║  ███╗      
+██╔══██╗██╔══╝  ██╔══██║██║         ██║     ██║   ██║██║╚██╗██║██║  ██║██║   ██║    ██║██╔══██╗██╔══╝  ██║╚██╗██║██║   ██║      
+██║  ██║███████╗██║  ██║███████╗    ███████╗╚██████╔╝██║ ╚████║██████╔╝╚██████╔╝    ██║██║  ██║███████╗██║ ╚████║╚██████╔╝      
+╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝    ╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝  ╚═════╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝     
+*/
 
 s0.initImage('https://upload.wikimedia.org/wikipedia/commons/b/bf/Hieronymus_Bosch_-_Triptych_of_Garden_of_Earthly_Delights_%28detail%29_-_WGA2526.jpg')
 s1.initVideo('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExenA1anpyOWIwZnRwdXZuaHBxeXNndWJsc3JnNHY4N3ZqamxhM2txcCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/geDYq73orMiMLQ1bH5/giphy.mp4')

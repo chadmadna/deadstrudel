@@ -38,6 +38,7 @@
   "deadrums_boom": "/deadrums/deadrums_boom.wav",
   "deadrums_scan": "/deadrums/deadrums_scan.wav",
   "deadrums_sear": "/deadrums/deadrums_sear.wav",
+  "deadrums_bdh": "/deadrums/deadrums_bdh.wav",
   "deadfx_harm": "/deadfx/00-FX-Harmonics.wav",
   "deadfx_wind": "/deadfx/00-FX-Wind.wav",
   "deadfx_noisedbl": [
@@ -50,7 +51,8 @@
     "/deadfx/00-FX-Noise-Mid.wav"
   ],
   "deadfx_clock": "/deadfx/00-FX-Clock.wav",
-  "deadfx_siapa_ya_londo_ireng_yang_sesungguhnya": "/deadfx/untech.wav",
+  "deadfx_nontech": "/deadfx/nontech.wav",
+  "deadfx_praisebe": "/deadfx/praisebe.wav",
   "01-otd_808": "/01-otd/01-otd-808.wav",
   "01-otd_bass_chorus": "/01-otd/01-otd-bass-chorus.wav",
   "01-otd_bass_outro": "/01-otd/01-otd-bass-outro.wav",
