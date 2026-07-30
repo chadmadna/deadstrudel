@@ -28,6 +28,9 @@ _$PADS:
     .s("deadpad").att(0.5).rel(1)
     .gain(0.4)
 
+_$SPILL:
+  s("spillfill:30,spillfill:31").slow(16)
+
 _$DRUMS:
 stack(
   s("bd sd").bank("deadrums").slow(2),

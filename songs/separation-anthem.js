@@ -46,11 +46,11 @@ _$BASS:
     .gain(slider(0.45, 0, 0.45))
 
 _$PADS:
-  note("[e1,[f#1@3 a#1]]!3 [[e1,f#1]@3 -]").slow(16) // intro
-  // note("e0,f#1,[[e2@3 f#2 g2@2]@3 [a#0,a#2]]").slow(4) // bridge
+  // note("[e1,[f#1@3 a#1]]!3 [[e1,f#1]@3 -]").slow(16) // intro
+  note("e0,f#1,[[e2@3 f#2 g2@2]@3 [a#0,a#2]]").slow(4) // bridge
     .s("deadpad").o(2)
     .hpf(400).att(0.3).rel(0.5)
-    .gain(0.45)
+    .gain(0.5)
 
 let drumPats = {
   intro: stack(
@@ -85,9 +85,9 @@ _$DRUMS:
     .bank("deadrums")
     .gain(1.2)
 
-_$SPILL: stack(
-  s("spillfill:48").vel(.8).loopAt(1).hpf(400),
-)
+_$NOSEOUT: s("spillfill:48").vel(.7).loopAt(1).hpf(400)
+
+_$HEAVENRINGMOD: stack(note("a1,a2").s("spillfill:29").vel(.5), note("c2").s("spillfill:50").vel(.7)).chop(16).gain(.4)
 
 $HIT:
   s("hit").slow(8) // verse, main
