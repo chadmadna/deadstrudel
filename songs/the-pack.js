@@ -62,7 +62,12 @@ _$VOX:
     // .o(2).delay(.5).delayfb(.95).delays(1/6).room(.3)
     .gain(0.85)
 
-$DRUMS:
+_$SUPERTERRANEAN: stack(
+  note("f#2").s("spillfill:65").vel(.5),
+  note("c2").s("spillfill:66").vel(1),
+).pan(tri.fast(4).seg(32)).rel(.2).gain(.4)
+
+_$DRUMS:
 stack(
   s("bd bd bd*4@2 - bd bd*4@2").vel(1),
   s("lt*2 - lt -").vel(.8),
@@ -84,7 +89,7 @@ $HIT:
 $NOISE: s("deadfx_noise").loopAt(8).chop(64).seg(8).gain(0.15)
 
 _$TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => x.jux(press).vel(.5)).gain(.5)
-_$CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
+$CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
 
 _$BREAKS:
   s("funkydrummer")
