@@ -16,7 +16,7 @@ setcpm(160 / 4)
 
 $CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
 
-_$NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
+$NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .loopAt(8).chop(64).seg(16)
   .sinefold(".5:1").o(2)
   .vel(perlin.range(.4, 1)) // random walk
