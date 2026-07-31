@@ -22,14 +22,13 @@ $NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .vel(perlin.range(.4, 1)) // random walk
   .gain(slider(0.05, 0, 0.2, 0.001))
 
-_$BASS:
+$BASS:
   s("bass_main")
   // s("bass_verse")
   // s("bass_solo")
     .bank("07-edc").loopAt(8).chop(64).seg(8).o(2)
     .hpq(15).hpf(80)
-    .gain(slider(0.3, 0, 0.3))
-    // .mask("x@3 -") // bye
+    .gain(slider(0, 0, 0.3))
 
 $PADS:
   // s("synth_main").vel(.8)
@@ -42,7 +41,7 @@ $PADS:
 
 $DRUMS:
   stack(
-    // s("boom,808 sear").vel(.9).rel(0).att("0 2").slow(4).duck(2).duckdepth(".5 0".slow(4)).datt(.15),
+    s("boom,bd,808 sear").vel(.9).rel(0).att("0 2").slow(4).duck(2).duckdepth(".5 0".slow(4)).datt(.15),
     s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(50).hpq(6).duck(2).duckdepth(.3).datt(.15),
     // s("[- sd]*2").vel(1),
     // s("[- sd]").vel(1),
@@ -69,7 +68,7 @@ _$PREBRING:
     // .scrub(`{0@2 0 0@2 0@2 0@2 0 0@2 0@2 0@2}%16 {2@2 2 2@2 2@2 2@2 2 2@2 2@2 2@2}%16 {5@2 5 5@2 5@2 5@2 5 5@2 5@2 5@2}%16 <{4!12}%12 {0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 5!2 5!2 7@2 4@2}%32>`.div(8).slow(8)).delay(0.5)
     // .scrub(`{0@2 0 0@2 0@2 0@2 0 0@2 0@2 0@2}%16 {2@2 2 2@2 2@2 2@2 2 2@2 2@2 2@2}%16 {5@2 5 5@2 5@2 5@2 5 5@2 5@2 5@2}%16 {0@2 3!2 0@2 0@2 3!2 0@2 0@2 3!2 0@2 0@2 0!4 0@8}%32`.div(8).slow(8)).delay(0.5)
 
-const slidey = slider(0, 0, 100)
+const slidey = slider(100, 0, 100)
 const cutoffFunc = x => x.mul(0).add(50).pow(x.div(100)).sub(1).mul(19980).div(49).add(20)
 
 _$BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
@@ -95,7 +94,6 @@ _$BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
   .chebyshev(".3:.25")
   .coarse(slidey.mul(-.03).add(4))
   .lpf(slidey.apply(cutoffFunc)).lpq(10)
-  // .mask("x@3 -") // bye
 
 all(x => x.postgain(1))
 

@@ -26,10 +26,10 @@ _$GUITAR: s("guitar")
 _$PADS:
   note("[D1,D2] [A#1,F2] [A1,E2] [A1,C#2] [A1,D2] [F1,A#1] [A1,C3] [E2,C#3]").slow(16)
     .s("deadpad").att(0.5).rel(1)
-    .gain(0.4)
+    .gain(0.35)
 
 _$SPILL:
-  s("spillfill:30,spillfill:31").slow(16)
+  s("spillfill:30,spillfill:31").slow(8).gain(.8)
 
 _$DRUMS:
 stack(

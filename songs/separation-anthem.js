@@ -87,7 +87,7 @@ _$DRUMS:
 
 _$NOSEOUT: s("spillfill:48").vel(.7).loopAt(1).hpf(400)
 
-_$HEAVENRINGMOD: stack(note("a1,a2").s("spillfill:29").vel(.5), note("c2").s("spillfill:50").vel(.7)).chop(16).gain(.4)
+_$HEAVENRINGMOD: stack(note("a1,a2").s("spillfill:29").vel(.5), note("c2").s("spillfill:50").vel(.7)).chop(16).gain(.6)
 
 $HIT:
   s("hit").slow(8) // verse, main

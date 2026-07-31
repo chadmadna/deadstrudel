@@ -24,7 +24,7 @@ $BASS:
 _$PADS:
   note("[e2,a2] [[g2,c3]@3 [a2,d3]] [g2,b2] [f#2,d3]").slow(8) // main
   // note("[e2,a2]").slow(4).seg(8) // postverse
-  // note("[e2,a2]!6 [g2,c3] [a2,d3]").slow(8).seg(8) // solo
+  // note("[e2,a2]!6 [g2,c3] [a2,d3]").slow(8) // solo
     .s("deadpad")
     .hpf(400).att(0.3).rel(0.5)
     .gain(0.4)
@@ -65,7 +65,7 @@ _$VOX:
 _$SUPERTERRANEAN: stack(
   note("f#2").s("spillfill:65").vel(.5),
   note("c2").s("spillfill:66").vel(1),
-).pan(tri.fast(4).seg(32)).rel(.2).gain(.4)
+).slow(2).pan(tri.fast(4).seg(32)).rel(.2).gain(.4)
 
 _$DRUMS:
 stack(
@@ -74,6 +74,7 @@ stack(
   s("- sd"),
 )
   // s("[bd*2 -!3] -!7 [bd*2 -!3] -!3 [bd*2 -!3] - [bd*2 -!3] [bd*8]").slow(16)
+  // s("bd*2 -!7").slow(2)
     .bank("deadrums")
     // .scrub("{0 0 0 0*2 .5 .5 .5 .5}%8".div(16)) // fill 1
     .hpf(100)
@@ -96,7 +97,7 @@ _$BREAKS:
     .bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
     .pickF("<pat!7 fill>", {
       pat: (x) => x
-        .when("<0 1!7>".fast(4), (x) => x.rib("0 | 4".div(16), ".75 | .5"))
+        .when("<0 1!7>".fast(4), (x) => x.rib("0 | 4".div(16), 1))
         .when("0 1!3", (x) => x.sometimesBy(0.1, (x) => x.ply(2))),
       fill: (x) => x.rib("12".div(16), 0.25).ply("1 2"),
     })
