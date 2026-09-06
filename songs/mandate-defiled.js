@@ -64,6 +64,11 @@ _$TOPS:
   ).bank("bossdr550").hpf(300).o(3).room(.6).chebyshev(".3:.5")
   .gain(.5)
 
+// ▄▀▀▀▄ █   █ ▄▀▀▀▄        ▀█▀  ▄▀▄  ▀█▀▀▄ ▀█▀      █   █ █▄  █ ▀█▀
+// █  ▄▄ █   █ ▀▄▄▄          █  █   █  █  █  █       █   █ █ ▀▄█  █ 
+// █   █ █▄▀▄█ ▄   █      █  █  █▀▀▀█  █  █  █       █▄▀▄█ █   █  █ 
+//  ▀▀▀▀ ▀   ▀  ▀▀▀        ▀▀   ▀   ▀ ▀▀▀▀  ▀▀▀      ▀   ▀ ▀   ▀ ▀▀▀
+
 await initHydra()
 
 // licensed with CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
