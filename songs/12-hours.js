@@ -1,12 +1,12 @@
 // @title 12 Hours
 // @by DEADLEADERS
 
-samples('github:chadmadna/deadstrudel')
-setcpm(130 / 4)
+samples('http://localhost:3000/strudel.json')
+setcpm(120 / 4)
 
-$BASS:
-  // note("[f2!3 c3 f2!4]!2 [e2!3 c3 e2!4]!2").slow(4)
-  note("[f2!3 c3 f2!4]!2 [e2!3 c3 e2!4]!2 [a2!3 c3 a2!4]!2 [g2!3 c3 g2!4]!2").slow(8)
+_$BASS:
+  note("[f2!3 c3 f2!4]!2 [e2!3 c3 e2!4]!2").slow(4)
+  // note("[f2!3 c3 f2!4]!2 [e2!3 c3 e2!4]!2 [a2!3 c3 a2!4]!2 [g2!3 c3 g2!4]!2").slow(8)
     .s("bass_verse").hpf(120).rel(0.2)
     .bank("02-tpk").trans(-9)
     .vel(0.6)
@@ -31,22 +31,22 @@ _$VOX:
     // .o(2).delay(.5).delayfb(.95).delays(1/6).room(.3)
     .gain(0.5)
 
-$DRUMS:
-// stack(
-//   s("bd@2 bd!2 ~@2 <bd [ht lt]>@2").vel(0.9).slow(1),
-//   s("hh*2 hh oh@2 hh*3@2 hh*2 hh").vel(0.4),
-//   // s("boom").vel(.7),
-//   s("- sd").vel(.8),
-// )
+_$DRUMS:
 stack(
-  s("bd@2 bd!2 ~@2 bd ~ bd*2 ~ bd@2").vel(0.9).slow(1.5),
-  s("hh*2 hh oh@2 hh*3@2 hh*2 hh").vel(0.4),
-  s("- sd"),
+  s("bd@2 bd!2 ~@2 <bd [ht lt]>@2").vel(0.9).slow(1),
+  // s("hh*2 hh oh@2 hh*3@2 hh*2 hh").vel(0.4),
+  // s("boom").vel(.7),
+  s("- sd").vel(.8),
 )
+// stack(
+//   s("bd@2 bd!2 ~@2 bd ~ bd*2 ~ bd@2").vel(0.9).slow(1.5),
+//   s("hh*2 hh oh@2 hh*3@2 hh*2 hh").vel(0.4),
+//   s("- sd"),
+// )
     .bank("deadrums")
     // .scrub("{0 0 0 0*2 1 1 1 1}%8".div(16)) // fill 1
     .hpf(100)
-    .gain(0.9)
+    .gain(0.8)
 
 $HIT:
   s("hit").bank("04-avy")
@@ -60,7 +60,7 @@ _$NOISE: s("deadfx_noise").loopAt(8).chop(64).seg(8).gain(0.1)
 $TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => x.jux(press).vel(.5)).gain(.8)
 _$CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
 
-$BREAKS:
+_$BREAKS:
   s("eeloil")
     .bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
     .pickF("<pat!3 fill>", {
@@ -94,4 +94,4 @@ let bg = src(s2)
 src(o0).add(box.scale(1).invert(), .5).out(o1)
 render(o1)
 
-s2.initImage('https://scontent.fcgk40-1.fna.fbcdn.net/v/t1.15752-9/728143260_27544331878512905_5074589341837439730_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=fc17b8&_nc_ohc=kJC93wqPd6cQ7kNvwEEMZNA&_nc_oc=Ado_pdas5EdbBGgGFuxWbLYcgk8OjRvHsoweU-aQzU7dISSb2wG6ikpCGXkMRWQon-g&_nc_zt=23&_nc_ht=scontent.fcgk40-1.fna&_nc_ss=7b6a8&oh=03_Q7cD5wH_Pe-qnj-bqhObyQquR4OSx0qWPCj7bgsSFsX15BOIFA&oe=6A833D93')
+s2.initImage('https://scontent.fcgk40-1.fna.fbcdn.net/v/t1.15752-9/728143260_27544331878512905_5074589341837439730_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=fc17b8&_nc_ohc=-1te8KqEloUQ7kNvwHbTk7D&_nc_oc=Ado3UepcfEo7cLgLYH38HCTAcWHIjqX1I619aJccoI4VhoTYeB4oYeZiq3edBk-qlAw&_nc_zt=23&_nc_ht=scontent.fcgk40-1.fna&_nc_ss=7b6a8&oh=03_Q7cD6QF4IWdgzy7tch13MzjKOmbLPmFkVj40a6zdRjcE-qtvCA&oe=6AC4F053')
