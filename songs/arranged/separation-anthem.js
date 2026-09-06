@@ -15,7 +15,7 @@ setcpm(160 / 4)
 */
 
 
-$NOISE: stack(
+let noise = stack(
   s("deadfx_noise:0").pan(.6),
   s("deadfx_noise:1").pan(.5),
   s("deadfx_noise:2").pan(.1),
@@ -23,31 +23,80 @@ $NOISE: stack(
   .loopAt(8).chop(128).seg(32).o(2)
   .gain(slider(0.073, 0, 0.2, 0.001))
 
-$CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
+let clock = s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
 
-_$GUITAR:
+let guitarIntro = 
   s("guitar_intro").vel(0.7)
-  // s("guitar_main").vel(0.7)
-  // s("guitar_verse1").vel(0.7)
-  // s("guitar_verse2").vel(0.7)
-  // s("guitar_chorus").vel(0.9)
     .bank("06-spa").loopAt(16).chop(128).seg(8).o(2)
     .diode(".5:.8").hpf(200)
-    .gain(slider(0.4, 0, 0.4))
+    .gain(.4)
 
-_$BASS:
+let guitarMain = 
+  s("guitar_main").vel(0.7)
+    .bank("06-spa").loopAt(16).chop(128).seg(8).o(2)
+    .diode(".5:.8").hpf(200)
+    .gain(.4)
+
+let guitarVerse1 = 
+  s("guitar_verse1").vel(0.7)
+    .bank("06-spa").loopAt(16).chop(128).seg(8).o(2)
+    .diode(".5:.8").hpf(200)
+    .gain(.4)
+
+let guitarVerse2 = 
+  s("guitar_verse2").vel(0.7)
+    .bank("06-spa").loopAt(16).chop(128).seg(8).o(2)
+    .diode(".5:.8").hpf(200)
+    .gain(.4)
+
+let guitarChorus = 
+  s("guitar_chorus").vel(0.7)
+    .bank("06-spa").loopAt(16).chop(128).seg(8).o(2)
+    .diode(".5:.8").hpf(200)
+    .gain(.4)
+
+let bassIntro = 
   s("bass_intro")
-  // s("bass_main")
-  // s("bass_verse")
-  // s("bass_chorus")
     .bank("06-spa").loopAt(16).chop(64).seg(4)
     .vel(0.7)
     .chebyshev(".2:.7").o(2)
-    .gain(slider(0.45, 0, 0.45))
+    .gain(.45)
 
-_$PADS:
-  note("[e1,[f#1@3 a#1]]!3 [[e1,f#1]@3 -]").slow(16) // intro
-  // note("e0,f#1,[[e2@3 f#2 g2@2]@3 [a#0,a#2]]").slow(4) // bridge
+let bassMain = 
+  s("bass_main")
+    .bank("06-spa").loopAt(16).chop(64).seg(4)
+    .vel(0.7)
+    .chebyshev(".2:.7").o(2)
+    .gain(.45)
+
+let bassVerse = 
+  s("bass_verse")
+    .bank("06-spa").loopAt(16).chop(64).seg(4)
+    .vel(0.7)
+    .chebyshev(".2:.7").o(2)
+    .gain(.45)
+
+let bassChorus = 
+  s("bass_chorus")
+    .bank("06-spa").loopAt(16).chop(64).seg(4)
+    .vel(0.7)
+    .chebyshev(".2:.7").o(2)
+    .gain(.45)
+
+let padsIntro =
+  note("[e1,[f#1@3 a#1]]!3 [[e1,f#1]@3 -]").slow(16)
+    .s("deadpad").o(2)
+    .hpf(400).att(0.3).rel(0.5)
+    .gain(0.5)
+
+let padsMain =
+  note("e0,f#1,[[e2@3 f#2 g2@2]@3 [a#0,a#2]]").slow(4)
+    .s("deadpad").o(2)
+    .hpf(400).att(0.3).rel(0.5)
+    .gain(0.5)
+
+let padsChorus =
+  note("[a1,a2,e2] [[c1,c2,g2] [d1,d2,a2]] [e1,e2,b2] [e1,e2,bb2,bb3]").slow(8)
     .s("deadpad").o(2)
     .hpf(400).att(0.3).rel(0.5)
     .gain(0.5)
@@ -85,18 +134,23 @@ _$DRUMS:
     .bank("deadrums")
     .gain(1.2)
 
-_$NOSEOUT: s("spillfill:48").vel(.7).loopAt(1).hpf(400)
+let noseOut = s("spillfill:48").vel(.7).loopAt(1).hpf(400)
 
-_$HEAVENRINGMOD: stack(note("a1,a2").s("spillfill:29").vel(.5), note("c2").s("spillfill:50").vel(.7)).chop(16).gain(.6).o(2)
+let heavenRingMod = stack(note("a1,a2").s("spillfill:29").vel(.5), note("c2").s("spillfill:50").vel(.7)).chop(16).gain(.6).o(2)
 
-$HIT:
+let hitMain =
   s("hit").slow(8) // verse, main
-  // s("hit -@30 hit -@32").slow(8) // chorus
     .bank("04-avy")
     .delay(0.5).delays(.125).delayfb(.5).room(0.5).o(1)
     .gain(0.4)
 
-_$BREAKS: s("riffin").loopAt(2).chop(16).segment(8)
+let hitChorus =
+  s("hit -@30 hit -@32").slow(8) // chorus
+    .bank("04-avy")
+    .delay(0.5).delays(.125).delayfb(.5).room(0.5).o(1)
+    .gain(0.4)
+
+let breaks = s("riffin").loopAt(2).chop(16).segment(8)
   .pickF("<pat!7 <fillA fillB>>", {
     pat: x => x
       .when("0 1!3", x => x
@@ -128,42 +182,3 @@ _$SPARSE: s("riffin").loopAt(2).chop(16).segment(8)
   .lpf(slider(140,0, 140).pow(2)).lpq(3)
   .bank("yaxu-clean-breaks")
   .gain(.5)
-
-all((x) => x.postgain(.9))
-
-await initHydra()
-
-let randVals = Array.from({ length: 128 }, Math.random)
-let randVals2 = Array.from({ length: 13 }, Math.random)
-
-let bg = src(s0)
-  .brightness(.1)
-  .modulate(src(s0).scale(8), 0.5)
-  .scrollY(0.25, 0.2)
-  // .scrollX(randVals.map((x) => x * 0.25 - 0.125).ease('easeInOutQuart'))
-  .modulateScrollY(voronoi(1000, 4, 0.5), 0.01)
-  .kaleid(6)
-  .rotate(randVals.ease('easeInOutQuart'))
-  .hue(.47)
-  .saturate(0.8)
-  .brightness(-0.2)
-  .out(o0)
-
-let axe = src(s0).hue(.5).brightness(.3)
-  .mult(src(s1).saturate(0))
-  .rotate(() => Math.sin(time))
-  .mask(shape(1000, 1))
-  .scale(.3)
-  .pixelate(600, 600)
-  .out(o1)
-
-src(o0)
-  .modulate(src(o0), .4)
-  .layer(src(o1).luma(.001))
-  .scale(randVals.map((x) => x * 2 + 1).ease('easeInOutQuart'), height/width)
-  .out(o2)
-
-render(o2)
-
-s0.initImage('https://upload.wikimedia.org/wikipedia/commons/b/bf/Hieronymus_Bosch_-_Triptych_of_Garden_of_Earthly_Delights_%28detail%29_-_WGA2526.jpg')
-s1.initVideo('https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3ZWsxZXI5azV2YmZoazU4bDhrMjcwbmVseDBocnZhNXphcGFyaDJjaCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ZXAy7FfBNtZDgOt4jS/giphy.mp4')
