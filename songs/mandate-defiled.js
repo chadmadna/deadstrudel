@@ -51,7 +51,7 @@ _$DRUMS:
     // s("bd [- bd*2] [sd bd] bd").vel(.8),
     // s("[bd,ht] ht lt*2 bd*2 sd bd <[ht*2 -] <[ht*2 lt] [lt*2 bd*2]>>@2").vel(.9),
     stack(
-      // s("[cr,hit] -!7".slow(8)).chop(64).dec(1/64).sus(.5),
+      s("[cr,hit] -!7".slow(8)).chop(64).dec(1/64).sus(.5),
       // s("- oh - oh").vel(.7),
     ).o(2).delays(3/16).delay(.8).delayfb(.8)
   ).bank("deadrums").gain(1.2)
@@ -64,24 +64,20 @@ _$TOPS:
   ).bank("bossdr550").hpf(300).o(3).room(.6).chebyshev(".3:.5")
   .gain(.5)
 
-// ▄▀▀▀▄ █   █ ▄▀▀▀▄        ▀█▀  ▄▀▄  ▀█▀▀▄ ▀█▀      █   █ █▄  █ ▀█▀
-// █  ▄▄ █   █ ▀▄▄▄          █  █   █  █  █  █       █   █ █ ▀▄█  █ 
-// █   █ █▄▀▄█ ▄   █      █  █  █▀▀▀█  █  █  █       █▄▀▄█ █   █  █ 
-//  ▀▀▀▀ ▀   ▀  ▀▀▀        ▀▀   ▀   ▀ ▀▀▀▀  ▀▀▀      ▀   ▀ ▀   ▀ ▀▀▀
+all(x => x.postgain(1))
 
 await initHydra()
 
-// licensed with CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
-// Hydra Glitchy Slit Scan
-// Flor de Fuego
-// https://flordefuego.github.io/ 
-s0.initVideo('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnphMjFxdmY2c3VmenJ6M3dhNzZwbW1oNWR4djVpd3d0M3h1eGt5YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/WjMnQiDQHbK6Y/giphy.mp4')
-src(s0)
-  .contrast(1.3)
-  .layer(src(o0)
-      .mask(shape(4, 2)
-      .scale(0.5, 0.7)
-  .scrollX(0.4))
-  .scrollX(0.003))
-  .modulate(o0, 0.3)
-  .out(o0)
+osc(300, 12, 1)
+  .mult(
+    osc(40, -0.2, 1)
+      .modulate(noise(3,1).modulate(osc(20, .3, 4))
+  )).rotate(11).scale(1, .5, 2)
+  .modulatePixelate(o0, 4000, 500).brightness(-.3).contrast(2)
+  .saturate(0.3)
+  .add(src(s0).saturate(0).contrast(2).invert())
+  .diff(src(s1).invert()).invert()
+  .out()
+
+s0.initVideo('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGdmcGJrYTQ4aXBvOXdoZjBtcXk2bGFiOXYxOHNuMGZja3QzdzZrNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3ov9k06VQ0SU6f15rW/giphy.mp4')
+s1.initVideo('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGdmcGJrYTQ4aXBvOXdoZjBtcXk2bGFiOXYxOHNuMGZja3QzdzZrNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/VhoLNmkoO92zleTLQH/giphy.mp4')
