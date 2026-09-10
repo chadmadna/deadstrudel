@@ -27,7 +27,7 @@ $BASS:
   // note("[d2 a1]!3 <[b1] [d2 e2@3]>").trans(1).slow(4)
     .s("glass_brick").loopAt(2).chop(8).seg(8).bank("09-iml").gain(.6)
 
-$PADS:
+_$PADS:
   note("b1,b2")
   // note("a2 g2 b1@2").slow(4)
   // note("[d2 a1]!3 <[b1] [d2 e2@3]>").slow(8)
@@ -36,8 +36,8 @@ $PADS:
     .gain(.4)
 
 _$BRASS:
-  // note("a4 | b4 | fs4").vel(.7).fast(7/2) // anything else
-  note("g2 b2 fs3@6 fs2 b2 e3@6 fs2 a2 d3@14").slow(4) // chorus
+  note("a4 | b4 | fs4").vel(.7).fast(7/2) // anything else
+  // note("g2 b2 fs3@6 fs2 b2 e3@6 fs2 a2 d3@14").slow(4) // chorus
     .s("deadbrass").att(0.2).rel(1).sinefold("3:.1")
     .hpf(500)
     .gain(.65)
@@ -50,14 +50,15 @@ _$GUITAR:
   s("guitar_chorus").loopAt(8).chop(64).seg(8)
     .bank("09-iml").o(2)
     .diode(".5:.8").hpf(300)
-    .gain(.7)
+    .gain(.8)
 
 $DRUMS:
   stack(
+    // s("[lt lt@5] bd - bd [sd sd@5] bd - bd [ht lt@4] bd [ht lt@4] bd [sd sd@5] bd - -").slow(2),
     // s("lt bd ht bd [sd sd@5] bd [ht ht@5] bd [lt lt@5] -!2 bd <[[lt,sd]!2 -!2] [[sd sd@5] ht lt -]>@4").slow(2),
-    // s("[boom bd!7]").slow(2),
-    // s("sd*2 sd*2 sd sd sd - sd sd*2").vel("[.7 .5!3] .7 .8 [.7 .5]"),
-    s("[bd,ht] ht lt*2 bd*2 sd bd <[ht*2 -] <[ht*2 lt] [lt*2 bd*2]>>@2").vel(1.1),
+    s("[bd,boom bd!7]").slow(2),
+    s("sd*2 sd*2 sd sd sd - sd sd*2").vel("[1 .7!3] 1 1.2 [1 .7]"),
+    // s("[bd,ht] ht lt*2 bd*2 sd bd <[ht*2 -] <[ht*2 lt] [lt*2 bd*2]>>@2").vel(1.1),
     stack(
       s("[cr,hit] -!7".slow(8)).chop(64).dec(1/64).sus(.5),
       // s("- oh - oh").vel(.7),
@@ -87,6 +88,7 @@ src(s0)
   .modulate(src(s1).rotate(() => time % 3600).contrast(.5), .1)
   .add(osc(1, 0).rotate(11).scale(1, 1, .4), .5)
   .add(src(o1), 1.3)
+  .layer(shape(4,0.3,0).luma())
   .out()
 
 s0.initVideo('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHl5Nmt0anQ5M2Y5OHl0ZTNwanpyMmtqM2txcmhicWw1dGJvaWN4ciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/OjtRa0lp8deuwdhA7J/giphy.mp4')
