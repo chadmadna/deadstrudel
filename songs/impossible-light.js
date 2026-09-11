@@ -21,7 +21,7 @@ _$NOISE: note("c3").s("deadfx_noise:1").pan(.35).loopAt(8).chop(64).seg(16)
 
 _$WHISTLE: s("glass_whistle").loopAt(2).chop(8).seg(8).bank("09-iml").gain(.6)
 
-$BASS:
+_$BASS:
   note("b1").trans(1)
   // note("a1 g1 b1@2").trans(1).slow(2)
   // note("[d2 a1]!3 <[b1] [d2 e2@3]>").trans(1).slow(4)
@@ -43,7 +43,7 @@ _$BRASS:
     .gain(.65)
 
 
-$GUITAR:
+_$GUITAR:
   // s("guitar_main").loopAt(8).chop(64).seg(8)
   // s("guitar_verse").loopAt(8).chop(64).seg(8)
   // s("guitar_verse-fill").loopAt(8).chop(64).seg(8).vel(.8)
@@ -52,7 +52,7 @@ $GUITAR:
     .diode(".5:.8").hpf(300)
     .gain(.8)
 
-$DRUMS:
+_$DRUMS:
   stack(
     // s("[lt lt@5] bd - bd [sd sd@5] bd - bd [ht lt@4] bd [ht lt@4] bd [sd sd@5] bd - -").slow(2),
     // s("lt bd ht bd [sd sd@5] bd [ht ht@5] bd [lt lt@5] -!2 bd <[[lt,sd]!2 -!2] [[sd sd@5] ht lt -]>@4").slow(2),
