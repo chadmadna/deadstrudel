@@ -22,15 +22,15 @@ $NOISE: note("c1,c2,c3").s("deadfx_noise:2").pan(.35)
   .vel(perlin.range(.4, 1)) // random walk
   .gain(slider(0.05, 0, 0.2, 0.001))
 
-$BASS:
+_$BASS:
   s("bass_main")
   // s("bass_verse")
   // s("bass_solo")
     .bank("07-edc").loopAt(8).chop(64).seg(8).o(2)
     .hpq(15).hpf(80)
-    .gain(slider(0, 0, 0.3))
+    .gain(slider(0.3757, 0, 0.3))
 
-$PADS:
+_$PADS:
   // s("synth_main").vel(.8)
   s("synth_verse").vel(.8)
   // s("synth_build").vel(1)
@@ -39,10 +39,10 @@ $PADS:
     .rel(0.5).o(2)
     .gain(0.25)
 
-$DRUMS:
+_$DRUMS:
   stack(
     s("boom,bd,808 sear").vel(.9).rel(0).att("0 2").slow(4).duck(2).duckdepth(".5 0".slow(4)).datt(.15),
-    s("[[bd -!2 bd] [- bd]!2 -]").vel(1).hpf(50).hpq(6).duck(2).duckdepth(.3).datt(.15),
+    s("[[bd -!2 bd] [- bd]!2 -]").vel(1).duck(2).duckdepth(.3).datt(.15),
     // s("[- sd]*2").vel(1),
     // s("[- sd]").vel(1),
     // s("[boom,bd] [- [boom,bd]@2] - [boom,bd] - [boom,bd]!3").dec(.5).vel(1).duck(2).duckdepth(.3).datt(.15),
@@ -53,7 +53,7 @@ $DRUMS:
   )
     .bank("deadrums")
     .hpf(100)
-    .gain(1)
+    .gain(1.3)
 
 $HIT:
   s("hit").slow(8)
@@ -95,7 +95,7 @@ $BREAKS: s("groove").bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
   .coarse(slidey.mul(-.03).add(4))
   .lpf(slidey.apply(cutoffFunc)).lpq(10)
 
-all(x => x.postgain(1))
+all(x => x.postgain(1.2))
 
 /*
 ██╗    ██╗    ██╗ ██████╗ ███╗   ██╗██████╗ ███████╗██████╗     ██╗    ██╗██╗  ██╗ ██████╗ ███████╗    ████████╗██╗  ██╗███████╗
