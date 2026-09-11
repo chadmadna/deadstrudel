@@ -20,8 +20,8 @@ _$NOISE: note("c2").s("deadfx_noise:0").loopAt(8).chop(64).seg(16)
   .gain(slider(0.3, 0, 0.5, 0.001))
 
 $TAPE:
-  // s("tape_intro").loopAt(8).chop(64).seg(16).rib(0, 4) // intro loop
-  s("tape_intro").loopAt(8).chop(64).seg(16) // intro fill
+  s("tape_intro").loopAt(8).chop(64).seg(16).rib(0, 4) // intro loop
+  // s("tape_intro").loopAt(8).chop(64).seg(16) // intro fill
   .bank("08-mdf")
   .gain(.5)
 
