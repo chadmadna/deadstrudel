@@ -77,7 +77,7 @@ osc(300, 12, 1)
   .saturate(0.3)
   .add(src(s0).saturate(0).contrast(2).invert())
   .diff(src(s1).invert()).invert()
-  .contrast(.8)
+  .contrast(.8).brightness(-.15)
   .out()
 
 s0.initVideo('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGdmcGJrYTQ4aXBvOXdoZjBtcXk2bGFiOXYxOHNuMGZja3QzdzZrNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3ov9k06VQ0SU6f15rW/giphy.mp4')
