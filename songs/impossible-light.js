@@ -23,9 +23,9 @@ _$WHISTLE: s("glass_whistle").loopAt(2).chop(8).seg(8).bank("09-iml").gain(.6)
 
 $BASS:
   note("b1").trans(1)
-  // note("a1 g1 b2@2").trans(1).slow(2)
+  // note("a1 g1 b1@2").trans(1).slow(2)
   // note("[d2 a1]!3 <[b1] [d2 e2@3]>").trans(1).slow(4)
-    .s("glass_brick").loopAt(2).chop(8).seg(8).bank("09-iml").gain(.6)
+    .s("glass_brick").loopAt(2).chop(8).seg(8).bank("09-iml").gain(.8)
 
 _$PADS:
   note("b1,b2")
@@ -43,7 +43,7 @@ _$BRASS:
     .gain(.65)
 
 
-_$GUITAR:
+$GUITAR:
   // s("guitar_main").loopAt(8).chop(64).seg(8)
   // s("guitar_verse").loopAt(8).chop(64).seg(8)
   // s("guitar_verse-fill").loopAt(8).chop(64).seg(8).vel(.8)
@@ -56,7 +56,7 @@ $DRUMS:
   stack(
     // s("[lt lt@5] bd - bd [sd sd@5] bd - bd [ht lt@4] bd [ht lt@4] bd [sd sd@5] bd - -").slow(2),
     // s("lt bd ht bd [sd sd@5] bd [ht ht@5] bd [lt lt@5] -!2 bd <[[lt,sd]!2 -!2] [[sd sd@5] ht lt -]>@4").slow(2),
-    s("[bd,boom bd!7]").slow(2),
+    // s("[bd,boom bd!7]").slow(2),
     s("sd*2 sd*2 sd sd sd - sd sd*2").vel("[1 .7!3] 1 1.2 [1 .7]"),
     // s("[bd,ht] ht lt*2 bd*2 sd bd <[ht*2 -] <[ht*2 lt] [lt*2 bd*2]>>@2").vel(1.1),
     stack(
