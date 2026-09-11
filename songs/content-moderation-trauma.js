@@ -22,8 +22,8 @@ _$NOISWEEP: note("c2").s("deadfx_noise:2").pan(.35).loopAt(8).chop(64).seg(27)
   .bpf(saw.range(0, 90).slow(4).apply(cutoffFunc)).delay(.7)
   .gain(.8)
 
-$TAPE:
-  s("deafpunk-hi").loopAt(4).chop(64).seg(16)
+_$TAPE:
+  s("deafpunk-mid").loopAt(4).chop(64).seg(16)
   .bank("deadtape")
   .gain(1)
 
@@ -47,12 +47,12 @@ _$PADS:
     .hpf(500)
     .gain(.3)
 
-_$DRUMS:
+$DRUMS:
   stack(
     s("boom -!7".slow(8)).chebyshev(".2").vel(1.5),
     s("bd [sd@1 sd@20]").vel(1.4).room(.6),
     stack(
-      s("[cr,hit] -!7".slow(8)).chop(64).dec(1/64).sus(.5),
+      // s("[cr,hit] -!7".slow(8)).chop(64).dec(1/64).sus(.5),
       // s("- oh - oh").vel(.7),
     ).delays(3/16).delay(.8).delayfb(.8)
   ).bank("deadrums").gain(1.3)
