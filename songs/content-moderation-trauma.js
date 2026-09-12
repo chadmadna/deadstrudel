@@ -40,7 +40,7 @@ _$WOW: note("fs1").slow(4).s("tri").diode(2).vib(4).vmod(12).chop(16)
   .dec(3).sus(.8).hpf(50).hpq(10)
   .gain(.8)
 
-$PADS:
+_$PADS:
   note("[fs3] [fs3,g3]").slow(8)
   // note("fs1,[a2,c3,fs3]").slow(4)
   // note("[fs3,[c4@3 cs4 bb3@4]] [fs3,[fs4@3 g4 e4@4]]").slow(8)
