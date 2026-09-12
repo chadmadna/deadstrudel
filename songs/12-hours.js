@@ -51,8 +51,8 @@ _$VOX:
 _$DRUMS:
 stack(
   s("bd@2 bd!2 ~@2 <bd [ht lt]>@2").vel(0.9).slow(1),
-  // s("hh*2 hh oh@2 hh*3@2 hh*2 hh").vel(0.4),
-  // s("boom").vel(.7),
+  s("hh*2 hh oh@2 hh*3@2 hh*2 hh").vel(0.4),
+  s("boom").vel(.7),
   s("- sd").vel(.8),
 )
 // stack(
@@ -61,7 +61,7 @@ stack(
 //   s("- sd"),
 // )
     .bank("deadrums")
-    // .scrub("{0 0 0 0*2 1 1 1 1}%8".div(16)) // fill 1
+    // .scrub("{0 0 0 0*2 1 1 1 1}%8".div(32)) // fill 1
     .hpf(100)
     .gain(0.8)
 
@@ -78,16 +78,18 @@ $TIME: s("shaker_small*8").vel(perlin.range(0.5, 0.9).seg(16)).superimpose(x => 
 _$CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
 
 _$BREAKS:
-  s("eeloil")
+  s("squib")
     .bank("yaxu-clean-breaks").loopAt(2).chop(16).segment(8)
-    .pickF("<pat!3 fill>", {
-      pat: (x) => x
-        .when("<0 1!3>".fast(4), (x) => x.rib("0 | 2".div(16), .75))
-        .when("0 1!3", (x) => x.sometimesBy(0.1, (x) => x.ply(2))),
-      fill: (x) => x.rib("12".div(16), 0.25).ply("1 2"),
-    })
+    // .pickF("<pat!3 fill>", {
+    //   pat: (x) => x
+    //     // .when("<0 1!3>".fast(4), (x) => x.rib("0 | 2".div(16), .75))
+    //     // .when("0 1!3", (x) => x.sometimesBy(0.1, (x) => x.ply(2))),
+    //   fill: (x) => x.rib("12".div(16), 0.25).ply("1 2"),
+    // })
     .crush(6).room(0.3)
     // .delay(0.2).delays(0.25).delayfb(0.3)
+    // .scrub("{0 0*2 2 2*2 [0 1]!2 2 4*3}%8".div(16))
+    // .scrub("{0 2*2 1 5 [4 3]!2 0 6*3}%8".div(16))
     .gain(0.3)
 
 all((x) => x.compressor("-10:10:.1:.1:.5")).postgain()
