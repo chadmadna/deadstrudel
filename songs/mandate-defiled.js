@@ -16,7 +16,7 @@ setcpm(116 / 4)
 
 $CLOCK: s("deadfx_clock").loopAt(4).chop(32).seg(8).vel(.5).hpf(6000).jux(x => press(x).vel(.25)).gain(.2)
 
-$NOISE: note("c2").s("deadfx_noise:0").loopAt(8).chop(64).seg(16)
+_$NOISE: note("c2").s("deadfx_noise:0").loopAt(8).chop(64).seg(16)
   .gain(slider(0.3, 0, 0.5, 0.001))
 
 $TAPE:
@@ -46,8 +46,7 @@ _$GUITAR:
 _$DRUMS:
   stack(
     s("boom -!7".slow(8)).chop(64).dec(1/64).sus(.3).chebyshev(".2").vel(1.5),
-    s("bd*8").vel(.8),
-    // s("lt sd*2 sd sd sd*2 sd <[sd -]!3 [sd*4]>@2"),
+    s("[bd*8]!4 [[lt sd*2 sd sd sd*2 sd sd -]!3 [lt sd*2 sd sd sd*2 sd sd*4@2]]@4").vel(.8).slow(8),
     // s("bd [- bd*2] [sd bd] bd").vel(1),
     // s("[bd,ht] ht lt*2 bd*2 sd bd <[ht*2 -] <[ht*2 lt] [lt*2 bd*2]>>@2").vel(1),
     stack(
