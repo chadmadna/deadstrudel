@@ -43,6 +43,7 @@ _$WOW: note("fs1").slow(4).s("tri").diode(2).vib(4).vmod(12).chop(16)
 _$PADS:
   note("[fs3] [fs3,g3]").slow(8)
   // note("fs1,[a2,c3,fs3]").slow(4)
+  note("[fs3] [fs3,g3]").slow(8)
     .s("deadpad").chop(8).att(0.5).rel(1).cubic("4:.1")
     .hpf(500)
     .gain(.3)
@@ -50,6 +51,7 @@ _$PADS:
 $DRUMS:
   stack(
     s("boom -!7".slow(8)).chebyshev(".2").vel(1.5),
+    // s("boom").chebyshev(".2").vel(1.5).striate(128).slow(2).rib(0, 1),
     s("bd [sd@1 sd@20]").vel(1.4).room(.6),
     stack(
       // s("[cr,hit] -!7".slow(8)).chop(64).dec(1/64).sus(.5),
